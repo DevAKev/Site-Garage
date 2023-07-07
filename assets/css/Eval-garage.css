@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+*{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+}
+
+/*raccourcis color*/
+:root {
+    --main-color: #fe5b3d;
+    --second-color: #ffac38;
+    --text-color: #444;
+    --gradient: linear-gradient(#fe5b3d, #ffac38);
+}
+
+/* STYLE scroll bar */
+html::-webkit-scrollbar {
+    width: 0.5rem;
+}
+html::-webkit-scrollbar-track {
+    background: turquoise;
+}
+html::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 5rem;
+}
+
+section {
+    padding: 50px 100px;
+}
+header {
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    align-items: center;
+    justify-content: space-between;
+    background: #eeeff1;
+    padding: 15px 50px;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black
+}
+
+/*Style carousel bandeau de défilement*/
+#header-carousel {
+    background-color: #021121;
+}
+
+#header-carousel p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    animation: slide-up 5s ease-in-out infinite;
+}
+
+@keyframes slide-up {
+    0% {
+    transform: translateX(100%);
+    }
+    10% {
+        transform: translateX(0);
+    }
+    90% {
+        transform: translateX(0);
+    }
+    100% {
+    transform: translateX(-100%);
+    }
+}
+
+.toast {
+    background-color:rgb(249, 29, 29);
+    color: antiquewhite;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 16px;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transform: opacity 0.3s ease-out
+}
+
+.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Style de la barre de navigation */
+#Logo-nav {
+    border-radius: 10px;
+}
+
+.navbar {
+    display: flex;
+    opacity: 0.9;
+    height: 20%;
+    width: 100%;
+    border-bottom: none
+}
+
+/* Style des liens de la barre de navigation */
+.navbar-nav li {
+    margin: 0px 50px; /* marge entre les éléments */
+    
+}
+
+.navbar-nav li a {
+    font-size: 1rem;
+    color: #084196; 
+    font-weight: 500; 
+    text-transform: uppercase;
+}
+.navbar-nav li a:hover {
+    color: #056782; 
+}
+
+/* .navbar-nav li a::after { 
+    content: '';
+    width: 100%;
+    height: 3px;
+    background: var(--gradient);
+    transition: width 0.5s;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+}
+
+.navbar-nav li a:hover::after {
+    width: 100%;
+} */
+
+/*PAGE ACCUEIL-MEMBRE*/
+#navbarMembre {
+    background-color: #333;
+    color: #FFFAE1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+#listNavMembre {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    margin: 0 10px;
+}
+
+#listNavMembre li {
+    margin: 0 10px;
+}
+
+#listNavMembre a {
+    color: #FFFAE1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#listNavMembre a:hover {
+    color: #056782;
+}
+
+/*button deconnexion*/
+#deconnexion {
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    color: #FFFAE1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#deconnexion:hover {
+    color: #f51919;
+}
+
+#containerMembre {
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.75);
+}
+.container h1 {
+    color: blue;
+    font-family: 'Kanit', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Style button navbar */
+.navbar-toggler {
+    border: none; /* suppression de la bordure */
+    outline: none; /* suppression du contour */
+    padding: 10px; /* marge interne */
+    background-color: #000408; /* couleur de fond */
+}
+.navbar-toggler span {
+    color: #FFFAE1; /* couleur du bouton */
+}
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.navbar-nav .ml-auto {
+    margin-left: auto;
+}
+
+#phone-number {
+    text-shadow: 1px 2px 2px red;
+    display: inline-block;
+    position: fixed;
+    bottom: 100px;
+    right: 10px;
+    background-color: #FFFAE1;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border: solid 1px #000408;
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+/*Contenu CARDS*/
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.card {
+    margin-right: 20px;
+    opacity: 1;
+    transition: opacity 0.5s, transform 1s;
+}
+
+.card img {
+    width: 600;
+    height: 600;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.75);
+}
+
+.card-animate-left {
+    opacity: 1;
+    transform: translateX(-400px);
+    transition: opacity 2s, transform 0.5s;
+}
+  
+.card-animate-right {
+    opacity: 1;
+    transform: translateX(400px);
+    transition: opacity 2s, transform 0.5s;
+}
+  
+.card-animate-center {
+    opacity: 1;
+    transform: translateY(400px);
+    transition: opacity 2s, transform 0.5s;
+}
+
+.card-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/*IMAGE*/
+
+#img-connexion {
+    background: url(media/hypercar3.jpg) no-repeat fixed 50% 50%;
+    background-size: cover;
+    height: 1000px;
+    padding-top: 60px;
+}
+
+#img-inscription {
+    background: url(media/hypercar5.jpg) no-repeat fixed 50% 50%;
+    background-size: cover;
+    height: 1000px;
+    padding-top: 60px;
+}
+
+h1 {
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+    color: var(--text-color);
+    font-size: 3em;
+    margin-top: 40px;
+    text-shadow: 1px 3px 2px black;
+}
+
+/*Breadcrumb*/
+.breadcrumb {
+    background-color: #f5f5f5; /* Couleur bandeau breadcrumb */
+    padding: 8px 15px; /* Dimension breadcrumb*/
+    margin-top: 50px; /* Marge au-dessus du breadcrumb */
+    margin-bottom: 20px; /*Marge sous le breadcrumb*/
+}
+
+/* styles pour le formulaire */
+form label {
+    font-weight: bold;
+}
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    margin-bottom: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    width: 100%;
+    resize: none;
+    
+}
+form input[type="submit"] {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+}
+
+/* Style formulaire connexion-inscription */
+#formulaire {
+    background-color: #837d70;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#formConnect {
+    margin-top: 10px;
+    margin-bottom: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 50px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+  /* styles pour la carte */
+
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+/*------STYLE DES BUTTONS------*/
+
+/*Bouton Connexion */
+#ConnectSubmit {
+    float: right;
+}
+
+/*Bouton retour vers haut*/
+
+.back-to-top {
+    display: inline-block;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/*media queries*/
