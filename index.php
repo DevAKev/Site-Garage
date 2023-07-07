@@ -1,13 +1,18 @@
 <?php
-define('_CARS_IMG_PATH_', 'uploads/cars/');
-require_once __DIR__ . ('/templates/head.php');
+
+$cars = [
+    ['title' => 'Ferrari', 'description' => 'Ferrari V8 à 90°, 3,6 L, 40 soupapes ', 'image' => 'ferrari-2468015_1280.jpg'],
+    ['title' => 'Tesla', 'description' => 'Tesla V8 à 90°, 3,6 L, 40 soupapes ', 'image' => 'tesla.webp'],
+    ['title' => 'Audi', 'description' => 'Audi V8 à 90°, 3,6 L, 40 soupapes ', 'image' => 'audi.jpg'],
+];
+
+require_once('templates/header.php');
+require_once('lib/car_tools.php');
 ?>
 
 <body class="container">
     <!-- HEADER START -->
-    <?php
-    require_once __DIR__ . ('/templates/header.php');
-    ?>
+
     <!-- HEADER END -->
 
     <!-- MAIN START -->
@@ -52,7 +57,7 @@ require_once __DIR__ . ('/templates/head.php');
         </div>
     </div>
 
-    <!--Contenue de la page-->
+    <!--Content service cards and cars-->
     <div class="d-flex flex-row justify-content-start align-items-center">
         <div class="card-container">
             <article>
@@ -61,11 +66,12 @@ require_once __DIR__ . ('/templates/head.php');
                         <img src="assets/images/Motor.webp" class="card-img-top rounded-3" alt="motor">
                     </a>
                     <div class="card-body">
-                        <h2 class="card-title">MECANIQUE</h2>
+                        <h2 class="card-title">ENTRETIEN ET MECANIQUE</h2>
                         <p class="card-text">Notre équipe de mécaniciens expérimentés est à votre
                             disposition pour réparer tout type de problème mécanique.
                             Nous proposons une large gamme de services de réparation, quels que soient la
                             marque et le modèle de votre véhicule.</p>
+                        <a href="#" class="btn btn-primary">En savoir +</a>
                     </div>
                 </div>
             </article>
@@ -76,25 +82,25 @@ require_once __DIR__ . ('/templates/head.php');
                         <img src="assets/images/carrosserie.jpg" class="card-img-top rounded-3" alt="Carrosserie">
                     </a>
                     <div class="card-body">
-                        <h2 class="card-title">CARROSSERIE PEINTURE</h2>
+                        <h2 class="card-title">CARROSSERIE ET PEINTURE</h2>
                         <p class="card-text">Nous prenons en charge la réparation et le redressement
                             de la carrosserie de votre véhicule, pour lui redonner son aspect d'origine.
                             Vous êtes tout à fait libre de choisir votre réparateur, renseignez-vous auprès
                             de votre assurance.</p>
-                        </p>
+                        <a href="#" class="btn btn-primary">En savoir +</a>
                     </div>
                 </div>
             </article>
 
             <article>
                 <div class="card card-animate-right">
-                    <a href="Acheter-un-vehicule-d-occasion.html">
+                    <a href="cars.php">
                         <img src="media/hypercar.jpg" class="card-img-top rounded-3" alt="hypercar3">
                     </a>
                     <div class="card-body">
-                        <h2 class="card-title">VEHICULES D'OCCASIONS</h2>
+                        <h2 class="card-title">NOS VEHICULES D'OCCASIONS</h2>
                         <p class="card-text">Nous vous proposons des véhicules d'occasions réparés par nos soins et disponible immédiatemment à l'achat, vous avez la possibilité de prendre rendez-vous auprès de notre équipe afin de venir voir celui qui vous interesse directement sur place. </p>
-                        </p>
+                        <a href="cars.php" class="btn btn-primary">Voir les véhicules</a>
                     </div>
                 </div>
             </article>
@@ -103,31 +109,13 @@ require_once __DIR__ . ('/templates/head.php');
     <br>
     <br>
 
-    <?php
-    $cars = [
-        ['title' => 'Ferrari', 'description' => 'Ferrari V8 à 90°, 3,6 L, 40 soupapes ', 'image' => 'ferrari-2468015_1280.jpg'],
-        ['title' => 'Tesla', 'description' => 'Tesla V8 à 90°, 3,6 L, 40 soupapes ', 'image' => 'tesla.webp'],
-        ['title' => 'Audi', 'description' => 'Audi V8 à 90°, 3,6 L, 40 soupapes ', 'image' => 'audi.jpg'],
-    ];
-    ?>
-    <!-- VEHICULES D'OCCASIONS EXEMPLES -->
+    <!-- USED ​​VEHICLES EXAMPLES -->
     <div class="d-flex flex-row justify-content-start align-items-center">
         <div class="card-container">
 
-            <?php foreach ($cars as $key => $car) { ?>
-                <article>
-                    <div class="card card-animate-center">
-                        <a href="Prestations-reparations-mecaniques.html">
-                            <img src="<?= _CARS_IMG_PATH_ . $car['image']; ?>" class="card-img-top rounded-3" alt="cars">
-                        </a>
-                        <div class="card-body">
-                            <h2 class="card-title"><?= $car['title']; ?></h2>
-                            <p class="card-text"><?= $car['description']; ?></p>
-                        </div>
-                    </div>
-                </article>
-
-            <?php } ?>
+            <?php foreach ($cars as $key => $car) {
+                include('templates/car_partial.php');
+            } ?>
 
             <!-- MAIN END -->
 
@@ -138,6 +126,3 @@ require_once __DIR__ . ('/templates/head.php');
             //  IMPORT SCRIPTS 
             require_once __DIR__ . ('/lib/scripts.php');
             ?>
-</body>
-
-</html>

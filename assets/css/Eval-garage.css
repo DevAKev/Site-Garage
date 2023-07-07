@@ -133,21 +133,6 @@ a {
     color: #056782; 
 }
 
-/* .navbar-nav li a::after { 
-    content: '';
-    width: 100%;
-    height: 3px;
-    background: var(--gradient);
-    transition: width 0.5s;
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-}
-
-.navbar-nav li a:hover::after {
-    width: 100%;
-} */
-
 /*PAGE ACCUEIL-MEMBRE*/
 #navbarMembre {
     background-color: #333;

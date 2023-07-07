@@ -55,4 +55,8 @@
 </div>
 </footer>
 
+</body>
+
+</html>
+
 <!-- FOOTER END -->
