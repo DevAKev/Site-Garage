@@ -3,6 +3,7 @@ require_once('lib/pdo.php');
 require_once('lib/config.php');
 
 $currentpage = basename($_SERVER['SCRIPT_NAME']);
+
 ?>
 
 <!-- HEAD START -->
@@ -69,46 +70,32 @@ $currentpage = basename($_SERVER['SCRIPT_NAME']);
             </button>
             <div class="collapse navbar-collapse bg-secondary rounded-3 p-2" id="navbarNav">
                 <ul class="navbar-nav ml-auto nav nav-pills">
-                    <li class="nav-item">
-                        <a class="nav-link <?php if ($currentpage === 'index.php') {
-                                                echo 'active';
-                                            } ?>" href="index.php">Accueil</a>
-                    </li>
+                    <?php foreach ($mainMenu as $key => $value) { ?>
+                        <li class="nav-item">
+                            <a href="<?= $key; ?>" class="nav-link <?php if ($currentpage === $key) {
+                                                                        echo 'active';
+                                                                    } ?>"><?= $value; ?></a>
+                        </li>
+                    <?php } ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
                         <ul class="dropdown-menu dropdown-menu-lg-start" aria-labelledby="navbarDropdown">
                             <li>
-                                <a class="dropdown-item <?php if ($currentpage === 'cars.php') {
-                                                            echo 'active';
-                                                        } ?>" href="cars.php">
-                                    Nos véhicules d'occasions</a>
+                                <a href="Prestations-reparations-mecaniques.php" class="dropdown-item <?php if ($currentpage === 'Prestations-reparations-mecaniques.php') {
+                                                                                                            echo 'active';
+                                                                                                        } ?>">
+                                    Mécanique & Entretien</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item" href="Details-revision-et-entretiens.html">
-                                    Entretien</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="Prestations-reparations-mecaniques.html">
-                                    Mécanique</a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="Prestations-reparation-carrosserie-peinture.html">
-                                    Carrosserie/Peinture</a>
+                                <a href="Prestations-reparation-carrosserie-peinture.php" class="dropdown-item <?php if ($currentpage === 'Prestations-reparation-carrosserie-peinture.php') {
+                                                                                                                    echo 'active';
+                                                                                                                } ?>">
+                                    Carrosserie & Peinture</a>
                             </li>
                         </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="Contacter-le-garage-V-Parrot.html">Contactez-nous</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
@@ -124,5 +111,4 @@ $currentpage = basename($_SERVER['SCRIPT_NAME']);
     </nav>
 </header>
 <!-- HEADER END  -->
-<div id="phone-number"><strong>01 23 45 67 89</strong></div>
 <main class="container">

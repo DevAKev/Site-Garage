@@ -2,6 +2,7 @@
 require_once('lib/car_tools.php');
 require_once('templates/header.php');
 
+
 $id = $_GET['id'];
 // VOIR CE QUE RECUPERE GET
 // var_dump($cars[$id]);
@@ -30,10 +31,6 @@ $id = $_GET['id'];
         </div>
     </div>
 </div>
-
-
-
-
 <!-- MAIN END -->
 
 <!-- FOOTER START -->
