@@ -1,6 +1,12 @@
 <?php
 require_once('lib/car_tools.php');
 require_once('templates/header.php');
+
+$sql = 'SELECT * FROM vehicules ORDER BY id DESC';
+
+$query = $pdo->prepare($sql);
+$query->execute();
+$cars = $query->fetchAll();
 ?>
 
 

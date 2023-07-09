@@ -59,7 +59,7 @@ require_once('lib/car_tools.php');
         <div class="card-container">
             <article>
                 <div class="card card-animate-left">
-                    <a href="Prestations-reparations-mecaniques.html">
+                    <a href="Prestations-reparations-mecaniques.php">
                         <img src="assets/images/Motor.webp" class="card-img-top rounded-3" alt="motor">
                     </a>
                     <div class="card-body">
@@ -75,7 +75,7 @@ require_once('lib/car_tools.php');
 
             <article>
                 <div class="card card-animate-center">
-                    <a href="Prestations-reparation-carrosserie-peinture.html">
+                    <a href="Prestations-reparation-carrosserie-peinture.php">
                         <img src="assets/images/carrosserie.jpg" class="card-img-top rounded-3" alt="Carrosserie">
                     </a>
                     <div class="card-body">
