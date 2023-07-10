@@ -1,13 +1,9 @@
 <?php
 
-$cars = [
-    ['title' => 'Ferrari', 'description' => 'Ferrari V8 à 90°, 3,6 L, 40 soupapes ', 'image' => 'ferrari-2468015_1280.jpg'],
-    ['title' => 'Tesla', 'description' => 'Tesla V8 à 90°, 3,6 L, 40 soupapes ', 'image' => 'tesla.webp'],
-    ['title' => 'Audi', 'description' => 'Audi V8 à 90°, 3,6 L, 40 soupapes ', 'image' => 'audi.jpg'],
-];
-
 require_once('templates/header.php');
 require_once('lib/car_tools.php');
+// CONSTANTE VEHICULES A AFFICHER SUR LA PAGE D'ACCUEIL(PARAMETRE DANS LE FICHIER CONFIG.PHP)
+$cars = getCars($pdo, _HOME_CARS_LIMIT_);
 ?>
 
 <body class="container">

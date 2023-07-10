@@ -1,6 +1,6 @@
 <article>
     <div class="card card-animate-center">
-        <a href="car.php?id=<?= $key; ?>">
+        <a href="car.php?id=<?= $car['id']; ?>">
             <img src="<?= getCarImage($car['image']); ?>" class="card-img-top rounded-3" alt="cars">
         </a>
         <div class="card-body">
