@@ -1,6 +1,7 @@
 <?php
 require_once('lib/pdo.php');
 require_once('lib/config.php');
+require_once('lib/car_tools.php');
 
 $currentpage = basename($_SERVER['SCRIPT_NAME']);
 

@@ -2,6 +2,27 @@
 <!-- Equivalent à un fichier de configuration, on peut y mettre des variables, des constantes, des fonctions, des classes, etc. -->
 <?php
 
+// MODIFIE LE NOM DES IMAGES (ENLEVE LES ESPACES ET LES CARACTERES SPECIAUX)
+function slugify($text, string $divider = '-')
+{
+    // replace non letter or digits by divider
+    $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
+    // transliterate
+    $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+    // remove unwanted characters
+    $text = preg_replace('~[^-\w]+~', '', $text);
+    // trim
+    $text = trim($text, $divider);
+    // remove duplicate divider
+    $text = preg_replace('~-+~', $divider, $text);
+    // lowercase
+    $text = strtolower($text);
+    if (empty($text)) {
+        return 'n-a';
+    }
+    return $text;
+}
+
 // RECUPERE LES ANNONCES EN LES AFFICHANT ALEATOIREMENT SUR LA PAGE D'ACCUEIL
 function getCars(PDO $pdo, int $limit = null)
 {
@@ -61,19 +82,19 @@ function getSchedules($pdo)
 
 // RECUPERE LES DONNEES DU FORMULAIRE
 //***************************************** A CORRIGER **********************************
-function saveCar(PDO $pdo, string $marque, string $modele, string $prix, string $image, string $annee_mise_en_circulation, string $kilometrage, string $galerie_images, string $caracteristiques, string $equipements_options, string $carburant)
+function saveCar(PDO $pdo, string $marque, string $modele, float $prix, string $image, int $annee_mise_en_circulation, int $kilometrage, string $galerie_images, string $caracteristiques, string $equipements_options, string $carburant)
 {
-    $sql = "INSERT INTO `vehicules` (`id`, `marque`, `modele`, `prix`, `image`, `annee_mise_en_circulation`, `kilometrage`, `galerie_images`, `caracteristiques`, `equipements_options`, `carburant`) VALUES (NULL, :marque, :modele, :prix:, NULL, annee_mise_en_circulation, :kilometrage, NULL, :caracteristiques, :equipements_options, :carburant);";
+    $sql = "INSERT INTO `vehicules` (`id`, `marque`, `modele`, `prix`, `image`, `annee_mise_en_circulation`, `kilometrage`, `galerie_images`, `caracteristiques`, `equipements_options`, `carburant`) VALUES (NULL, :marque, :modele, :prix, :image,:annee_mise_en_circulation, :kilometrage, :galerie_images, :caracteristiques, :equipements_options, :carburant)";
     $query = $pdo->prepare($sql);
     $query->bindParam(':marque', $marque, PDO::PARAM_STR);
     $query->bindParam(':modele', $modele, PDO::PARAM_STR);
     $query->bindParam(':prix', $prix, PDO::PARAM_STR);
     $query->bindParam(':image', $image, PDO::PARAM_STR);
-    $query->bindParam(':annee_mise_en_circulation', $annee_mise_en_circulation, PDO::PARAM_STR);
-    $query->bindParam(':kilometrage', $kilometrage, PDO::PARAM_STR);
+    $query->bindParam(':annee_mise_en_circulation', $annee_mise_en_circulation, PDO::PARAM_INT);
+    $query->bindParam(':kilometrage', $kilometrage, PDO::PARAM_INT);
     $query->bindParam(':galerie_images', $galerie_images, PDO::PARAM_STR);
     $query->bindParam(':caracteristiques', $caracteristiques, PDO::PARAM_STR);
     $query->bindParam(':equipements_options', $equipements_options, PDO::PARAM_STR);
-    $query->bindParam(':carburant', $carburant, PDO::PARAM_INT);
+    $query->bindParam(':carburant', $carburant, PDO::PARAM_STR);
     return $query->execute();
 }
