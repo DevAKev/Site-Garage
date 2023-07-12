@@ -1,5 +1,4 @@
 <?php
-require_once('lib/car_tools.php');
 require_once('templates/header.php');
 
 

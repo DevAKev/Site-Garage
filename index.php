@@ -1,10 +1,12 @@
 <?php
 
 require_once('templates/header.php');
-require_once('lib/car_tools.php');
-// CONSTANTE VEHICULES A AFFICHER SUR LA PAGE D'ACCUEIL(PARAMETRE DANS LE FICHIER CONFIG.PHP)
+
+// CONSTANTE NOMBRE DE VEHICULES A AFFICHER SUR LA PAGE D'ACCUEIL(PARAMETRE DANS LE FICHIER CONFIG.PHP)
 $cars = getCars($pdo, _HOME_CARS_LIMIT_);
 ?>
+<div id="accueil-image" class="container">
+</div>
 
 <body class="container">
 

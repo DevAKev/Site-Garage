@@ -1,5 +1,5 @@
 <?php
-require_once('lib/car_tools.php');
+
 require_once('templates/header.php');
 
 $errors = [];
@@ -120,11 +120,11 @@ if (isset($_POST['saveCar'])) {
 <form method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="marque" class="form-label">Marque : *</label>
-        <input type="text" name="marque" id="marque" class="form-control" value="<?= $car['marque']; ?>">
+        <input type="text" name="marque" id="marque" class="form-control" value="<?= htmlentities($car['marque']); ?>">
     </div>
     <div class="mb-3">
         <label for="modele" class="form-label">Modèle : *</label>
-        <input type="text" name="modele" id="modele" class="form-control" value="<?= $car['modele']; ?>">
+        <input type="text" name="modele" id="modele" class="form-control" value="<?= htmlentities($car['modele']); ?>">
     </div>
     <div class="mb-3">
         <label for="prix" class="form-label">Prix : *</label>
@@ -140,11 +140,11 @@ if (isset($_POST['saveCar'])) {
     </div>
     <div class="mb-3">
         <label for="caracteristiques" class="form-label">Caracteristiques : *</label>
-        <textarea name="caracteristiques" id="caracteristiques" cols="30" rows="5" class="form-control"><?= $car['caracteristiques']; ?></textarea>
+        <textarea name="caracteristiques" id="caracteristiques" cols="30" rows="5" class="form-control"><?= htmlentities($car['caracteristiques']); ?></textarea>
     </div>
     <div class="mb-3">
         <label for="equipements_options" class="form-label">Options du véhicule : </label>
-        <textarea name="equipements_options" id="equipements_options" cols="10" rows="5" class="form-control"><?= $car['equipements_options']; ?></textarea>
+        <textarea name="equipements_options" id="equipements_options" cols="10" rows="5" class="form-control"><?= htmlentities($car['equipements_options']); ?></textarea>
     </div>
     <div class="mb-3">
         <label for="carburant" class="form-label">Carburant : </label>

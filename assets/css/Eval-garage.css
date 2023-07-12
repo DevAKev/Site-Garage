@@ -273,9 +273,15 @@ a {
 }
 
 /*IMAGE*/
+#accueil-image {
+    background: url(../images/hypercar3.jpg) no-repeat fixed 50% 50%;
+    background-size: cover;
+    height: 800px;
+    padding-top: 60px;
+}
 
-#img-connexion {
-    background: url(media/hypercar3.jpg) no-repeat fixed 50% 50%;
+#background-image {
+    background: url(../images/hypercar5.jpg) no-repeat fixed 50% 50%;
     background-size: cover;
     height: 1000px;
     padding-top: 60px;

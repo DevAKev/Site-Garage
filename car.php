@@ -1,5 +1,4 @@
 <?php
-require_once('lib/car_tools.php');
 require_once('templates/header.php');
 
 // REQUETE VEHICULES SQL BDD
@@ -20,7 +19,7 @@ if ($vehicule) {
     <div class="container my-5">
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
             <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-                <h1 class="display-4 fw-bold lh-1"><?= $vehicule['marque']; ?></h1>
+                <h1 class="display-4 fw-bold lh-1"><?= ($vehicule['marque']); ?></h1>
                 <h2 class="display-4 fw-bold lh-1"><?= $vehicule['modele']; ?></h2>
                 <h3 class="display-4 lh-1"><?= number_format($vehicule['prix'], 0, ' ', ' '); ?> €</h3>
                 <div class="d-flex justify-content-around">
