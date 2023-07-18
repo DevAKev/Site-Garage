@@ -2,7 +2,6 @@
 require_once('templates/header.php');
 
 // REQUETE VEHICULES SQL BDD
-
 $id = (int)$_GET['id'];
 
 $vehicule = getCarById($pdo, $id);
@@ -20,7 +19,7 @@ if ($vehicule) {
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
             <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
                 <h1 class="display-4 fw-bold lh-1"><?= ($vehicule['marque']); ?></h1>
-                <h2 class="display-4 fw-bold lh-1"><?= $vehicule['modele']; ?></h2>
+                <h2 class="display-4 fw-bold lh-1"><?= ($vehicule['modele']); ?></h2>
                 <h3 class="display-4 lh-1"><?= number_format($vehicule['prix'], 0, ' ', ' '); ?> €</h3>
                 <div class="d-flex justify-content-around">
                     <ul class="list-group list-group-flush">
@@ -54,17 +53,41 @@ if ($vehicule) {
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                     <a href="Contacter-le-garage-V-Parrot.php" class="btn btn-primary">Contactez-nous</a>
-
+                    <!-- MODIF ANNONCE -->
+                    <a href="edit_car.php?id=<?= $vehicule['id']; ?>" class="btn btn-warning">Modifier l'annonce</a>
+                    <!-- SUPPRESSION -->
+                    <a href="delete_car.php?id=<?= $vehicule['id']; ?>" class="btn btn-danger delete-link">Supprimer l'annonce</a>
                 </div>
             </div>
+            <!-- Le modal de confirmation de suppression -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Confirmation de suppression</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Êtes-vous sûr de vouloir supprimer cette annonce ?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Supprimer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-                <img src="<?= getCarImage($vehicule['image']); ?>" class="rounded-lg-3" alt="<?= $vehicule['marque']; ?>" width="400">
+                <a data-fancybox="gallery" href="<?= getCarImage($vehicule['image']); ?>">
+                    <img src="<?= getCarImage($vehicule['image']); ?>" class="rounded-lg-3" alt="<?= $vehicule['marque']; ?>" width="400">
+                </a>
 
                 <!-- AFFICHER LES PHOTOS DE LA GALERIE -->
                 <?php
                 $galerie_images = explode(',', $vehicule['galerie_images']);
                 foreach ($galerie_images as $image) {
-                    echo '<img class="rounded-lg-3" src="' . _CARS_IMG_PATH_ . $image . '" alt="" width="450">';
+                    echo '<a data-fancybox="gallery" href="' . _GALERY_IMG_PATH_ . $image . '"><img class="rounded-lg-3" src="' . _GALERY_IMG_PATH_ . $image . '" alt="" width="450"></a>';
                 }
                 ?>
             </div>
@@ -80,6 +103,17 @@ if ($vehicule) {
 <?php } ?>
 
 <!-- FOOTER START -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script>
+    // Initialiser la lightbox(Affichage des images en grand)
+    $(document).ready(function() {
+        $('[data-fancybox="gallery"]').fancybox({
+            buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],
+            loop: true, // Activer la boucle infinie des images
+            arrows: true // Activer les flèches de navigation
+        });
+    });
+</script>
 <?php
 require_once('templates/footer.php');
 // FOOTER END

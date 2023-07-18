@@ -3,13 +3,16 @@
 require_once('templates/header.php');
 require_once('lib/user.php');
 
+$errors = [];
+$messages = [];
+
 if (isset($_POST['addUser'])) {
     $res = addUser($pdo, $_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['password']);
 
     if ($res) {
-        $messages[] = 'Vous êtes inscrit !';
+        $messages[] = 'Votre inscription a bien été prise en compte !';
     } else {
-        $errors[] = 'Erreur lors de l\'inscription !';
+        $errors[] = 'Une erreur est survenue lors de l\'inscription !';
     }
 }
 
@@ -18,28 +21,38 @@ if (isset($_POST['addUser'])) {
 <div id="img-inscription">
     <h1> INSCRIPTION </h1>
 </div>
-<section id="formulaire">
 
+<?php foreach ($messages as $message) { ?>
+    <div class="alert alert-success"><?= $message; ?>
+    </div>
+<?php } ?>
+
+<?php foreach ($errors as $error) { ?>
+    <div class="alert alert-danger"><?= $error; ?>
+    </div>
+<?php } ?>
+
+<section id="formulaire">
     <!-- Formulaire d'inscription-->
     <div class="container d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <h2 class="p-4 mt-4"> Formulaire d'inscription </h2>
         <form method="POST" enctype="multipart/form-data" class="row g-3" id="lessonForm" novalidate>
             <div class="col-md-6">
-                <label for="firstName" class="form-label">Prénom* </label>
+                <label for="firstName" class="form-label">Prénom * </label>
                 <input type="text" class="form-control" name="firstName" id="firstName">
                 <div class="invalid-feedback">
                     Veuillez saisir votre prénom.
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="lastName" class="form-label">Nom* </label>
+                <label for="lastName" class="form-label">Nom * </label>
                 <input type="text" class="form-control" name="lastName" id="lastName" required>
                 <div class="invalid-feedback">
                     Veuillez saisir votre nom.
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="email" class="form-label">E-mail*</label>
+                <label for="email" class="form-label">E-mail *</label>
                 <input type="email" class="form-control" name="email" id="email" required>
                 <div class="invalid-feedback">
                     Veuillez saisir votre e-mail.
@@ -74,7 +87,7 @@ if (isset($_POST['addUser'])) {
             </div>
         </div> -->
             <div class="col-md-6">
-                <label for="password" class="form-label">Votre mot de passe*</label>
+                <label for="password" class="form-label">Votre mot de passe *</label>
                 <input type="password" class="form-control" name="password" id="password" required>
                 <div class="invalid-feedback">
                     Veuillez saisir votre mot de passe.
@@ -94,10 +107,11 @@ if (isset($_POST['addUser'])) {
             </div>
             <p>Déjà inscrit ? <a href="Connexion.php">Cliquez-ici</a></p>
         </form>
-        <div id="toast" class="toast"></div>
+        <!-- <div id="toast" class="toast"></div> -->
     </div>
 </section>
 </header>
+
 <!-- FOOTER START -->
 <?php
 require_once __DIR__ . ('/templates/footer.php');

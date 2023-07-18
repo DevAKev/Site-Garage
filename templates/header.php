@@ -1,7 +1,9 @@
 <?php
 require_once('lib/pdo.php');
 require_once('lib/config.php');
+require_once('lib/session.php');
 require_once('lib/car_tools.php');
+
 
 $currentpage = basename($_SERVER['SCRIPT_NAME']);
 
@@ -38,6 +40,7 @@ $currentpage = basename($_SERVER['SCRIPT_NAME']);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="assets/css/override-bootstrap.css">
     <link rel="stylesheet" href="assets/css/Eval-garage.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

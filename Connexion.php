@@ -1,19 +1,18 @@
 <?php
 
 require_once('templates/header.php');
+require_once('lib/user.php');
 
 $errors = [];
 $messages = [];
 
 if (isset($_POST['loginUser'])) {
+    $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
 
-    $query = $pdo->prepare("SELECT * FROM administrateur WHERE email = :email");
-    $query->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
-    $query->execute();
-    $user = $query->fetch();
-
-    if ($user && $user['password'] === $_POST['password']) {
-        $messages[] = 'Vous êtes connecté !';
+    if ($user) {
+        $_SESSION['user'] = ['email' => $user['email']];
+        var_dump($_SESSION);
+        header('Location: index.php');
     } else {
         $errors[] = 'Email ou mot de passe incorrect !';
     }
@@ -64,7 +63,7 @@ if (isset($_POST['loginUser'])) {
 
 
 <!-- FOOTER START -->
-<!-- <script type="module" src="assets/JS/connexion.js"> </script> -->
+<script type="module" src="assets/JS/connexion.js"> </script>
 <?php
 require_once __DIR__ . ('/templates/footer.php');
 // FOOTER END

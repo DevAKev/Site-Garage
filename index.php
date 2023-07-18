@@ -66,7 +66,7 @@ $cars = getCars($pdo, _HOME_CARS_LIMIT_);
                             disposition pour réparer tout type de problème mécanique.
                             Nous proposons une large gamme de services de réparation, quels que soient la
                             marque et le modèle de votre véhicule.</p>
-                        <a href="#" class="btn btn-primary">En savoir +</a>
+                        <a href="Prestations-reparations-mecaniques.php" class="btn btn-primary">En savoir +</a>
                     </div>
                 </div>
             </article>
@@ -82,7 +82,7 @@ $cars = getCars($pdo, _HOME_CARS_LIMIT_);
                             de la carrosserie de votre véhicule, pour lui redonner son aspect d'origine.
                             Vous êtes tout à fait libre de choisir votre réparateur, renseignez-vous auprès
                             de votre assurance.</p>
-                        <a href="#" class="btn btn-primary">En savoir +</a>
+                        <a href="Prestations-reparation-carrosserie-peinture.php" class="btn btn-primary">En savoir +</a>
                     </div>
                 </div>
             </article>
@@ -105,7 +105,7 @@ $cars = getCars($pdo, _HOME_CARS_LIMIT_);
     <br>
 
     <!-- USED ​​VEHICLES EXAMPLES -->
-    <div class="d-flex flex-row justify-content-start align-items-center">
+    <div class="d-flex flex-wrap justify-content-start align-items-center">
         <div class="card-container">
 
             <?php foreach ($cars as $key => $car) {

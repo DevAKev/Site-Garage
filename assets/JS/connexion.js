@@ -90,7 +90,7 @@ function validateFields(input) {
 
 //==== END Validation des champs du formulaire====//
 
-let members = JSON.parse(localStorage.getItem("members")) || [];
+// let members = JSON.parse(localStorage.getItem("members")) || [];
 
 // const members = [
 //     {
