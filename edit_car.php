@@ -28,11 +28,11 @@ if (isset($_POST['updateCar'])) {
 
 // Gestion de la suppression de l'annonce
 if (isset($_POST['deleteCar'])) {
-    // Supprimer l'annonce de la base de données
-    // ...
+    $id = $_GET['id'];
+    $result = deleteCar($pdo, $id);
 
     // Afficher un message de succès ou d'erreur
-    if (!$errors) {
+    if ($result) {
         $messages[] = 'L\'annonce a été supprimée avec succès !';
     } else {
         $errors[] = 'Une erreur est survenue lors de la suppression de l\'annonce.';
