@@ -1,4 +1,6 @@
 <?php
+
+// CHEMIN VERS IMAGES GALERIE
 define('_GALERY_IMG_PATH_', 'uploads/cars/galerie_images/');
 // CHEMIN VERS IMAGES ANNONCES VOITURES
 define('_CARS_IMG_PATH_', 'uploads/cars/');

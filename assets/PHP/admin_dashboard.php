@@ -13,7 +13,8 @@ if ($conn->connect_error) {
 }
 
 // Fonction pour créer un compte administrateur
-function createAdminAccount($nom, $prenom, $email, $role, $password) {
+function createAdminAccount($nom, $prenom, $email, $role, $password)
+{
     global $conn;
     $sql = "INSERT INTO administrateur (nom, prenom, email, role, password) VALUES ('$nom', '$prenom', '$email', '$role', '$password')";
     if ($conn->query($sql) === TRUE) {
@@ -24,7 +25,8 @@ function createAdminAccount($nom, $prenom, $email, $role, $password) {
 }
 
 // Fonction pour créer un compte employé
-function createEmployeeAccount($nom, $prenom, $email, $role, $password) {
+function createEmployesAccount($nom, $prenom, $email, $role, $password)
+{
     global $conn;
     $sql = "INSERT INTO employes (nom, prenom, email, role, password) VALUES ('$nom', '$prenom', '$email', '$role', '$password')";
     if ($conn->query($sql) === TRUE) {
@@ -35,7 +37,8 @@ function createEmployeeAccount($nom, $prenom, $email, $role, $password) {
 }
 
 // Fonction pour modifier les informations de contact
-function updateContactInfo($nom, $email, $telephone) {
+function updateContactInfo($nom, $email, $telephone)
+{
     global $conn;
     $sql = "UPDATE administrateur SET email='$email', telephone='$telephone' WHERE nom='$nom'";
     if ($conn->query($sql) === TRUE) {
@@ -46,7 +49,8 @@ function updateContactInfo($nom, $email, $telephone) {
 }
 
 // Fonction pour modifier les horaires d'ouverture
-function updateOpeningHours($jour, $horaireOuverture, $horaireFermeture) {
+function updateOpeningHours($jour, $horaireOuverture, $horaireFermeture)
+{
     global $conn;
     $sql = "UPDATE administrateur SET horaire_ouverture='$horaireOuverture', horaire_fermeture='$horaireFermeture' WHERE jour='$jour'";
     if ($conn->query($sql) === TRUE) {
@@ -57,7 +61,8 @@ function updateOpeningHours($jour, $horaireOuverture, $horaireFermeture) {
 }
 
 // Fonction pour ajouter une annonce de véhicule
-function addVehicleListing($marque, $modele, $annee, $prix) {
+function addVehicleListing($marque, $modele, $annee, $prix)
+{
     global $conn;
     $sql = "INSERT INTO annonces_vehicules (marque, modele, annee, prix) VALUES ('$marque', '$modele', '$annee', '$prix')";
     if ($conn->query($sql) === TRUE) {
@@ -68,7 +73,8 @@ function addVehicleListing($marque, $modele, $annee, $prix) {
 }
 
 // Fonction pour supprimer une annonce de véhicule
-function deleteVehicleListing($id) {
+function deleteVehicleListing($id)
+{
     global $conn;
     $sql = "DELETE FROM annonces_vehicules WHERE id='$id'";
     if ($conn->query($sql) === TRUE) {
@@ -79,7 +85,8 @@ function deleteVehicleListing($id) {
 }
 
 // Fonction pour modifier une annonce de véhicule
-function updateVehicleListing($id, $marque, $modele, $annee, $prix) {
+function updateVehicleListing($id, $marque, $modele, $annee, $prix)
+{
     global $conn;
     $sql = "UPDATE annonces_vehicules SET marque='$marque', modele='$modele', annee='$annee', prix='$prix' WHERE id='$id'";
     if ($conn->query($sql) === TRUE) {
@@ -95,7 +102,7 @@ function updateVehicleListing($id, $marque, $modele, $annee, $prix) {
 createAdminAccount("Parrot", "Vincent", "vincent.parrot@gmail.com", "administrateur", password_hash("Vparrot31", PASSWORD_DEFAULT));
 
 // Créer un compte employé
-createEmployeeAccount("Doe", "John", "john.doe@example.com", "employé", password_hash("Johndoe123", PASSWORD_DEFAULT));
+createEmployesAccount("Doe", "John", "john.doe@example.com", "employé", password_hash("Johndoe123", PASSWORD_DEFAULT));
 
 // Modifier les informations de contact
 updateContactInfo("Parrot", "vincent.parrot@gmail.com", "0123456789");
@@ -114,4 +121,3 @@ updateVehicleListing(2, "Peugeot", "308", 2018, 15000);
 
 // Fermer la connexion à la base de données
 $conn->close();
-?>

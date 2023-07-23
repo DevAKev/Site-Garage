@@ -5,6 +5,25 @@ require_once('lib/user.php');
 
 $errors = [];
 $messages = [];
+// CODE INSERTION ADMINISTRATEUR BDD
+// if (isset($_POST["submit"])) {
+//     // Récupérer les données du formulaire
+//     $email = $_POST["email"];
+//     $motDePasse = $_POST["password"];
+
+//     // Hacher le mot de passe
+//     $motDePasseHache = password_hash($motDePasse, PASSWORD_BCRYPT);
+//     var_dump($motDePasseHache);
+//     // Insérer l'administrateur dans la table "users" avec le mot de passe haché
+//     $query = $pdo->prepare("INSERT INTO users (password_hash, email, nom, prenom, role) VALUES (:password_hash, :email, :nom, :prenom, :role)");
+//     $query->execute(array(
+//         "password_hash" => $motDePasseHache,
+//         "email" => $email,
+//         "nom" => "Parrot",
+//         "prenom" => "Vincent",
+//         "role" => "administrateur"
+//     ));
+// }
 
 if (isset($_POST['addUser'])) {
     $res = addUser($pdo, $_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['password']);
@@ -58,34 +77,6 @@ if (isset($_POST['addUser'])) {
                     Veuillez saisir votre e-mail.
                 </div>
             </div>
-            <!-- <div class="col-md-6">
-                <label for="phoneNumber" class="form-label">Téléphone*</label>
-                <input type="tel" class="form-control" name="phoneNumber" id="phoneNumber">
-                <div class="invalid-feedback">
-                    Veuillez saisir votre numéro de téléphone.
-                </div>
-            </div> -->
-            <!-- <div class="col-md-6">
-            <label for="address" class="form-label">Adresse</label>
-            <input type="text" class="form-control" name="address" id="address">
-            <div class="invalid-feedback">
-                Veuillez saisir votre adresse.
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label for="city" class="form-label">Ville</label>
-            <input type="text" class="form-control" name="city" id="city" required>
-            <div class="invalid-feedback">
-                Veuillez choisir une ville.
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label for="postCode" class="form-label">Code postal</label>
-            <input type="text" class="form-control" name="postCode" id="postCode">
-            <div class="invalid-feedback">
-                Veuillez saisir votre code postal.
-            </div>
-        </div> -->
             <div class="col-md-6">
                 <label for="password" class="form-label">Votre mot de passe *</label>
                 <input type="password" class="form-control" name="password" id="password" required>

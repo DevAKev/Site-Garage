@@ -87,18 +87,7 @@ function validateFields(input) {
     return true;
   }
 }
-
 //==== END Validation des champs du formulaire====//
-
-// let members = JSON.parse(localStorage.getItem("members")) || [];
-
-// const members = [
-//     {
-//         email: "Vincent.parrot@gmail.com",
-//         prenom: "Vincent",
-//         password: "Vparrot31",
-//     },
-// ]
 
 const formConnect = document.querySelector("form");
 const toast = document.getElementById("toast");
@@ -117,19 +106,34 @@ formConnect.addEventListener("submit", (event) => {
     return;
   }
 
-  console.log("email : " + email);
-  console.log("mdp : " + password);
+  // Effectuer une requête AJAX vers le serveur
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "connexion_check.php", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-  const member = members.find(
-    (member) => member.email === email && member.password === password
-  );
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // Traitement de la réponse du serveur
+        const response = JSON.parse(xhr.responseText);
 
-  if (member) {
-    localStorage.setItem("member", JSON.stringify(member));
-    window.location.href = "Accueil-membre.php";
-  } else {
-    emailInput.value = "";
-    passwordInput.value = "";
-    showToast("Adresse email ou mot de passe incorrect !");
-  }
+        if (response.success) {
+          window.location.href = "Accueil-membre.php"; // Rediriger vers la page d'accueil des membres
+        } else {
+          emailInput.value = "";
+          passwordInput.value = "";
+          showToast("Adresse email ou mot de passe incorrect !");
+        }
+      } else {
+        showToast("Une erreur s'est produite lors de la connexion.");
+      }
+    }
+  };
+
+  const data =
+    "email=" +
+    encodeURIComponent(email) +
+    "&password=" +
+    encodeURIComponent(password);
+  xhr.send(data);
 });

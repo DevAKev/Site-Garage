@@ -53,28 +53,9 @@ if ($vehicule) {
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                     <a href="Contacter-le-garage-V-Parrot.php" class="btn btn-primary">Contactez-nous</a>
-                    <!-- MODIF ANNONCE -->
+
+                    <!-- MODIF ANNONCE(A VERIFIER) *************************************-->
                     <a href="edit_car.php?id=<?= $vehicule['id']; ?>" class="btn btn-warning">Modifier l'annonce</a>
-                    <!-- SUPPRESSION -->
-                    <a href="delete_car.php?id=<?= $vehicule['id']; ?>" class="btn btn-danger delete-link">Supprimer l'annonce</a>
-                </div>
-            </div>
-            <!-- Le modal de confirmation de suppression -->
-            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel">Confirmation de suppression</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Êtes-vous sûr de vouloir supprimer cette annonce ?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Supprimer</button>
-                        </div>
-                    </div>
                 </div>
             </div>
 

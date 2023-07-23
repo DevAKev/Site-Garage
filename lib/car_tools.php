@@ -1,7 +1,4 @@
-<!-- RECIPE.php -->
-<!-- Equivalent à un fichier de configuration, on peut y mettre des variables, des constantes, des fonctions, des classes, etc. -->
 <?php
-
 // RECUPERE LES ELEMENTS DE LA TABLE VEHICULES
 function getCarById(PDO $pdo, int $id)
 {
@@ -36,7 +33,7 @@ function getCars(PDO $pdo, int $limit = null)
     return $query->fetchAll();
 }
 
-// RECUPERE LES DONNEES DU FORMULAIRE D'AJOUT D'ANNONCE
+// RECUPERE LES DONNEES DU FORMULAIRE D'AJOUT DE VEHICULE
 function saveCar(PDO $pdo, string $marque, string $modele, float $prix, string $image, int $annee_mise_en_circulation, int $kilometrage, string $galerie_images, string $caracteristiques, string $equipements_options, string $carburant)
 {
     $sql = "INSERT INTO `vehicules` (`id`, `marque`, `modele`, `prix`, `image`, `annee_mise_en_circulation`, `kilometrage`, `galerie_images`, `caracteristiques`, `equipements_options`, `carburant`) VALUES (NULL, :marque, :modele, :prix, :image, :annee_mise_en_circulation, :kilometrage, :galerie_images, :caracteristiques, :equipements_options, :carburant)";
@@ -52,23 +49,6 @@ function saveCar(PDO $pdo, string $marque, string $modele, float $prix, string $
     $query->bindParam(':equipements_options', $equipements_options, PDO::PARAM_STR);
     $query->bindParam(':carburant', $carburant, PDO::PARAM_STR);
     return $query->execute();
-}
-
-// RECUPERE LES HORAIRES DE LA BASE DE DONNEES
-function getSchedules($pdo)
-{
-    $query = $pdo->prepare('SELECT * FROM schedules');
-    $query->execute();
-    $heure_ouverture = array();
-    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-        $jour_semaine = $row['jour_semaine'];
-        unset($row['jour_semaine']);
-        if (!isset($heure_ouverture[$jour_semaine])) {
-            $heure_ouverture[$jour_semaine] = array();
-        }
-        $heure_ouverture[$jour_semaine][] = $row;
-    }
-    return $heure_ouverture;
 }
 
 // RETOUR A LA LIGNE TABLEAUX CARACTS ET EQUIPEMENTS
@@ -98,7 +78,7 @@ function slugify($text, string $divider = '-')
     return $text;
 }
 
-// FONCTION MAJ DES ANNONCES(A VERIFIER) ********************************
+// FONCTION MAJ DES ANNONCES
 function updateCar(PDO $pdo, int $id, array $data)
 {
     $query = $pdo->prepare('UPDATE vehicules SET marque = :marque, modele = :modele, prix = :prix, annee_mise_en_circulation = :annee, kilometrage = :kilometrage, carburant = :carburant, caracteristiques = :caracteristiques, equipements_options = :equipements WHERE id = :id');
@@ -114,10 +94,73 @@ function updateCar(PDO $pdo, int $id, array $data)
     return $query->execute();
 }
 
-// FONCTION DE SUPPRESSION D'ANNONCE(A VERIFIER) ********************************
+// FONCTION DE SUPPRESSION D'ANNONCE
 function deleteCar(PDO $pdo, int $id)
 {
     $query = $pdo->prepare('DELETE FROM vehicules WHERE id = :id');
     $query->bindParam(':id', $id, PDO::PARAM_INT);
     return $query->execute();
+}
+
+// FONCTION DE FILTRAGE DES VEHICULES
+// function getFilterUsedVehicle(PDO $pdo, $brand, $fuel_type, $minPrice, $maxPrice, $minMileAge, $maxMileAge)
+// {
+//   $sql = 'SELECT * FROM Used_Vehicles WHERE 1=1';
+
+//   if ($brand) {
+//     $sql .= ' AND brand = :brand';
+//   }
+
+//   if ($fuel_type) {
+//     $sql .= ' AND fuel_type = :fuel_type';
+//   }
+
+//   if ($minPrice !== '' && $maxPrice !== '') {
+//     $sql .= ' AND price BETWEEN :minPrice AND :maxPrice';
+//   }
+
+//   if ($minMileAge !== '' && $maxMileAge !== '') {
+//     $sql .= ' AND mileage BETWEEN :minMileAge AND :maxMileAge';
+//   }
+
+//   $query = $pdo->prepare($sql);
+
+//   if ($brand) {
+//     $query->bindParam(':brand', $brand, PDO::PARAM_STR);
+//   }
+
+//   if ($fuel_type) {
+//     $query->bindParam(':fuel_type', $fuel_type, PDO::PARAM_STR);
+//   }
+
+//   if ($minPrice !== '' && $maxPrice !== '') {
+//     $query->bindParam(':minPrice', $minPrice, PDO::PARAM_INT);
+//     $query->bindParam(':maxPrice', $maxPrice, PDO::PARAM_INT);
+//   }
+
+//   if ($minMileAge !== '' && $maxMileAge !== '') {
+//     $query->bindParam(':minMileAge', $minMileAge, PDO::PARAM_INT);
+//     $query->bindParam(':maxMileAge', $maxMileAge, PDO::PARAM_INT);
+//   }
+
+//   $query->execute();
+
+//   return $query->fetchAll(PDO::FETCH_ASSOC);
+// }
+
+// RECUPERE LES HORAIRES DE LA BASE DE DONNEES
+function getSchedules($pdo)
+{
+    $query = $pdo->prepare('SELECT * FROM schedules');
+    $query->execute();
+    $heure_ouverture = array();
+    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+        $jour_semaine = $row['jour_semaine'];
+        unset($row['jour_semaine']);
+        if (!isset($heure_ouverture[$jour_semaine])) {
+            $heure_ouverture[$jour_semaine] = array();
+        }
+        $heure_ouverture[$jour_semaine][] = $row;
+    }
+    return $heure_ouverture;
 }
