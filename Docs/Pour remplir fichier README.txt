@@ -83,7 +83,7 @@ Il s'agit d'un site Web pour un garage automobile qui permet aux clients de parc
 Technologies utilisées
 HTML
 CSS
-Amorcer
+Bootstrap
 Javascript
 PHP
 MySQL

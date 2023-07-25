@@ -14,18 +14,21 @@
             </button>
             <div class="collapse navbar-collapse bg-secondary rounded-3 p-2" id="navbarNav">
                 <ul class="navbar-nav ml-auto nav nav-pills">
-                    <?php foreach ($mainMenu as $key => $value) { ?>
-                        <li class="nav-item">
-                            <a href="<?= $key; ?>" class="nav-link <?php if ($currentpage === $key) {
-                                                                        echo 'active';
-                                                                    } ?>"><?= $value; ?></a>
-                        </li>
-                    <?php } ?>
+                    <?php foreach ($mainMenu as $key => $menuItem) {
+                        if (!array_key_exists("exclude", $menuItem)) { ?>
+                            <li class="nav-item">
+                                <a href="<?= $key; ?>" class="nav-link <?php if ($key === $currentPage) {
+                                                                            echo 'active';
+                                                                        } ?>"><?= $menuItem["menu_title"]; ?></a>
+                            </li>
+                    <?php }
+                    }
+                    ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
                         <ul class="dropdown-menu dropdown-menu-lg-start" aria-labelledby="navbarDropdown">
                             <li>
-                                <a href="Prestations-reparations-mecaniques.php" class="dropdown-item <?php if ($currentpage === 'Prestations-reparations-mecaniques.php') {
+                                <a href="Prestations-reparations-mecaniques.php" class="dropdown-item <?php if ($currentPage === 'Prestations-reparations-mecaniques.php') {
                                                                                                             echo 'active';
                                                                                                         } ?>">
                                     Mécanique & Entretien</a>
@@ -34,7 +37,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a href="Prestations-reparation-carrosserie-peinture.php" class="dropdown-item <?php if ($currentpage === 'Prestations-reparation-carrosserie-peinture.php') {
+                                <a href="Prestations-reparation-carrosserie-peinture.php" class="dropdown-item <?php if ($currentPage === 'Prestations-reparation-carrosserie-peinture.php') {
                                                                                                                     echo 'active';
                                                                                                                 } ?>">
                                     Carrosserie & Peinture</a>

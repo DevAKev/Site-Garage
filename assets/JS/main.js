@@ -61,238 +61,109 @@ function validateConditions(input) {
 // END - Fonction de validation
 
 //==== START Validation des champs du formulaire====//
-
-function validateFields(input) {
-  let fieldName = input.name;
-
-  // Validation du champ PRENOM
-  if (fieldName === "firstName") {
-    if (!validateRequired(input)) {
-      return false;
-    }
-
-    if (!validateLength(input, 2, 20)) {
-      return false;
-    }
-
-    if (!validateText(input)) {
-      return false;
-    }
-
-    return true;
-  }
-
-  // Validation du champ NOM
-  if (fieldName === "lastName") {
-    if (!validateRequired(input)) {
-      return false;
-    }
-
-    if (!validateLength(input, 2, 20)) {
-      return false;
-    }
-
-    if (!validateText(input)) {
-      return false;
-    }
-
-    return true;
-  }
-
-  // Validation du champ EMAIL
-  if (fieldName === "email") {
-    if (!validateRequired(input)) {
-      return false;
-    }
-
-    if (!validateEmail(input)) {
-      return false;
-    }
-
-    return true;
-  }
-
-  // Validation du N° de téléphone
-  // if (fieldName == "phoneNumber") {
-  //   if (!validateRequired(input)) {
-  //     return false;
-  //   }
-
-  //   if (!validatePhoneNumber(input)) {
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
-
-  // Validation du champ ADRESSE
-  /*if (fieldName == "address") {
-
-            if (!validateRequired(input)) {
-                return false;
-            }
-
-            if (!validateAddress(input)) {
-            return false;
-        }
-
-            return (true);
-        }
-
-        // Validation du champ VILLE
-        if (fieldName === "city") {
-            if (!validateRequired(input)) {
-                return false;
-            }
-
-            if (!validateCity(input)) {
-                return false;
-            }
-
-            return(true);
-        }
-
-        // Validation du champ CODE POSTAL
-        if (fieldName == "postCode") {
-
-            if (!validateRequired(input)) {
-                return false;
-            }
-
-            if (!validatepostCode(input)) {
-                return false;
-            }
-
-            return (true);
-        }*/
-
-  // Validation du champ MOT DE PASSE
-  if (fieldName === "password") {
-    if (!validateRequired(input)) {
-      return false;
-    }
-
-    if (!validatePassword(input)) {
-      return false;
-    }
-
-    return true;
-  }
-
-  // Validation du champ CONDITIONS
-  if (fieldName === "conditions") {
-    if (!validateConditions(input)) {
-      return false;
-    }
-
-    return true;
-  }
-}
-
-// Enregistrement des données inscription
-
-function validateFields() {
+// Fonction de validation globale du formulaire
+// Fonction de validation globale du formulaire
+function validateFormFields() {
   const firstNameInput = document.getElementById("firstName");
   const lastNameInput = document.getElementById("lastName");
   const emailInput = document.getElementById("email");
-  // const phoneNumberInput = document.getElementById("phoneNumber");
-  /*const addressinput = document.getElementById("address")
-        const cityinput = document.getElementById("city")
-        const postalinput = document.getElementById("postCode")*/
   const passwordInput = document.getElementById("password");
+  const conditionsInput = document.getElementById("conditions");
 
   const firstName = firstNameInput.value.trim();
   const lastName = lastNameInput.value.trim();
   const email = emailInput.value.trim();
-  // const phoneNumber = phoneNumberInput.value;
-  /*const address = addressinput.value
-        const city = cityinput.value
-        const postal = postalinput.value*/
   const password = passwordInput.value;
 
   // Validation du champ PRENOM
-  if (firstName === "") {
+  if (!validateRequired(firstNameInput)) {
     showToast("Veuillez entrer votre prénom !");
     firstNameInput.focus();
     return false;
   }
 
+  if (!validateLength(firstNameInput, 2, 20)) {
+    showToast("Le prénom doit contenir entre 2 et 20 caractères !");
+    firstNameInput.focus();
+    return false;
+  }
+
+  if (!validateText(firstNameInput)) {
+    showToast("Le prénom doit contenir uniquement des lettres !");
+    firstNameInput.focus();
+    return false;
+  }
+
   // Validation du champ NOM
-  if (lastName === "") {
+  if (!validateRequired(lastNameInput)) {
     showToast("Veuillez entrer votre nom !");
     lastNameInput.focus();
     return false;
   }
 
+  if (!validateLength(lastNameInput, 2, 20)) {
+    showToast("Le nom doit contenir entre 2 et 20 caractères !");
+    lastNameInput.focus();
+    return false;
+  }
+
+  if (!validateText(lastNameInput)) {
+    showToast("Le nom doit contenir uniquement des lettres !");
+    lastNameInput.focus();
+    return false;
+  }
+
   // Validation du champ EMAIL
-  if (email === "") {
+  if (!validateRequired(emailInput)) {
     showToast("Veuillez entrer votre adresse e-mail !");
     emailInput.focus();
     return false;
   }
 
+  if (!validateEmail(emailInput)) {
+    showToast("Veuillez entrer une adresse e-mail valide !");
+    emailInput.focus();
+    return false;
+  }
+
   // Validation du champ MOT DE PASSE
-  if (password === "") {
+  if (!validateRequired(passwordInput)) {
     showToast("Veuillez entrer votre mot de passe !");
     passwordInput.focus();
+    return false;
+  }
+
+  if (!validatePassword(passwordInput)) {
+    showToast(
+      "Le mot de passe doit contenir au moins 8 caractères, une lettre minuscule, une lettre majuscule et un chiffre !"
+    );
+    passwordInput.focus();
+    return false;
+  }
+
+  // Validation de la checkbox CONDITIONS
+  if (!validateConditions(conditionsInput)) {
+    showToast("Veuillez accepter les conditions d'utilisation !");
     return false;
   }
 
   return true;
 }
 
-// Vérification de l'utilisateur existant
-function checkUserExists(email) {
-  // Créer un objet XMLHttpRequest
-  var xhr = new XMLHttpRequest();
-
-  // Définir la fonction de rappel pour gérer la réponse de la requête
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        // La requête s'est terminée avec succès
-        var response = xhr.responseText;
-        if (response === "true") {
-          // L'utilisateur existe dans la base de données
-          return true;
-        } else {
-          // L'utilisateur n'existe pas dans la base de données
-          return false;
-        }
-      } else {
-        // La requête a échoué
-        console.log("Erreur lors de la requête AJAX");
-        return false;
-      }
-    }
-  };
-
-  // Préparer et envoyer la requête AJAX
-  xhr.open("POST", "inscription.php", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.send("email=" + email);
-}
-
-// Gestion de la soumission du formulaire
+// Fonction de gestion de la soumission du formulaire
 function handleFormSubmission(event) {
   event.preventDefault();
+
+  // Validation des champs du formulaire
+  if (!validateFormFields()) {
+    return;
+  }
 
   // Récupération des valeurs des champs du formulaire
   const firstName = document.getElementById("firstName").value;
   const lastName = document.getElementById("lastName").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-
-  // Validation des champs
-  if (!validateFields()) {
-    return;
-  }
-
-  // Vérification de l'utilisateur existant
-  if (checkUserExists(email)) {
-    showToast("Attention cet utilisateur existe déjà !");
-    return;
-  }
 
   // Envoi des données au fichier d'inscription
   fetch("inscription.php", {

@@ -1,5 +1,4 @@
 <?php
-
 // CHEMIN VERS IMAGES GALERIE
 define('_GALERY_IMG_PATH_', 'uploads/cars/galerie_images/');
 // CHEMIN VERS IMAGES ANNONCES VOITURES
@@ -8,10 +7,3 @@ define('_CARS_IMG_PATH_', 'uploads/cars/');
 define('_ASSETS_IMG_PATH_', 'assets/images/');
 // LIMITE D'ANNONCES SUR LA PAGE D'ACCUEIL
 define('_HOME_CARS_LIMIT_', 4);
-
-$mainMenu = array(
-    'index.php' => 'Accueil',
-    'cars.php' => 'Nos Véhicules d\'occasion',
-    'Contacter-le-garage-V-Parrot.php' => 'Contactez-nous',
-    'ajouter_modifier_annonces.php' => 'Gérer les annonces',
-);

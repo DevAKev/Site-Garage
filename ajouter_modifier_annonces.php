@@ -1,6 +1,6 @@
 <?php
 
-require_once('templates/header.php');
+require_once('admin/templates/header.php');
 // REDIRECTION
 // if (isset($_SESSION['user'])) {
 //     header('Location: Connexion.php');
@@ -17,19 +17,25 @@ $car = [
 
 // Récupérer les données du formulaire au click "Enregistrer"
 if (isset($_POST['saveCar'])) {
-    $image = null;
     //SI UN FICHIER A ETE ENVOYE
     if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name'] != '') {
-        // GETIMAGESIZE VA RETOURNER FALSE SI LE FICHIER N'EST PAS UNE IMAGE
-        $checkImage = getimagesize($_FILES['image']['tmp_name']);
-        // SI LE FICHIER EST UNE IMAGE ON TRAITE L'UPLOAD
-        if ($checkImage !== false) {
-            $image = uniqid() . '_' . slugify($_FILES['image']['name']);
-            move_uploaded_file($_FILES['image']['tmp_name'], _CARS_IMG_PATH_ . $image);
-            // SINON MESSAGE D'ERREUR
+        // VERIFIER SI LE FICHIER EST CHARGE
+        if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            // GETIMAGESIZE VA RETOURNER FALSE SI LE FICHIER N'EST PAS UNE IMAGE
+            $checkImage = getimagesize($_FILES['image']['tmp_name']);
+            // SI LE FICHIER EST UNE IMAGE ON TRAITE L'UPLOAD
+            if ($checkImage !== false) {
+                $image = uniqid() . '_' . slugify($_FILES['image']['name']);
+                move_uploaded_file($_FILES['image']['tmp_name'], _CARS_IMG_PATH_ . $image);
+                // SINON MESSAGE D'ERREUR
+            } else {
+                $errors[] = 'Le fichier doit être une image !';
+            }
         } else {
-            $errors[] = 'Le fichier doit être une image !';
+            $errors[] = 'Une erreur est survenue lors du téléchargement de l\'image !';
         }
+    } else {
+        $image = '';
     }
 
     // INFORMATIONS OBLIGATOIRES POUR VALIDER LE FORMULAIRE
@@ -84,21 +90,26 @@ if (isset($_POST['saveCar'])) {
         } else {
             // Parcourir tous les fichiers téléchargés
             foreach ($_FILES['galerie_images']['tmp_name'] as $index => $tmpName) {
-                // Vérifier si le fichier est une image
-                $checkImage = getimagesize($tmpName);
-                if ($checkImage !== false) {
-                    // Générer un nom unique pour l'image
-                    $imageName = uniqid() . '_' . slugify($_FILES['galerie_images']['name'][$index]);
-                    // Déplacer le fichier vers le répertoire de stockage
-                    move_uploaded_file($tmpName, _GALERY_IMG_PATH_ . $imageName);
-                    // Ajouter le nom de l'image à votre tableau galerie_images
-                    $galerie_images[] = $imageName;
+                if ($_FILES['galerie_images']['error'][$index] === UPLOAD_ERR_OK) {
+                    // Vérifier si le fichier est une image
+                    $checkImage = getimagesize($tmpName);
+                    if ($checkImage !== false) {
+                        // Générer un nom unique pour l'image
+                        $imageName = uniqid() . '_' . slugify($_FILES['galerie_images']['name'][$index]);
+                        // Déplacer le fichier vers le répertoire de stockage
+                        move_uploaded_file($tmpName, _GALERY_IMG_PATH_ . $imageName);
+                        // Ajouter le nom de l'image à votre tableau galerie_images
+                        $galerie_images[] = $imageName;
+                    } else {
+                        $errors[] = 'Le fichier "' . $_FILES['galerie_images']['name'][$index] . '" doit être une image !';
+                    }
                 } else {
-                    $errors[] = 'Le fichier "' . $_FILES['galerie_images']['name'][$index] . '" doit être une image !';
+                    $errors[] = 'Une erreur est survenue lors du téléchargement de l\'image' . $_FILES['galerie_images']['name'][$index] . ' !';
                 }
             }
         }
     }
+
 
     $galerie_imagesString = implode(',', $galerie_images);
 
@@ -128,7 +139,10 @@ if (isset($_POST['saveCar'])) {
 }
 ?>
 
-<h1 class="p-4">Ajouter une annonce</h1>
+<ul>
+    <li><a href="ajouter_modifier_annonces.php">Ajouter une annonce</a></li>
+    <li><a href="editCar.php">Modifier une annonce</a></li>
+</ul>
 
 <?php foreach ($messages as $message) { ?>
     <div class="alert alert-success"><?= $message ?>
@@ -146,7 +160,7 @@ require_once('templates/addCar_form.php');
 
 <!-- FOOTER START -->
 <?php
-require_once('templates/footer.php');
+require_once('admin/templates/footer.php');
 // FOOTER END
 //  IMPORT SCRIPTS 
 require_once('lib/scripts.php');
