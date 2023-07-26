@@ -1,8 +1,10 @@
 <?php
 require_once __DIR__ . ('/templates/header.php');
+require_once __DIR__ . ('/lib/reviews_tools.php');
 
 // CONSTANTE NOMBRE DE VEHICULES A AFFICHER SUR LA PAGE D'ACCUEIL(PARAMETRE DANS LE FICHIER CONFIG.PHP)
 $cars = getCars($pdo, _HOME_CARS_LIMIT_);
+$avis = getReviewsForIndex($pdo, _HOME_REVIEWS_LIMIT_);
 ?>
 <div id="accueil-image" class="container">
 </div>
@@ -11,6 +13,9 @@ $cars = getCars($pdo, _HOME_CARS_LIMIT_);
 
     <!-- MAIN START -->
     <?php require_once('templates/main_services.php') ?>
+
+    <!-- AFFICHAGE DES AVIS UTILISATEURS SUR LA PAGE D'ACCUEIL -->
+    <?php require_once('templates/reviews_partial.php') ?>
 
     <!--SERVICES & CARS CARDS-->
     <?php require_once('templates/main_cards.php') ?>

@@ -7,3 +7,5 @@ define('_CARS_IMG_PATH_', 'uploads/cars/');
 define('_ASSETS_IMG_PATH_', 'assets/images/');
 // LIMITE D'ANNONCES SUR LA PAGE D'ACCUEIL
 define('_HOME_CARS_LIMIT_', 4);
+// LIMITE D'ANNONCES SUR LA PAGE D'ACCUEIL
+define('_HOME_REVIEWS_LIMIT_', 3);

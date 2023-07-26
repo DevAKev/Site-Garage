@@ -17,10 +17,9 @@ function insertReview(PDO $pdo, string $name, string $commentaire, int $note)
 }
 
 // RÉCUPÉRER LES AVIS UTILISATEURS POUR L'APERÇU SUR LA PAGE D'ACCUEIL
-function getReviewsForIndex(PDO $pdo, int $limit = null)
+function getReviewsForIndex(PDO $pdo, int $limit = _HOME_REVIEWS_LIMIT_)
 {
-
-    $sql = 'SELECT * FROM customer_reviews WHERE publish = 1 ORDER BY id DESC LIMIT :limit';
+    $sql = 'SELECT * FROM customer_reviews ORDER BY id DESC LIMIT :limit';
     $query = $pdo->prepare($sql);
     $query->bindParam(':limit', $limit, PDO::PARAM_INT);
     $query->execute();
@@ -36,49 +35,6 @@ function getReviewsById(int $id)
     $query->bindParam(':id', $id, PDO::PARAM_INT);
     $query->execute();
     return $query->fetch();
-}
-
-// LIMITE DE COMMENTAIRES A AFFICHER
-function getLimitReviews(int $limit = null)
-{
-    global $pdo;
-
-    $sql = 'SELECT * FROM customer_reviews ORDER BY id DESC';
-
-    if ($limit) {
-        $sql .= ' LIMIT :limit';
-    }
-
-    $query = $pdo->prepare($sql);
-
-    if ($limit) {
-        $query->bindParam(':limit', $limit, PDO::PARAM_INT);
-    }
-
-    $query->execute();
-    return $query->fetchAll();
-}
-
-// AFFICHER LES COMMENTAIRES PUBLIES EN AFFICHANT LES DERNIERS
-function getPublishedReviews(int $limit = null)
-{
-
-    global $pdo;
-
-    $sql = 'SELECT * FROM customer_reviews 1 ORDER BY id DESC';
-
-    if ($limit) {
-        $sql .= ' LIMIT :limit';
-    }
-
-    $query = $pdo->prepare($sql);
-
-    if ($limit) {
-        $query->bindParam(':limit', $limit, PDO::PARAM_INT);
-    }
-
-    $query->execute();
-    return $query->fetchAll();
 }
 
 // SUPPRIMER UN COMMENTAIRE
