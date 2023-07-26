@@ -11,4 +11,5 @@ $mainMenu = [
     'connexion.php' => ["menu_title" => 'Connexion', "head_title" => "Connexion - Garage V. Parrot", "meta_description" => "Espace connexion membres.", "exclude" => true],
     'car.php' => ["menu_title" => 'Détails du véhicule', "head_title" => "Détails du véhicule - Garage V. Parrot", "meta_description" => "Détails du véhicule.", "exclude" => true],
     'edit_car.php' => ["menu_title" => 'Modifier une annonce', "head_title" => "Modifier une annonce - Garage V. Parrot", "meta_description" => "Modifier une annonce.", "exclude" => true],
+    'add_reviews.php' => ["menu_title" => 'Laissez votre avis', "head_title" => "Laissez votre avis - Garage V. Parrot", "meta_description" => "Laissez votre avis.", "exclude" => true],
 ];

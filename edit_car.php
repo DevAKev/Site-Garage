@@ -49,5 +49,5 @@ if (isset($_POST['deleteCar'])) {
 }
 ?>
 
-<?php require_once('templates/editCar_form'); ?>
+<?php require_once('templates/editCar_form.php'); ?>
 <?php require_once('templates/footer.php'); ?>

@@ -141,7 +141,6 @@ if (isset($_POST['saveCar'])) {
 
 <ul>
     <li><a href="ajouter_modifier_annonces.php">Ajouter une annonce</a></li>
-    <li><a href="editCar.php">Modifier une annonce</a></li>
 </ul>
 
 <?php foreach ($messages as $message) { ?>

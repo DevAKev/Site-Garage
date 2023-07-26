@@ -1,8 +1,6 @@
 <?php
 require_once __DIR__ . ('/templates/header.php');
 
-
-
 // CONSTANTE NOMBRE DE VEHICULES A AFFICHER SUR LA PAGE D'ACCUEIL(PARAMETRE DANS LE FICHIER CONFIG.PHP)
 $cars = getCars($pdo, _HOME_CARS_LIMIT_);
 ?>
