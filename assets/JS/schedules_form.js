@@ -21,8 +21,8 @@ function validateSchedules() {
   // Vérifier chaque champ d'heure
   let isValid = true;
   for (let i = 0; i < heureOuvertureInputs.length; i++) {
-    const heureOuverture = heureOuvertureInputs[i].value;
-    const heureFermeture = heureFermetureInputs[i].value;
+    const heureOuverture = heureOuvertureInputs[i].value.trim(); // Utiliser trim() pour enlever les espaces vides
+    const heureFermeture = heureFermetureInputs[i].value.trim(); // Utiliser trim() pour enlever les espaces vides
     const jourSemaine = heureOuvertureInputs[i].parentNode.parentNode
       .querySelector("td[data-day]")
       .getAttribute("data-day");
@@ -30,24 +30,15 @@ function validateSchedules() {
     // Vérifier si les valeurs sont des chiffres entiers et respectent le format '00:00:00'
     const timeRegex = /^\d{2}:\d{2}:\d{2}$/;
 
-    // Vérifier le cas du dimanche avec champs vides
-    if (
-      jourSemaine.toLowerCase() === "dimanche" &&
-      heureOuverture === "" &&
-      heureFermeture === ""
-    ) {
-      continue; // Passer à l'itération suivante sans vérifier la validité
+    if (heureOuverture !== "" && !timeRegex.test(heureOuverture)) {
+      heureOuvertureErrorMessages[i].textContent =
+        "Veuillez saisir une heure valide au format '00:00:00'.";
+      isValid = false;
     }
 
-    if (!timeRegex.test(heureOuverture) || !timeRegex.test(heureFermeture)) {
-      if (heureOuverture !== "") {
-        heureOuvertureErrorMessages[i].textContent =
-          "Veuillez saisir une heure valide au format '00:00:00'.";
-      }
-      if (heureFermeture !== "") {
-        heureFermetureErrorMessages[i].textContent =
-          "Veuillez saisir une heure valide au format '00:00:00'.";
-      }
+    if (heureFermeture !== "" && !timeRegex.test(heureFermeture)) {
+      heureFermetureErrorMessages[i].textContent =
+        "Veuillez saisir une heure valide au format '00:00:00'.";
       isValid = false;
     }
   }

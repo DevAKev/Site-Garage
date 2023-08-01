@@ -28,8 +28,6 @@ require_once('admin/templates/header.php');
     <!-- FOOTER END -->
 
 </body>
-<?php
-require_once('lib/scripts.php');
-?>
+<script src="assets/js/schedules.js"></script>
 
 </html>

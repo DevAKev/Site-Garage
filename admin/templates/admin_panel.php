@@ -15,4 +15,3 @@
         Gérer les comptes
     </a>
 </li>
-</ul>

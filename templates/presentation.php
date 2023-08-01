@@ -3,7 +3,7 @@
         <img id="Mecano" src="assets/images/mecanicien.webp" class="d-block mx-lg-auto img-fluid" alt="Mecanicien" width="350" loading="lazy">
     </div>
     <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3"><span>Garagiste</span> près de Toulouse pour la réparation, l'entretien et l'achats
+        <h1 class="display-5 fw-bold lh-1 mb-3"><span>Garagiste</span> près de Toulouse pour la réparation, l'entretien et l'achat
             de véhicules</h1>
         <div class="text">
             <div class="headline p-2">Votre <strong>Garage V. Parrot,</strong>
@@ -28,8 +28,8 @@
                 et savoir-faire sont à la disposition de tous nos clients.
                 <br>
                 <br>
-                Notre entreprise agrée <strong>Toutes marques</strong>
-                vous permettra de retrouver un véhicule réparé et sécurisé pour vous et votre famille.
+                Notre entreprise agréée <strong>Toutes marques</strong>
+                vous permettra de retrouver un véhicule réparé et sécurisé pour votre famille et vous.
                 <br>
                 <br>
                 Si vous avez besoin d'un renseignement complémentaire ou bien d'une prise de rendez-vous,

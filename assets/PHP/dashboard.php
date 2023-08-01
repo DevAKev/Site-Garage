@@ -1,10 +1,6 @@
 <?php
 
-// Connexion à la base de données
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "garage_parrot";
+
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -13,8 +9,6 @@ if ($conn->connect_error) {
     die("La connexion à la base de données a échoué : " . $conn->connect_error);
 }
 
-// Vérification de l'authentification de l'administrateur
-session_start();
 
 if (!isset($_SESSION['email'])) {
     header("Location: login.php"); // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
@@ -41,6 +35,7 @@ if ($result->num_rows > 0) {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,6 +43,7 @@ if ($result->num_rows > 0) {
     <title>Dashboard - Garage V. Parrot</title>
     <!-- Les autres balises meta et les liens CSS -->
 </head>
+
 <body>
     <div class="container-fluid">
         <nav id="navbarMembre">
@@ -61,9 +57,8 @@ if ($result->num_rows > 0) {
 
     <!-- Vos scripts JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="assets/JS/accueil-membre.js"></script>
 </body>
+
 </html>

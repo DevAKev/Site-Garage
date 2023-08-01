@@ -9,3 +9,5 @@ define('_ASSETS_IMG_PATH_', 'assets/images/');
 define('_HOME_CARS_LIMIT_', 4);
 // LIMITE D'ANNONCES SUR LA PAGE D'ACCUEIL
 define('_HOME_REVIEWS_LIMIT_', 3);
+
+define("_ADMIN_ITEM_PER_PAGE_", 10);

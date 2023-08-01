@@ -7,6 +7,7 @@
         <hr>
         <div class="col-md-4">
             <h3>Nos horaires</h3>
+            <p>Nous sommes fermé de 12:00 à 14:00 (Sauf le Samedi)</p>
             <?php
             include('templates/schedules.php')
             ?>

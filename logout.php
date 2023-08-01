@@ -1,8 +1,6 @@
 <?php
-require_once("lib/session.php");
-require_once("lib/config.php");
-require_once("lib/pdo.php");
-
+require_once('lib/session.php');
+require_once('lib/config.php');
 
 //Prévient les attaques de fixation de session
 session_regenerate_id(true);
@@ -11,4 +9,3 @@ session_destroy();
 //Supprime les données du tableau $_SESSION
 unset($_SESSION);
 header('location: /connexion.php');
-exit();

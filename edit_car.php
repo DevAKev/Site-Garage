@@ -4,11 +4,6 @@ require_once('templates/header.php');
 $id = $_GET['id'];
 $car = getCarById($pdo, $id);
 
-// if (!isset($_SESSION['user'])) {
-//     header('Location: Connexion.php');
-//     exit();
-// }
-
 $errors = [];
 $messages = [];
 

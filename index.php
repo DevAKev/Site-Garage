@@ -1,10 +1,16 @@
 <?php
+require_once __DIR__ . '/lib/session.php';
+require_once __DIR__ . '/lib/pdo.php';
+require_once __DIR__ . '/lib/config.php';
 require_once __DIR__ . ('/templates/header.php');
 require_once __DIR__ . ('/lib/reviews_tools.php');
+require_once('lib/service_tools.php');
 
 // CONSTANTE NOMBRE DE VEHICULES A AFFICHER SUR LA PAGE D'ACCUEIL(PARAMETRE DANS LE FICHIER CONFIG.PHP)
 $cars = getCars($pdo, _HOME_CARS_LIMIT_);
 $avis = getReviewsForIndex($pdo, _HOME_REVIEWS_LIMIT_);
+$services = getServices($pdo);
+
 ?>
 <div id="accueil-image" class="container">
 </div>
@@ -12,13 +18,13 @@ $avis = getReviewsForIndex($pdo, _HOME_REVIEWS_LIMIT_);
 <body class="container">
 
     <!-- MAIN START -->
-    <?php require_once('templates/main_services.php') ?>
+    <?php require_once('templates/presentation.php') ?>
 
     <!-- AFFICHAGE DES AVIS UTILISATEURS SUR LA PAGE D'ACCUEIL -->
     <?php require_once('templates/reviews_partial.php') ?>
 
     <!--SERVICES & CARS CARDS-->
-    <?php require_once('templates/main_cards.php') ?>
+    <?php require_once('templates/service_partial.php') ?>
 
     <!-- USED ​​VEHICLES EXAMPLES -->
     <div class="d-flex flex-wrap justify-content-start align-items-center">

@@ -4,8 +4,10 @@ require_once("lib/config.php");
 require_once("lib/pdo.php");
 require_once("templates/header.php");
 require_once("lib/user.php");
+require_once("lib/process_connexion.php");
 
 $errors = [];
+$messages = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -15,22 +17,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user) {
         session_regenerate_id(true);
         $_SESSION['user'] = $user;
-        if ($user['role'] === 'administrateur') {
-            header('location: admin/index.php');
-        } elseif ($user['role'] === 'employe') {
+        if ($user['role'] === 'administrateur' || $user['role'] === 'employe') {
             header('location: admin/index.php');
         } else {
-            $errors[] = ("Vous n'avez pas les droits d'accès à cette page !");
+            header('location: connexion.php?error=access');
+            exit();
         }
     } else {
         $errors[] = ("Email ou mot de passe incorrect !");
     }
-    // if (login($email, $password, $pdo)) {
-    //     header('location: admin/index.php');
-    //     exit();
-    // } else {
-    //     $errors[] = ("Email ou mot de passe incorrect !");
-    // }
 }
 ?>
 

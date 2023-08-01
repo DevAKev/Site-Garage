@@ -1,4 +1,6 @@
 <?php
+require_once("lib/config.php");
+require_once("lib/session.php");
 require_once('templates/header.php');
 
 // REQUETE VEHICULES SQL BDD
@@ -54,11 +56,14 @@ if ($vehicule) {
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                     <a href="Contacter-le-garage-V-Parrot.php" class="btn btn-primary">Contactez-nous</a>
 
-                    <!-- MODIF ANNONCE(A VERIFIER) *************************************-->
-                    <a href="edit_car.php?id=<?= $vehicule['id']; ?>" class="btn btn-warning">Modifier l'annonce</a>
+                    <!-- Vérifier si une session est active et si l'utilisateur a le rôle d'administrateur ou d'employé -->
+                    <?php if (isset($_SESSION['user']) && (($_SESSION['user']['role'] == 'administrateur') || ($_SESSION['user']['role'] == 'employe'))) {
+                        // Afficher le bouton "Modifier l'annonce" uniquement pour les administrateurs et les employés
+                        echo '<a href="edit_car.php?id=' . $vehicule['id'] . '" class="btn btn-warning">Modifier l\'annonce</a>';
+                    }
+                    ?>
                 </div>
             </div>
-
             <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
                 <a data-fancybox="gallery" href="<?= getCarImage($vehicule['image']); ?>">
                     <img src="<?= getCarImage($vehicule['image']); ?>" class="rounded-lg-3" alt="<?= $vehicule['marque']; ?>" width="400">
@@ -84,7 +89,6 @@ if ($vehicule) {
 <?php } ?>
 
 <!-- FOOTER START -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <script>
     // Initialiser la lightbox(Affichage des images en grand)
     $(document).ready(function() {

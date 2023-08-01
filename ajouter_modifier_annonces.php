@@ -1,10 +1,7 @@
 <?php
-
-require_once('admin/templates/header.php');
-// REDIRECTION
-// if (isset($_SESSION['user'])) {
-//     header('Location: Connexion.php');
-// }
+require_once __DIR__ . ('/lib/session.php');
+// adminOnly();
+require_once __DIR__ . ('/admin/templates/header.php');
 
 $errors = [];
 $messages = [];
@@ -14,8 +11,7 @@ $car = [
     'caracteristiques' => '',
     'equipements_options' => '',
 ];
-
-// Récupérer les données du formulaire au click "Enregistrer"
+// RECUPERER LES DONNEES DU FORMULAIRE AU CLICK "ENREGISTRER"
 if (isset($_POST['saveCar'])) {
     //SI UN FICHIER A ETE ENVOYE
     if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name'] != '') {
@@ -78,27 +74,26 @@ if (isset($_POST['saveCar'])) {
     $caracteristiques = $_POST['caracteristiques'];
     $equipements_options = $_POST['equipements_options'];
     $carburant = $_POST['carburant'];
-
-    // Gérer le téléchargement des images de la galerie
+    // GERER LE TELECHARGEMENT DES IMAGES DE LA GALERIE
     $galerie_images = [];
     if (isset($_FILES['galerie_images']) && is_array($_FILES['galerie_images']['name']) && count($_FILES['galerie_images']['name']) > 0) {
-        // Limite du nombre d'images de la galerie
+        // LIMITE IMAGES GALERIE
         $maxGalleryImages = 3;
-        // Vérifier le nombre total de fichiers téléchargés
+        // VERIFIER NOMBRE TOTAL DE FICHIERS TELECHARGES
         if (count($_FILES['galerie_images']['tmp_name']) > $maxGalleryImages) {
             $errors[] = 'Vous ne pouvez télécharger que ' . $maxGalleryImages . ' autres photos.';
         } else {
-            // Parcourir tous les fichiers téléchargés
+            // PARCOURIR TOUS LES FICHIERS TELECHARGES
             foreach ($_FILES['galerie_images']['tmp_name'] as $index => $tmpName) {
                 if ($_FILES['galerie_images']['error'][$index] === UPLOAD_ERR_OK) {
-                    // Vérifier si le fichier est une image
+                    // VERIFIER SI LE FICHIER EST UNE IMAGE
                     $checkImage = getimagesize($tmpName);
                     if ($checkImage !== false) {
-                        // Générer un nom unique pour l'image
+                        // GENERER UN NOM UNIQUE POUR L'IMAGE
                         $imageName = uniqid() . '_' . slugify($_FILES['galerie_images']['name'][$index]);
-                        // Déplacer le fichier vers le répertoire de stockage
+                        // DEPLACER LE FICHIER VERS LE REPERTOIRE DE STOCKAGE
                         move_uploaded_file($tmpName, _GALERY_IMG_PATH_ . $imageName);
-                        // Ajouter le nom de l'image à votre tableau galerie_images
+                        // AJOUTER LE NOM DE L'IMAGE AU TABLEAU GALERIE_IMAGES
                         $galerie_images[] = $imageName;
                     } else {
                         $errors[] = 'Le fichier "' . $_FILES['galerie_images']['name'][$index] . '" doit être une image !';
@@ -118,10 +113,9 @@ if (isset($_POST['saveCar'])) {
         // MESSAGE DE CONFIRMATION ET D'ERREUR
         if ($res) {
             $messages[] = 'Votre annonce a bien été enregistrée !';
-            // Obtenir l'ID du nouveau véhicule créé
+            // OBTERNIR L'ID DU NOUVEAU VEHICULE CREE
             $newCarId = $pdo->lastInsertId();
-
-            // Redirection vers la nouvelle page du véhicule
+            // REDIRECTION VERS LA PAGE DE L'ANNONCE NOUVELLEMENT CREEE
             echo '<script>window.location.href = "car.php?id=' . $newCarId . '";</script>';
             exit();
         } else {
@@ -138,10 +132,9 @@ if (isset($_POST['saveCar'])) {
     ];
 }
 ?>
-
-<ul>
-    <li><a href="ajouter_modifier_annonces.php">Ajouter une annonce</a></li>
-</ul>
+<br>
+<h2><a href="cars.php">Voir les annonces</a></h2>
+<h1>Ajouter une annonce</h1>
 
 <?php foreach ($messages as $message) { ?>
     <div class="alert alert-success"><?= $message ?>
@@ -162,5 +155,5 @@ require_once('templates/addCar_form.php');
 require_once('admin/templates/footer.php');
 // FOOTER END
 //  IMPORT SCRIPTS 
-require_once('lib/scripts.php');
+
 ?>

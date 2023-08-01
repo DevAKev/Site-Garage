@@ -50,8 +50,13 @@
                     <?php if (isset($_SESSION['user'])) { ?>
                         <li class="nav-item">
                             <a href="logout.php" class="btn btn-outline-light me-2">Déconnexion</a>
-                        <?php } else { ?>
                         </li>
+                        <?php if ($_SESSION['user']['role'] === 'administrateur' || $_SESSION['user']['role'] === 'employe') { ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="admin/index.php" class="btn btn-outline-light me-2">Espace Admin</a>
+                            </li>
+                        <?php } ?>
+                    <?php } else { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="connexion.php">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">

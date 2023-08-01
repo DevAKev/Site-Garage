@@ -74,19 +74,38 @@ function login($email, $password, $pdo)
         $user = $requete->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password_hash'])) {
-            return true;
-        } else {
-            return false;
-
             // MAJ DE LA DATE DE DERNIERE CONNEXION
             $updateQuery = $pdo->prepare("UPDATE users SET last_connexion = :last_connexion WHERE id = :id");
             $updateQuery->bindParam(':last_connexion', date('Y-m-d H:i:s'));
             $updateQuery->bindParam(':id', $user['id'], PDO::PARAM_INT);
             $updateQuery->execute();
 
+            $_SESSION['user']['id'] = $user['id'];
+            $_SESSION['user']['role'] = $user['role'];
+            $_SESSION['user']['nom'] = $user['nom']; // Ajoutez le nom de l'utilisateur ici
+            $_SESSION['user']['prenom'] = $user['prenom'];
             return true;
+        } else {
+            return false;
         }
     }
 
     return false;
 }
+
+function getUserByEmail(PDO $pdo, string $email)
+{
+    $query = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+    $query->bindParam(':email', $email, PDO::PARAM_STR);
+    $query->execute();
+
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
+// function getUserById(PDO $pdo, int $id)
+// {
+//     $query = $pdo->prepare("SELECT * FROM users WHERE id = :id");
+//     $query->bindParam(':id', $id, PDO::PARAM_INT);
+//     $query->execute();
+
+//     return $query->fetch(PDO::FETCH_ASSOC);
+// }

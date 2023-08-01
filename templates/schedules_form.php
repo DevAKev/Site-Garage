@@ -1,16 +1,17 @@
 <?php
-require_once('./lib/session.php');
 require_once('./lib/pdo.php');
 require_once('lib/car_tools.php');
 require_once('lib/schedules_conf.php');
 $schedules = getSchedules($pdo);
 ?>
 
-<form id="schedulesForm" action="lib/schedules_conf.php" method="post">
+<form id="schedulesForm" action="" method="post">
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Jour</th>
+                <th>Heure d'ouverture</th>
+                <th>Heure de fermeture</th>
                 <th>Heure d'ouverture</th>
                 <th>Heure de fermeture</th>
             </tr>
@@ -35,5 +36,3 @@ $schedules = getSchedules($pdo);
     </table>
     <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
 </form>
-
-INSERT INTO `opening_hours` (`day_of_week`, `opening_time`, `closing_time`) VALUES
