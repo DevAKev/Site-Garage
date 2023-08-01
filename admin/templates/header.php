@@ -50,11 +50,12 @@ $currentpage = basename($_SERVER['SCRIPT_NAME']);
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="/logout.php">DECONNEXION</a></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#confirmModal">DECONNEXION</a></li>
         </ul>
     </div>
     </div>
     <!-- HEADER END -->
-
+    <!-- MODAL DE CONFIRMATION DECONNEXION -->
+    <?php require_once __DIR__ . ('/../../templates/modal_deconnexion.php'); ?>
     <!-- MAIN START -->
     <main class="d-flex flex-column px-4">

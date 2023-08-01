@@ -49,11 +49,11 @@
                 <ul class="navbar-nav ml-auto">
                     <?php if (isset($_SESSION['user'])) { ?>
                         <li class="nav-item">
-                            <a href="logout.php" class="btn btn-outline-light me-2">Déconnexion</a>
+                            <a href="#" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#confirmModal">Déconnexion</a>
                         </li>
                         <?php if ($_SESSION['user']['role'] === 'administrateur' || $_SESSION['user']['role'] === 'employe') { ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="admin/index.php" class="btn btn-outline-light me-2">Espace Admin</a>
+                                <a class="nav-link btn btn-outline-light me-2" href="admin/index.php">Espace Admin</a>
                             </li>
                         <?php } ?>
                     <?php } else { ?>
@@ -69,3 +69,5 @@
         </div>
     </nav>
 </header>
+
+<?php require_once __DIR__ . ('/modal_deconnexion.php'); ?>
