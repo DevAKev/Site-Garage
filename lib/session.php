@@ -22,3 +22,9 @@ function isUserLoggedIn()
 {
     return isset($_SESSION['user']['role']) && ($_SESSION['user']['role'] === 'administrateur' || $_SESSION['user']['role'] === 'employe');
 }
+
+// ACCES ADMINISTRATEUR UNIQUEMENT
+function adminAccesOnly()
+{
+    return isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'administrateur';
+}
