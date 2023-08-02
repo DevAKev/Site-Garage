@@ -1,5 +1,7 @@
 <?php
-require_once('admin/templates/header.php');
+require_once __DIR__ . ('/lib/session.php');
+adminOnly();
+require_once __DIR__ . ('/admin/templates/header.php');
 require_once('lib/user.php');
 
 $errors = [];

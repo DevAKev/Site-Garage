@@ -21,7 +21,7 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
 ?>
 
 
-<h1 class="display-5 fw-bold text-body-emphasis">services</h1>
+<h1 class="display-5 fw-bold text-body-emphasis">Gérer les services</h1>
 <div class="d-flex gap-2 justify-content-left py-5">
     <a class="btn btn-primary d-inline-flex align-items-left" href="service.php">
         Ajouter un service

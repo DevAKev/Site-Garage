@@ -20,7 +20,7 @@ $services = getServices($pdo);
                                     <a href="<?= $service["lien_page"] ?>" class="btn btn-primary">En savoir +</a>
                                     <?php if (isUserLoggedIn()) {
                                     ?>
-                                        <a href="admin_services.php?id=<?php echo $service["id"]; ?>" class="btn btn-primary">Modifier le service</a>
+                                        <a href="/admin/templates/services.php" class="btn btn-primary">Modifier le service</a>
                                     <?php } ?>
                                 </div>
                             </div>

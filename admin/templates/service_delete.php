@@ -24,7 +24,7 @@ if ($service) {
 }
 ?>
 <div class="row text-center my-5">
-    <h1>Supression service</h1>
+    <h1>Supprimer le service</h1>
     <?php foreach ($messages as $message) { ?>
         <div class="alert alert-success" role="alert">
             <?= $message; ?>
@@ -37,5 +37,4 @@ if ($service) {
     <?php } ?>
 </div>
 
-<?php
-require_once('templates/footer.php');
+<?php require_once __DIR__ . "/footer.php"; ?>

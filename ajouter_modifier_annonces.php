@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . ('/lib/session.php');
-// adminOnly();
+adminOnly();
 require_once __DIR__ . ('/admin/templates/header.php');
 
 $errors = [];

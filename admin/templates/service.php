@@ -21,44 +21,50 @@ if (isset($_GET['id'])) {
     // RECUPERER LES DONNEES EN CAS DE MODIFICATION
     $service = getServiceById($pdo, $_GET['id']);
     if ($service === false) {
-        $errors[] = "L'service n\'existe pas";
+        $errors[] = "Le service n'existe pas !";
     }
-    $pagetitre = "Formulaire modification service";
+    $pagetitre = "Modifier un service :";
 } else {
-    $pagetitre = "Formulaire ajout service";
+    $pagetitre = "Ajouter un service :";
 }
 
 if (isset($_POST['saveService'])) {
+    // GESTION DES ERREURS
 
-    // ***** A FAIRE GESTION DES ERREURS (champ vide etc.) ***
+    if (empty($_POST['titre'])) {
+        $errors[] = "Le titre est obligatoire !";
+    }
 
-    $fileName = null;
-    // SI ON A ENVOYE UN FICHIER
+    if (empty($_POST['description'])) {
+        $errors[] = "La description est obligatoire !";
+    }
+
+    if (empty($_POST['image']) && empty($_FILES['file']['tmp_name'])) {
+        $errors[] = "L'image est obligatoire !";
+    }
+
+    // VERIFIER l'IMAGE
+    $fileName = '';
     if (isset($_FILES["file"]["tmp_name"]) && $_FILES["file"]["tmp_name"] != '') {
         $checkImage = getimagesize($_FILES["file"]["tmp_name"]);
         if ($checkImage !== false) {
-            $fileName = slugify(basename($_FILES["file"]["name"]));
-            $fileName = uniqid() . '-' . $fileName;
+            $fileName = uniqid() . '_' . slugify($_FILES["file"]["name"]);
+            $imagePath = dirname(__DIR__) . '/../assets/images/' . $fileName;
+            move_uploaded_file($_FILES["file"]["tmp_name"], $imagePath);
 
-            // ON DEPLACE LE FICHIER DANS UPLOAD
-            // dirname(__DIR__) permet de cibler le dossier parent car on se trouve dans admin
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], dirname(__DIR__) . _ASSETS_IMG_PATH_ . $fileName)) {
-                if (isset($_POST['image'])) {
-                    // SUPPRIMER L'ANCIENNE IMAGE QUI SERA REMPLACEE
-                    unlink(dirname(__DIR__) . _ASSETS_IMG_PATH_ . $_POST['image']);
-                }
-            } else {
-                $errors[] = 'Le fichier n\'a pas été uploadé';
+            if (isset($_POST['image'])) {
+                // SUPPRIMER L'ANCIENNE IMAGE QUI SERA REMPLACEE
+                unlink(dirname(__DIR__) . '/../assets/images/' . $_POST['image']);
             }
         } else {
-            $errors[] = 'Le fichier doit être une image';
+            $errors[] = 'Le fichier doit être une image !';
         }
     } else {
-        // SI AUCUN FICHIER N'A ETE ENVOYE
+        // SI AUCUNE IMAGE N'A ETE UPLOADEE
         if (isset($_GET['id'])) {
             if (isset($_POST['delete_image'])) {
-                // CASE DE SUPPRESSION COCHE, ON SUPPRIME L'IMAGE
-                unlink(dirname(__DIR__) . _ASSETS_IMG_PATH_ . $_POST['image']);
+                // CASE DE SUPPRESSION COCHE? SUPPRIMER L'IMAGE
+                unlink(dirname(__DIR__) . '/../assets/images/' . $_POST['image']);
             } else {
                 $fileName = $_POST['image'];
             }
@@ -71,7 +77,8 @@ if (isset($_POST['saveService'])) {
         'categorie_id' => $_POST['categorie_id'],
         'image' => $fileName
     ];
-    // SI IL N'Y A PAS D'ERREURS, ON ENREGISTRE LES DONNEES
+
+    // SI AUCUNE ERREUR, ON ENREGISTRE LES DONNEES
     if (!$errors) {
         if (isset($_GET["id"])) {
             $id = (int)$_GET["id"];
@@ -82,7 +89,7 @@ if (isset($_POST['saveService'])) {
         $res = saveService($pdo, $_POST["titre"], $_POST["description"], $fileName, (int)$_POST["categorie_id"], $id);
 
         if ($res) {
-            $messages[] = "L'service a bien été sauvegardé";
+            $messages[] = "Le service a bien été sauvegardé !";
             // VIDER LES CHAMPS DU FORMULAIRE APRES ENREGISTREMENT
             if (!isset($_GET["id"])) {
                 $service = [
@@ -92,7 +99,7 @@ if (isset($_POST['saveService'])) {
                 ];
             }
         } else {
-            $errors[] = "L'service n'a pas été sauvegardé";
+            $errors[] = "Le service n'a pas été sauvegardé !";
         }
     }
 }
@@ -113,18 +120,18 @@ if (isset($_POST['saveService'])) {
 <?php if ($service !== false) { ?>
     <form method="POST" enctype="multipart/form-data">
         <div class="mb-3">
-            <label for="titre" class="form-label">Titre</label>
+            <label for="titre" class="form-label">Titre *</label>
             <input type="text" class="form-control" id="titre" name="titre" value="<?= $service['titre']; ?>">
         </div>
         <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
+            <label for="description" class="form-label">Description *</label>
             <textarea class="form-control" id="description" name="description" rows="8"><?= $service['description']; ?></textarea>
         </div>
         <div class="mb-3">
-            <label for="categorie" class="form-label">Catégorie</label>
+            <label for="categorie" class="form-label">Catégorie *</label>
             <select name="categorie_id" id="categorie" class="form-select">
                 <?php foreach ($categories as $categorie) { ?>
-                    <option value="1" <?php if (isset($service['categorie_id']) && $service['categorie_id'] == $categorie['id']) { ?>selected="selected" <?php }; ?>><?= $categorie['title'] ?></option>
+                    <option value="<?= $categorie['id'] ?>" <?php if ($service['categorie_id'] == $categorie['id']) { ?>selected="selected" <?php }; ?>><?= $categorie['title'] ?></option>
                 <?php } ?>
             </select>
         </div>
@@ -135,7 +142,6 @@ if (isset($_POST['saveService'])) {
                 <label for="delete_image">Supprimer l'image</label>
                 <input type="checkbox" name="delete_image" id="delete_image">
                 <input type="hidden" name="image" value="<?= $service['image']; ?>">
-
             </p>
         <?php } ?>
         <p>
@@ -147,7 +153,5 @@ if (isset($_POST['saveService'])) {
     </form>
 
 <?php } ?>
-
-
 
 <?php require_once __DIR__ . "/footer.php"; ?>
