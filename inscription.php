@@ -33,7 +33,7 @@ if (isset($_POST['deleteUser'])) {
 
 <!-- Formulaire d'inscription-->
 <?php
-require_once('templates\addUser_form.php');
+require_once('templates/addUser_form.php');
 ?>
 
 <h1>Supprimer un utilisateur</h1>
@@ -46,6 +46,6 @@ require_once('templates\addUser_form.php');
 require_once('admin/templates/footer.php');
 // FOOTER END
 //  IMPORT SCRIPTS 
-require_once __DIR__ . ('/lib/scripts.php');
+// require_once __DIR__ . ('/lib/scripts.php');
 ?>
 <script type="module" src="assets/JS/main.js"></script>
