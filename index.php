@@ -49,7 +49,7 @@ $services = getServices($pdo);
     </div>
 
     <!-- FOOTER START -->
-    <script src="assets/JS/script.js"></script>
+    <script src="assets/JS/script_scroll_window.js"></script>
     <?php
     require_once __DIR__ . ('/templates/footer.php');
     // FOOTER END
