@@ -36,5 +36,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php
     require_once __DIR__ . ('/templates/footer.php');
-    require_once __DIR__ . ('/lib/scripts.php');
     ?>

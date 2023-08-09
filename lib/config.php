@@ -1,4 +1,9 @@
 <?php
+// Configuration de la base de données
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'garage_parrot');
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
 // CHEMIN VERS IMAGES GALERIE
 define('_GALERY_IMG_PATH_', 'uploads/cars/galerie_images/');
 // CHEMIN VERS IMAGES ANNONCES VOITURES

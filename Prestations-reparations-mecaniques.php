@@ -51,7 +51,5 @@ require_once __DIR__ . ('/templates/footer.php');
     </a>
 </div>
 </footer>
-<?php
-//  IMPORT SCRIPTS 
-require_once __DIR__ . ('/lib/scripts.php');
-?>
+
+<!-- IMPORT SCRIPTS  -->

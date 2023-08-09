@@ -6,17 +6,17 @@ require_once('lib/reviews_tools.php');
 $messages = [];
 $errors = [];
 
-// Vérifier si le formulaire a été soumis
+// VERIFIER SI LE FORMULAIRE A ETE ENVOYE
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = $_POST["name"];
     $commentaire = $_POST["commentaire"];
     $note = intval($_POST["note"]);
 
-    // Vérifier que la note est valide (entre 1 et 5)
+    // VERIFIER VALIDITE DE LA NOTE (Entre 1 et 5)
     if ($note < 1 || $note > 5) {
         echo "La note doit être comprise entre 1 et 5.";
     } else {
-        // Appeler la fonction pour insérer l'avis dans la base de données
+        // APPELER LA FONCTION D'INSERTION D'UN AVIS
         $success = insertReview($pdo, $name, $commentaire, $note);
 
         if ($success) {
@@ -55,10 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </form>
     </div>
 
-
     <?php
     require_once('templates/footer.php');
     ?>
-</body>
-
-</html>

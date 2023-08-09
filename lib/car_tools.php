@@ -1,11 +1,12 @@
 <?php
-// RECUPERE LES ELEMENTS DE LA TABLE VEHICULES
-function getCarById(PDO $pdo, int $id)
+// FONCTION RECUPERATION DES VEHICULES EN FONTION DE LEUR ID
+function getCarById(PDO $pdo, int $id): array
 {
-    $query = $pdo->prepare("SELECT * FROM vehicules WHERE id = :id");
-    $query->bindParam(':id', $id, PDO::PARAM_INT);
+    $query = $pdo->prepare('SELECT * FROM vehicules WHERE id=:id');
+    $query->bindValue(":id", $id, PDO::PARAM_INT);
     $query->execute();
-    return $query->fetch();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    return $result;
 }
 
 // AFFICHE IMAGE BDD OU IMAGE PAR DEFAUT SI PAS D'IMAGE
@@ -117,4 +118,93 @@ function getSchedules($pdo)
         $heure_ouverture[$jour_semaine][] = $row;
     }
     return $heure_ouverture;
+}
+
+function getFilterCars(PDO $pdo, $marque, $carburant, $minPrice, $maxPrice, $minkilometrage, $maxkilometrage, $minAnnee, $maxAnnee)
+{
+    $sql = 'SELECT * FROM vehicules WHERE 1=1';
+
+    if ($marque) {
+        $sql .= ' AND marque = :marque';
+    }
+    if ($carburant) {
+        $sql .= ' AND carburant = :carburant';
+    }
+
+    if ($minPrice !== '' && $maxPrice !== '') {
+        $sql .= ' AND prix BETWEEN :minPrice AND :maxPrice';
+    }
+
+    if ($minkilometrage !== '' && $maxkilometrage !== '') {
+        $sql .= ' AND kilometrage BETWEEN :minkilometrage AND :maxkilometrage';
+    }
+
+    if ($minAnnee !== '' && $maxAnnee !== '') {
+        $sql .= ' AND annee_mise_en_circulation BETWEEN :minAnnee AND :maxAnnee';
+    }
+
+    $query = $pdo->prepare($sql);
+
+    if ($marque) {
+        $query->bindParam(':marque', $marque, PDO::PARAM_STR);
+    }
+
+    if ($carburant) {
+        $query->bindParam(':carburant', $carburant, PDO::PARAM_STR);
+    }
+
+    if ($minPrice !== '' && $maxPrice !== '') {
+        $query->bindParam(':minPrice', $minPrice, PDO::PARAM_INT);
+        $query->bindParam(':maxPrice', $maxPrice, PDO::PARAM_INT);
+    }
+
+    if ($minkilometrage !== '' && $maxkilometrage !== '') {
+        $query->bindParam(':minkilometrage', $minkilometrage, PDO::PARAM_INT);
+        $query->bindParam(':maxkilometrage', $maxkilometrage, PDO::PARAM_INT);
+    }
+
+    if ($minAnnee !== '' && $maxAnnee !== '') {
+        $query->bindParam(':minAnnee', $minAnnee, PDO::PARAM_INT);
+        $query->bindParam(':maxAnnee', $maxAnnee, PDO::PARAM_INT);
+    }
+
+    $query->execute();
+
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getImportCar(PDO $pdo, int $id = null, int $limit = null)
+{
+    $sql = 'SELECT *, COALESCE(image, :defaultImage) AS image FROM vehicules';
+
+    if ($id) {
+        $sql .= ' WHERE id = :id';
+    } else {
+        $sql .= ' ORDER BY id DESC';
+    }
+
+    if ($limit) {
+        $sql .= ' LIMIT :limit';
+    }
+
+    $query = $pdo->prepare($sql);
+
+    $defaultImage = './assets/images/default_car_image.jpg';
+    $query->bindParam(':defaultImage', $defaultImage, PDO::PARAM_STR);
+
+    if ($id) {
+        $query->bindParam(':id', $id, PDO::PARAM_INT);
+    }
+
+    if ($limit) {
+        $query->bindParam(':limit', $limit, PDO::PARAM_INT);
+    }
+
+    $query->execute();
+
+    if ($id) {
+        return $query->fetch(PDO::FETCH_ASSOC);
+    } else {
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -1,4 +1,5 @@
 <header>
+    <?php require_once __DIR__ . ('/modal_deconnexion.php'); ?>
     <nav class="navbar navbar-expand-md navbar-secondary fixed-top">
         <div class="container-fluid">
             <a class="Logo-link" href="index.php">
@@ -65,9 +66,8 @@
                         </li>
                 </ul>
             <?php } ?>
+
             </div>
         </div>
     </nav>
 </header>
-
-<?php require_once __DIR__ . ('/modal_deconnexion.php'); ?>

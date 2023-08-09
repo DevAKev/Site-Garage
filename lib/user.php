@@ -33,7 +33,7 @@ function addUser(PDO $pdo, string $firstName, string $lastName, string $email, s
     if ($existUser) {
         return false;
     }
-    $sql = 'INSERT INTO `users` (`id`, `password_hash`, `email`, `nom`, `prenom`, `role`) VALUES (NULL, :password_hash, :email, :nom, :prenom, :role)';
+    $sql = 'INSERT INTO users (password_hash, email, nom, prenom, role) VALUES (:password_hash, :email, :nom, :prenom, :role)';
     $query = $pdo->prepare($sql);
 
     $role = 'employe';
@@ -82,7 +82,7 @@ function login($email, $password, $pdo)
 
             $_SESSION['user']['id'] = $user['id'];
             $_SESSION['user']['role'] = $user['role'];
-            $_SESSION['user']['nom'] = $user['nom']; // Ajoutez le nom de l'utilisateur ici
+            $_SESSION['user']['nom'] = $user['nom'];
             $_SESSION['user']['prenom'] = $user['prenom'];
             return true;
         } else {
@@ -101,6 +101,7 @@ function getUserByEmail(PDO $pdo, string $email)
 
     return $query->fetch(PDO::FETCH_ASSOC);
 }
+
 // function getUserById(PDO $pdo, int $id)
 // {
 //     $query = $pdo->prepare("SELECT * FROM users WHERE id = :id");

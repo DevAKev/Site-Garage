@@ -74,15 +74,11 @@ require_once('templates/header.php');
 <!-- Map et informations de contact -->
 <div class="col-md-6">
     <h3>Adresse</h3>
-    <p>Garage Moderne</p>
+    <p>Garage V. Parrot</p>
     <p>123 rue des Garages</p>
     <p>75000 Paris</p>
     <h3>Téléphone</h3>
     <p>01 23 45 67 89</p>
-    <h3>Localisation</h3>
-    <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.3565519573323!2d2.285324215674438!3d48.87346110769383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e19c3b83969%3A0xb5fcb3d51f87d4d7!2s18%20Rue%20Gambetta%2C%2093000%20Levallois-Perret!5e0!3m2!1sfr!2sfr!4v1620846344306!5m2!1sfr!2sfr" allowfullscreen></iframe>
-    </div>
 </div>
 
 <!-- BUTTON BACK TO TOP -->
@@ -101,5 +97,4 @@ require_once('templates/header.php');
 require_once __DIR__ . ('/templates/footer.php');
 // FOOTER END
 //  IMPORT SCRIPTS 
-require_once __DIR__ . ('/lib/scripts.php');
 ?>

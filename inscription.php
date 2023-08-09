@@ -38,14 +38,10 @@ require_once('templates/addUser_form.php');
 
 <h1>Supprimer un utilisateur</h1>
 
-
-</header>
-
 <!-- FOOTER START -->
 <?php
 require_once('admin/templates/footer.php');
 // FOOTER END
-//  IMPORT SCRIPTS 
-// require_once __DIR__ . ('/lib/scripts.php');
 ?>
+<!-- IMPORT SCRIPTS  -->
 <script type="module" src="assets/JS/main.js"></script>

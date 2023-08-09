@@ -15,7 +15,7 @@ if ($vehicule) {
 ?>
 
     <!-- MAIN START -->
-    <!--Content cards service cars-->
+
     <!-- USED ​​VEHICLES EXAMPLES -->
     <div class="container my-5">
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
@@ -26,7 +26,7 @@ if ($vehicule) {
                 <div class="d-flex justify-content-around">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Marque</li>
-                        <li class="list-group-item">Modele</li>
+                        <li class="list-group-item">Modèle</li>
                         <li class="list-group-item">Kilométrage</li>
                         <li class="list-group-item">Année de mise en circulation</li>
                         <li class="list-group-item">Carburant</li>
@@ -56,9 +56,10 @@ if ($vehicule) {
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                     <a href="Contacter-le-garage-V-Parrot.php" class="btn btn-primary">Contactez-nous</a>
 
-                    <!-- Vérifier si une session est active et si l'utilisateur a le rôle d'administrateur ou d'employé -->
+                    <!-- VERIFIER SI UNE SESSION EST ACTIVE ET SI L'UTILISATEUR A LE ROLE D'ADMINISTRATEUR OU D'EMPLOYE -->
                     <?php if (isset($_SESSION['user']) && (($_SESSION['user']['role'] == 'administrateur') || ($_SESSION['user']['role'] == 'employe'))) {
-                        // Afficher le bouton "Modifier l'annonce" uniquement pour les administrateurs et les employés
+
+                        // AFFICHER LE BOUTON "MODIFIER L'ANNONCE" UNIQUEMENT POUR L'ADMINISTRATEURS ET LES EMPLOYES
                         echo '<a href="edit_car.php?id=' . $vehicule['id'] . '" class="btn btn-warning">Modifier l\'annonce</a>';
                     }
                     ?>
@@ -90,18 +91,19 @@ if ($vehicule) {
 
 <!-- FOOTER START -->
 <script>
-    // Initialiser la lightbox(Affichage des images en grand)
+    // INITIALISER LIGHTBOX (Affichage des images en grand)
     $(document).ready(function() {
         $('[data-fancybox="gallery"]').fancybox({
+            // OPTIONS BUTTON DE LA LIGHTBOX
             buttons: ['slideShow', 'fullScreen', 'thumbs', 'close'],
-            loop: true, // Activer la boucle infinie des images
-            arrows: true // Activer les flèches de navigation
+            loop: true, // ACTIVER LA LECTURE EN BOUCLE
+            arrows: true // ACTIVER LES FLECHES DE NAVIGATION
         });
     });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <?php
 require_once('templates/footer.php');
 // FOOTER END
 //  IMPORT SCRIPTS 
-require_once('lib/scripts.php');
 ?>
