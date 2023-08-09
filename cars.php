@@ -86,7 +86,7 @@ if ($marque || $carburant || ($minPrice !== '' && $maxPrice !== '') || ($minkilo
       <div id="annee-values"></div>
 
       <button type="submit" class="btn btn-warning m-2" name="reset" value="true">Réinitialiser</button>
-      <button type="submit" class="btn btn-primary m-2">Valider</button>
+      <button type="submit" class="btn btn-primary m-2">Filtrer</button>
     </form>
   </div>
 
