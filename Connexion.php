@@ -3,7 +3,7 @@ require_once("lib/session.php");
 require_once("lib/config.php");
 require_once("lib/pdo.php");
 require_once("templates/header.php");
-require_once("lib/user.php");
+require_once("lib/user_tools.php");
 require_once("lib/process_connexion.php");
 
 $errors = [];

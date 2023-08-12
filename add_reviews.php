@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <?php } ?>
         </form>
     </div>
-
+    <a href="index.php" class="btn btn-secondary">Retourner sur la page d'accueil</a>
     <?php
     require_once('templates/footer.php');
     ?>

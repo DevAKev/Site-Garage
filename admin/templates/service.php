@@ -147,11 +147,9 @@ if (isset($_POST['saveService'])) {
         <p>
             <input type="file" name="file" id="file">
         </p>
-
         <input type="submit" name="saveService" class="btn btn-primary" value="Enregistrer">
-
     </form>
-
+    <a href="services.php" class="btn btn-secondary">Retourner à la liste des services</a>
 <?php } ?>
 
 <?php require_once __DIR__ . "/footer.php"; ?>
