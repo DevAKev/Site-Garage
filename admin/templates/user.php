@@ -62,10 +62,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'email' => $_POST['email'],
     ];
 
-    if ($action === 'add' && !empty($_POST['add'])) {
+    if ($action === 'add') {
         if (empty($_POST['password'])) {
             $errors[] = "Le mot de passe est obligatoire pour créer un compte !";
         } elseif (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/", $_POST['password'])) {
+            // (?=.*[a-z]) : Au moins une lettre minuscule
+            // (?=.*[A-Z]) : Au moins une lettre majuscule
+            // (?=.*\d) : Au moins un chiffre
+            // [a-zA-Z\d]{8,} : Au moins 8 caractères        
             $errors[] = "Le mot de passe doit contenir au moins 8 caractères, une lettre minuscule, une lettre majuscule et un chiffre !";
         }
     }

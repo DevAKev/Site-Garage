@@ -42,8 +42,8 @@ function addUser(PDO $pdo, string $firstName, string $lastName, string $email, s
     $role = 'employe';
     $query->bindParam(':password_hash', $password_hash, PDO::PARAM_STR);
     $query->bindParam(':email', $email, PDO::PARAM_STR);
-    $query->bindParam(':nom', $firstName, PDO::PARAM_STR);
-    $query->bindParam(':prenom', $lastName, PDO::PARAM_STR);
+    $query->bindParam(':nom', $lastName, PDO::PARAM_STR);
+    $query->bindParam(':prenom', $firstName, PDO::PARAM_STR);
     $query->bindParam(':role', $role, PDO::PARAM_STR);
 
     return $query->execute();
