@@ -91,7 +91,6 @@ if ($marque || $carburant || ($minPrice !== '' && $maxPrice !== '') || ($minkilo
   </div>
 
   <!-- AFFICHAGE DES VEHICULES -->
-  <h1>Liste des véhicules</h1>
   <?php
   include_once('templates/card_filter_cars.php');
   ?>

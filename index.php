@@ -9,7 +9,7 @@ require_once('lib/car_tools.php');
 
 // CONSTANTE NOMBRE DE VEHICULES A AFFICHER SUR LA PAGE D'ACCUEIL(PARAMETRE DANS LE FICHIER CONFIG.PHP)
 $cars = getCars($pdo, _HOME_CARS_LIMIT_);
-$avis = getReviewsForIndex($pdo, _HOME_REVIEWS_LIMIT_);
+$reviews = getPublishImportReviews($pdo, _HOME_REVIEWS_LIMIT_);
 $services = getServices($pdo);
 ?>
 

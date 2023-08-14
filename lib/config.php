@@ -1,5 +1,5 @@
 <?php
-// Configuration de la base de données
+// CONFIGURATION DE LA BASE DE DONNEES
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'garage_parrot');
 define('DB_USER', 'root');
@@ -13,6 +13,6 @@ define('_ASSETS_IMG_PATH_', 'assets/images/');
 // LIMITE D'ANNONCES SUR LA PAGE D'ACCUEIL
 define('_HOME_CARS_LIMIT_', 4);
 // LIMITE D'ANNONCES SUR LA PAGE D'ACCUEIL
-define('_HOME_REVIEWS_LIMIT_', 3);
-
-define("_ADMIN_ITEM_PER_PAGE_", 10);
+define('_HOME_REVIEWS_LIMIT_', 6);
+// LIMITE PAGE ADMIN
+define('_ADMIN_ITEM_PER_PAGE_', 10);

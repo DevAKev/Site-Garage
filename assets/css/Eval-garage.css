@@ -295,6 +295,13 @@ a {
     padding-top: 60px;
 }
 
+#gas-station {
+    background: url(../images/gas-station.jpg) no-repeat fixed 50% 50%;
+    background-size: cover;
+    height: 1000px;
+    padding-top: 60px;
+}
+
 h1 {
     font-family: 'Kanit', sans-serif;
     text-align: center;

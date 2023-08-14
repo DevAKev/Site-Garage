@@ -134,7 +134,7 @@ if (isset($_POST['saveCar'])) {
 ?>
 <br>
 <h2><a href="cars.php">Voir les annonces</a></h2>
-<h1>Ajouter une annonce</h1>
+<h1 class="display-5 fw-bold text-body-emphasis">Ajouter une annonce</h1>
 
 <?php foreach ($messages as $message) { ?>
     <div class="alert alert-success"><?= $message ?>
