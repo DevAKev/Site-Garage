@@ -1,9 +1,8 @@
 <div class="container-fluid">
     <div class="row align-items-center g-5 py-5">
         <div class="col-12 col-sm-8 col-lg-6">
-            <img id="satisfaction" src="/assets/images/satisfaction-guarantee.png" class="d-block mx-lg-auto img-fluid" alt="Satisfaction" loading="lazy">
         </div>
-        <h1 class="display-5 fw-bold lh-1 mb-3"><span>Garagiste</span> près de Toulouse pour la réparation, l'entretien et l'achat
+        <h1 class="display fw-bold text-body-emphasis"><span>Garagiste</span> près de Toulouse pour la réparation, l'entretien et l'achat
             de véhicules</h1>
         <div class="text">
             <div class="headline p-2">Votre <strong>Garage V. Parrot,</strong>
@@ -36,7 +35,9 @@
                 n'hésitez pas à prendre contact avec nous !
             </div>
         </div>
+        <div>
+            <img id="satisfaction" src="/assets/images/satisfaction-guarantee.png" width="250px" class="d-block mx-lg-auto img-fluid" alt="Satisfaction" loading="lazy">
+        </div>
     </div>
-
     <div id="gas-station" class="container">
     </div>
