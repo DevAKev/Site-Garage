@@ -6,47 +6,43 @@ adminOnly();
 require_once __DIR__ . "/header.php";
 require_once __DIR__ . "/../../lib/reviews_tools.php";
 
-$successMessage = "";
-$errorMessage = "";
+$review = false;
+$errors = [];
+$messages = [];
 
 if (isset($_GET['id'])) {
     $reviewId = intval($_GET['id']);
 
-    // Récupérer les informations de l'avis avant de le supprimer
     $review = getReviewById($pdo, $reviewId);
 
     if ($review) {
         $deleted = deleteReview($reviewId);
 
         if ($deleted) {
-            // Suppression réussie, afficher un message de succès
-            $successMessage = "L'avis a été supprimé avec succès.";
+            // SUPPRESSION REUSSIE
+            $messages[] = "L'avis a été supprimé avec succès.";
         } else {
-            // Erreur lors de la suppression, afficher un message d'erreur
-            $errorMessage = "Une erreur s'est produite lors de la suppression de l'avis.";
+            // ERREUR LORS DE LA SUPPRESSION
+            $errors[] = "Une erreur s'est produite lors de la suppression de l'avis.";
         }
     } else {
-        // L'avis n'existe pas, afficher un message d'erreur
-        $errorMessage = "Cet avis n'existe pas.";
+        // L'AVIS N'EXISTE PAS
+        $errors[] = "Cet avis n'existe pas.";
     }
-} else {
-    // Rediriger vers la page de modération si l'id n'est pas spécifié
-    $errorMessage = "Aucun avis spécifié pour la suppression.";
 }
 ?>
 <h1>Suppression d'un avis</h1>
 
-<?php if (!empty($successMessage)) : ?>
-    <div class="alert alert-success">
-        <?= $successMessage; ?>
+<?php foreach ($messages as $message) { ?>
+    <div class="alert alert-success" role="alert">
+        <?= $message; ?>
     </div>
-<?php endif; ?>
-
-<?php if (!empty($errorMessage)) : ?>
-    <div class="alert alert-danger">
-        <?= $errorMessage; ?>
+<?php } ?>
+<?php foreach ($errors as $error) { ?>
+    <div class="alert alert-danger" role="alert">
+        <?= $error; ?>
     </div>
-<?php endif; ?>
+<?php } ?>
 <a href="reviews.php" class="btn btn-secondary">Retourner à la liste des avis</a>
 <?php
 require_once __DIR__ . ("/footer.php");

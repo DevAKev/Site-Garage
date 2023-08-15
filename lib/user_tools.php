@@ -1,23 +1,4 @@
 <?php
-// CODE INSERTION ADMINISTRATEUR BDD
-// if (isset($_POST["submit"])) {
-//     // Récupérer les données du formulaire
-//     $email = $_POST["email"];
-//     $motDePasse = $_POST["password"];
-
-// HACHAGE DU MOT DE PASSE
-//     $motDePasseHache = password_hash($motDePasse, PASSWORD_BCRYPT);
-//     var_dump($motDePasseHache);
-// INSERTION DANS LA BDD     
-//     $query = $pdo->prepare("INSERT INTO users (password_hash, email, nom, prenom, role) VALUES (:password_hash, :email, :nom, :prenom, :role)");
-//     $query->execute(array(
-//         "password_hash" => $motDePasseHache,
-//         "email" => $email,
-//         "nom" => "Parrot",
-//         "prenom" => "Vincent",
-//         "role" => "administrateur"
-//     ));
-// }
 
 // FONCTION D'INSERTION D'UN UTILISATEUR
 function addUser(PDO $pdo, string $firstName, string $lastName, string $email, string $password)

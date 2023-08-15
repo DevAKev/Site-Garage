@@ -1,7 +1,6 @@
 <?php
-require_once('pdo.php');
 
-// RECUPERER TOUS LES AVIS
+// RECUPERER LES AVIS EN AFFICHANT LES DERNIERS EN PREMIER
 function getReviews(PDO $pdo, int $limit = null)
 {
     $sql = 'SELECT * FROM customer_reviews ORDER BY id DESC';
@@ -93,7 +92,7 @@ function getReviewById(PDO $pdo, int $id)
     return $query->fetch(PDO::FETCH_ASSOC);
 }
 
-// RECUPERER TOUS LES AVIS
+// RECUPERER LE NOMBRE D'AVIS
 function getTotalReviews(PDO $pdo): int
 {
     $sql = "SELECT COUNT(*) as total FROM customer_reviews";

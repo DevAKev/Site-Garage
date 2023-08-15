@@ -1,10 +1,66 @@
 <?php
 require_once('templates/header.php');
+require_once('lib/pdo.php');
+require_once('lib/contact_tools.php');
+
+$messages = [];
+$errors = [];
+
+// VERIFIER SI LE FORMULAIRE A ETE ENVOYE
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
+    $phone_number = $_POST['phone_number'];
+    $message_text = $_POST['message'];
+    $date = date('Y-m-d H:i:s'); // Date actuelle
+    $status = 'non lu'; // Statut initial
+    $objet = $_POST['subject'];
+
+    // VERIFIER VALIDITE DU NOM
+    if (empty($_POST['nom'])) {
+        $errors[] = "Le nom est obligatoire !";
+    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $_POST['nom'])) {
+        $errors[] = "Seules les lettres et les espaces sont autorisés !";
+    } else {
+        // VERIFIER VALIDITE DU PRENOM
+        if (empty($_POST['prenom'])) {
+            $errors[] = "Le prénom est obligatoire !";
+        } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $_POST['prenom'])) {
+            $errors[] = "Seules les lettres et les espaces sont autorisés !";
+        } else {
+            // VERIFIER VALIDITE DE L'EMAIL
+            if (empty($_POST['email'])) {
+                $errors[] = "L'email est obligatoire !";
+            } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                $errors[] = "L'adresse email n'est pas valide !";
+            } else {
+                // VERIFIER VALIDITE DU NUMERO DE TELEPHONE
+                if (empty($_POST['phone_number'])) {
+                    $errors[] = "Le numéro de téléphone est obligatoire !";
+                } elseif (!preg_match("/^[0-9]*$/", $_POST['phone_number'])) {
+                    $errors[] = "Seuls les chiffres sont autorisés !";
+                } else {
+                    // VERIFIER VALIDITE DU MESSAGE
+                    if (empty($_POST['message'])) {
+                        $errors[] = "Le message est obligatoire !";
+                    } else {
+                        // APPELER LA FONCTION D'INSERTION D'UN MESSAGE
+                        $success = insertMessage($pdo, $nom, $prenom, $email, $phone_number, $message_text, $date, $status, $objet);
+                        if ($success) {
+                            $messages[] = "Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.";
+                        } else {
+                            $errors[] = "Une erreur s'est produite lors de l'envoi du message. Veuillez réessayer.";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 ?>
 
-<!--Contenu de la page-->
-
-<!-- Fil d'ariane -->
+<!-- FIL D'ARIANE -->
 <nav aria-label="breadcrumb" class="mt-5 pt-5">
     <div class="container">
         <ol class="breadcrumb">
@@ -14,72 +70,26 @@ require_once('templates/header.php');
     </div>
 </nav>
 
-<!-- Formulaire de contact -->
+<!-- FORMULAIRE DE CONTACT -->
 <section class="container py-5">
     <h2 class="text-center mb-5">Fiche de contact</h2>
+    <?php foreach ($messages as $message) { ?>
+        <div class="alert alert-success"><?= $message ?>
+        </div>
+    <?php } ?>
+
+    <?php foreach ($errors as $error) { ?>
+        <div class="alert alert-danger"><?= $error ?>
+        </div>
+    <?php } ?>
     <div class="row">
         <div class="col-md-8 mx-auto">
-            <form id="contact-form" method="post" action="contact-form-handler.php">
-                <div class="messages"></div>
-                <div class="controls">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="form_name">Nom *</label>
-                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Entrez votre nom" required="required" data-error="Votre nom est requis.">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="form_name">Prénom </label>
-                                <input id="form_prename" type="text" name="name" class="form-control" placeholder="Entrez votre prénom">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="form_number">Numéro *</label>
-                            <input id="form_number" type="number" name="number" class="form-control" placeholder="Entrez votre numéro" required="required" data-error="Veuillez entrer un numéro de téléphone valide.">
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="form_email">Email *</label>
-                        <input id="form_email" type="email" name="email" class="form-control" placeholder="Entrez votre email" required="required" data-error="Veuillez entrer une adresse email valide.">
-                        <div class="help-block with-errors"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="form_message">Message *</label>
-                            <textarea id="form_message" name="message" class="form-control" placeholder="Entrez votre message" rows="4" required="required" data-error="Veuillez entrer un message.">
-                            </textarea>
-                            <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Envoyer
-                        </button>
-                    </div>
-                </div>
-            </form>
+            <?php require_once 'templates/contact_form.php'; ?>
         </div>
     </div>
 </section>
-<!-- Map et informations de contact -->
-<div class="col-md-6">
-    <h3>Adresse</h3>
-    <p>Garage V. Parrot</p>
-    <p>123 rue des Garages</p>
-    <p>75000 Paris</p>
-    <h3>Téléphone</h3>
-    <p>01 23 45 67 89</p>
-</div>
+
+<a href="cars.php" class="btn btn-secondary">Retourner à la liste des véhicules</a>
 
 <!-- BUTTON BACK TO TOP -->
 <div class="back-to-top">
@@ -96,5 +106,4 @@ require_once('templates/header.php');
 <?php
 require_once __DIR__ . ('/templates/footer.php');
 // FOOTER END
-//  IMPORT SCRIPTS 
 ?>

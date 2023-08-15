@@ -39,6 +39,9 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
 
+    <!-- FONTAWESOME -->
+    <script src="https://kit.fontawesome.com/88773cb8bb.js" crossorigin="anonymous"></script>
+
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

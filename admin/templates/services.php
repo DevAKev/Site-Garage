@@ -13,13 +13,9 @@ if (isset($_GET['page'])) {
     $page = 1;
 }
 $services = getServices($pdo, _ADMIN_ITEM_PER_PAGE_, $page);
-
 $totalServices = getTotalService($pdo);
-
 $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
-
 ?>
-
 
 <h1 class="display-5 fw-bold text-body-emphasis">Gérer les services</h1>
 <div class="d-flex gap-2 justify-content-left py-5">
@@ -27,6 +23,7 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
         Ajouter un service
     </a>
 </div>
+
 <table class="table">
     <thead>
         <tr>
@@ -36,6 +33,7 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
         </tr>
     </thead>
     <tbody>
+
         <?php foreach ($services as $service) { ?>
             <tr>
                 <th scope="row"><?= $service["id"]; ?></th>
@@ -46,6 +44,8 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
         <?php } ?>
     </tbody>
 </table>
+
+<!-- PAGINATION EN CAS DE NOMBRE DE PAGES SUPERIEUR A 1 -->
 <nav aria-label="Page navigation example">
     <ul class="pagination">
         <?php if ($totalPages > 1) { ?>

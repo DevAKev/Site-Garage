@@ -1,6 +1,5 @@
 <!-- MAIN END -->
 </main>
-</div>
 
 <!-- FOOTER START -->
 <footer class="py-3 my-4">

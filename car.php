@@ -54,7 +54,7 @@ if ($vehicule) {
                 <br>
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                    <a href="Contacter-le-garage-V-Parrot.php" class="btn btn-primary">Contactez-nous</a>
+                    <a href="Contacter-le-garage-V-Parrot.php?vehicule_id=<?php echo $vehicule['id']; ?>&marque=<?php echo $vehicule['marque']; ?>&modele=<?php echo $vehicule['modele']; ?>&prix=<?php echo $vehicule['prix']; ?>&objet=Demande%20d'information%20pour%20<?php echo $vehicule['marque']; ?>%20<?php echo $vehicule['modele']; ?>%20(ID:<?php echo $vehicule['id']; ?>)" class="btn btn-primary">Contactez-nous</a>
 
                     <!-- VERIFIER SI UNE SESSION EST ACTIVE ET SI L'UTILISATEUR A LE ROLE D'ADMINISTRATEUR OU D'EMPLOYE -->
                     <?php if (isset($_SESSION['user']) && (($_SESSION['user']['role'] == 'administrateur') || ($_SESSION['user']['role'] == 'employe'))) {
