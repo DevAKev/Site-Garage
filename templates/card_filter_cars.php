@@ -1,7 +1,7 @@
 <div class="col-8 p-3">
     <div class="row justify-content-around">
         <?php foreach ($CarSliders as $key => $CarSlider) { ?>
-            <div class="card mb-2" style="width: 16rem">
+            <div class="card mb-2" style="width: 16rem" id="filterCards">
                 <div class="card-header bg-transparent d-flex justify-content-between">
                     <h6 class="card-title"><?= $CarSlider['marque']; ?></h6>
                     <h6><?= $CarSlider['modele']; ?></h6>
