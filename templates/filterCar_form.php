@@ -16,19 +16,22 @@
     <input type="hidden" id="minPrice" name="minPrice" value="<?= $minPrice ?>">
     <input type="hidden" id="maxPrice" name="maxPrice" value="<?= $maxPrice ?>">
     <div id="price-values"></div>
-
+    <hr class="divider">
+    <br>
     <label for="kilometrage">Kilométrage :</label>
     <div id="kilometrage-slider" class="mb-3"></div>
     <input type="hidden" id="minkilometrage" name="minkilometrage" value="<?= $minkilometrage ?>">
     <input type="hidden" id="maxkilometrage" name="maxkilometrage" value="<?= $maxkilometrage ?>">
     <div id="kilometrage-values"></div>
-
+    <hr class="divider">
+    <br>
     <label for="annee">Années :</label>
     <div id="annee-slider" class="mb-3"></div>
     <input type="hidden" id="minAnnee" name="minAnnee" value="<?= $minAnnee ?>">
     <input type="hidden" id="maxAnnee" name="maxAnnee" value="<?= $maxAnnee ?>">
     <div id="annee-values"></div>
-
+    <hr class="divider">
+    <br>
     <button type="submit" class="btn btn-warning m-2" name="reset" value="true">Réinitialiser</button>
     <button type="submit" class="btn btn-primary m-2">Filtrer</button>
 </form>

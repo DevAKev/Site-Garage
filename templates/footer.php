@@ -13,7 +13,7 @@
             ?>
         </div>
         <div class="col-md-4">
-            <h3>Contact</h3>
+            <h3><a href="Contacter-le-garage-V-Parrot.php">Contact</a></h3>
             <ul class="list-unstyled">
                 <li>Adresse : 123 rue du garage, 75000 Paris</li>
                 <li>Téléphone : 01 23 45 67 89</li>

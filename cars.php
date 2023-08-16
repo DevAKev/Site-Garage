@@ -52,8 +52,8 @@ if ($marque || $carburant || ($minPrice !== '' && $maxPrice !== '') || ($minkilo
 
 <!-- MAIN START -->
 <!-- FILTRES DES VEHICULES -->
-<div class="row justify-content-center">
-  <div class="col-12 col-md-8 p-4">
+<div class="row justify-content-center" id="containerFilter">
+  <div class="col-12 col-md-8 p-4" id="filterCars">
     <?php
     include_once('templates/filterCar_form.php');
     ?>

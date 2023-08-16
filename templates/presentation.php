@@ -33,10 +33,10 @@
                 <br>
                 Si vous avez besoin d'un renseignement complémentaire ou bien d'une prise de rendez-vous,
                 n'hésitez pas à prendre contact avec nous !
+                <div>
+                    <img id="satisfaction" src="/assets/images/satisfaction-guarantee.png" width="250px" class="d-block mx-lg-auto img-fluid" alt="Satisfaction" loading="lazy">
+                </div>
             </div>
-        </div>
-        <div>
-            <img id="satisfaction" src="/assets/images/satisfaction-guarantee.png" width="250px" class="d-block mx-lg-auto img-fluid" alt="Satisfaction" loading="lazy">
         </div>
     </div>
     <div id="gas-station" class="container">

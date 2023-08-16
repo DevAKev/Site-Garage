@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
+/* Style de la page */
 *{ 
     margin: 0;
     padding: 0;
@@ -28,6 +29,7 @@ html::-webkit-scrollbar-thumb {
     border-radius: 5rem;
 }
 
+/* Style des titres, section, body et liens */
 section {
     padding: 50px 100px;
 }
@@ -41,24 +43,30 @@ header {
     background: #eeeff1;
     padding: 15px 50px;
 }
-
 body {
     font-family: 'Kanit', sans-serif;
     padding: 0;
     margin: 0;
     overflow-x: hidden;
 }
-
 a {
     text-decoration: none;
     color: black
+}
+
+h1 {
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+    color: var(--text-color);
+    font-size: 3em;
+    margin-top: 40px;
+    text-shadow: 1px 3px 2px black;
 }
 
 /*Style carousel bandeau de défilement*/
 #header-carousel {
     background-color: #021121;
 }
-
 #header-carousel p {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1rem;
@@ -67,7 +75,6 @@ a {
     text-transform: uppercase;
     animation: slide-up 5s ease-in-out infinite;
 }
-
 @keyframes slide-up {
     0% {
     transform: translateX(100%);
@@ -87,7 +94,6 @@ a {
 #Logo-nav {
     border-radius: 10px;
 }
-
 .navbar {
     display: flex;
     opacity: 0.9;
@@ -101,7 +107,6 @@ a {
     margin: 0px 50px; /* marge entre les éléments */
     
 }
-
 .navbar-nav li a {
     font-size: 1rem;
     color: #084196; 
@@ -112,8 +117,7 @@ a {
     color: #056782; 
 }
 
-/*PAGE ACCUEIL-MEMBRE*/
-
+/*--------PAGE ACCUEIL-MEMBRE---------*/
 /* Style de la barre de navigation membre */
 .notification {
     background-color: red;
@@ -122,37 +126,6 @@ a {
     padding: 2px 5px;
     border-radius: 50%;
     margin-left: 5px;
-}
-
-#navbarMembre {
-    background-color: #333;
-    color: #FFFAE1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100px;
-}
-
-#listNavMembre {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    list-style: none;
-    margin: 0 10px;
-}
-
-#listNavMembre li {
-    margin: 0 10px;
-}
-
-#listNavMembre a {
-    color: #FFFAE1;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-#listNavMembre a:hover {
-    color: #056782;
 }
 
 /*button deconnexion*/
@@ -269,7 +242,7 @@ a {
     transform: none;
 }
 
-/*IMAGE*/
+/*IMAGES & lOGOS*/
 #accueil-image {
     background: url(../images/hypercar3.jpg) no-repeat fixed 50% 50%;
     background-size: cover;
@@ -298,15 +271,6 @@ a {
     padding-top: 60px;
 }
 
-h1 {
-    font-family: 'Kanit', sans-serif;
-    text-align: center;
-    color: var(--text-color);
-    font-size: 3em;
-    margin-top: 40px;
-    text-shadow: 1px 3px 2px black;
-}
-
 /*Breadcrumb*/
 .breadcrumb {
     background-color: #f5f5f5; /* Couleur bandeau breadcrumb */
@@ -315,7 +279,35 @@ h1 {
     margin-bottom: 20px; /*Marge sous le breadcrumb*/
 }
 
-/* styles pour le formulaire */
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "->";
+    padding: 0 5px;
+    color: #000408;
+}
+
+/*------PAGE CARS----------*/
+/* style container véhicule */
+#containerFilter {
+    background-color: #f5f5f59a;
+    padding: 8px 15px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.75);
+    border-radius: 10px;
+}
+
+/* style filtre véhicule */
+#filterCars {
+    background-color: #837d70;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.75);
+    border-radius: 10px;
+}
+
+/* styles formulaire de contact */
 form label {
     font-weight: bold;
 }
@@ -356,14 +348,6 @@ form input[type="submit"] {
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
-  /* styles pour la carte */
-
-#map {
-    height: 400px;
-    width: 100%;
-    margin-bottom: 1rem;
-}
-
 /*------STYLE DES BUTTONS------*/
 
 /*Bouton Connexion */
@@ -378,15 +362,31 @@ form input[type="submit"] {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    color: #fff;
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 5px;
 }
 
 /*media queries*/
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
     .card {
         max-width: 100%;
     }
+} */
+
+@media screen and (min-width: 520px) {
+    /* .card-container {
+        flex-direction: column;
+    }
+    .card {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .card:nth-child(2) {
+        margin-right: 0;
+    }
+    .card:nth-child(3) {
+        margin-right: 0;
+    } */
 }
+

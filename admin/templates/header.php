@@ -7,6 +7,7 @@ require_once __DIR__ . ('/../../lib/contact_tools.php');
 
 // RECUPERER LE NOM DE LA PAGE ACTUELLE
 $currentpage = basename($_SERVER['SCRIPT_NAME']);
+// RECUPERER LE NOMBRE DE MESSAGES NON LUS
 $unreadCount = getUnreadMessageCount($pdo);
 
 ?>
@@ -31,6 +32,7 @@ $unreadCount = getUnreadMessageCount($pdo);
                         Accueil
                     </a>
                 </li>
+                <br>
                 <li>
                     <a href="/admin/templates/services.php" class="nav-link text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-wrench-adjustable me-4" viewBox="0 0 16 16">
