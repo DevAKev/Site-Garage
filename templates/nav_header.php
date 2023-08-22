@@ -1,6 +1,6 @@
-<header>
-    <?php require_once __DIR__ . ('/modal_deconnexion.php'); ?>
-    <nav class="navbar navbar-expand-md navbar-secondary fixed-top">
+<?php require_once __DIR__ . ('/modal_deconnexion.php'); ?>
+<header class="sticky-header">
+    <nav class="navbar navbar-expand-md navbar-secondary">
         <div class="container-fluid">
             <a class="Logo-link" href="index.php">
                 <img id="Logo-nav" title="Site du garage V.Parrot" src="assets/images/Logo Garage V.PARROT-3.png" alt="Logo Garage" height="100px" width="180px" class="d-inline-block align-text-center p-6 ">
@@ -14,7 +14,7 @@
                 </span>
             </button>
             <div class="collapse navbar-collapse bg-secondary rounded-3 p-2" id="navbarNav">
-                <ul class="navbar-nav ml-auto nav nav-pills">
+                <ul class="navbar-nav nav nav-pills">
                     <?php foreach ($mainMenu as $key => $menuItem) {
                         if (!array_key_exists("exclude", $menuItem)) { ?>
                             <li class="nav-item">

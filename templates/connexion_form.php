@@ -1,8 +1,6 @@
-<h1> CONNEXION </h1>
 </div>
 <section id="formulaire">
-    <div class="container d-flex flex-column min-vh-100 justify-content-center align-items-center">
-        <h2 class="p-4 mt-4"> Formulaire de connexion </h2>
+    <div class="container d-flex gap-2 flex-column min-vh-100 justify-content-center align-items-center">
         <?php foreach ($messages as $message) { ?>
             <div class="alert alert-success" role="alert">
                 <?= $message; ?>
@@ -14,6 +12,7 @@
             </div>
         <?php } ?>
         <form action="" method="post" enctype="multipart/form-data" class="row" id="formConnect">
+            <h1> CONNEXION </h1>
             <div class="col-md-6">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" name="email" id="email">
@@ -29,7 +28,7 @@
                 </div>
             </div>
             <div class="d-grid gap-2 d-md-block">
-                <button class="btn btn-primary p-2 mt-4 mb-2" type="submit" value="connexion" name="loginUser">Se connecter</button>
+                <button class="btn btn-primary mt-4 mb-2" type="submit" value="connexion" name="loginUser">Se connecter</button>
             </div>
         </form>
     </div>

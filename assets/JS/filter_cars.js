@@ -6,8 +6,8 @@ $(document).ready(function () {
   sliderPrice.slider({
     range: true, // ACTIVER LA SELECTION D'UNE PLAGE DE VALEURS
     min: 0, // VAL MIN
-    max: 1000000, // VAL MAX
-    values: [0, 1000000],
+    max: 500000, // VAL MAX
+    values: [0, 500000],
     step: 1000, // PAS D'INCREMENTATION DU SLIDER
     create: function () {
       // AFFICHAGE DES VAL INITIALES DU RANGE DANS LA DIV

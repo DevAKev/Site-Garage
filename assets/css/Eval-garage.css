@@ -1,53 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
-/* Style de la page */
+/* Réinitialisation des marges, des paddings et de la border-box */
 *{ 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-padding-top: 2rem;
-    scroll-behavior: smooth;
+    margin: 0; /* suppression des marges */
+    padding: 0; /* suppression des paddings */
+    box-sizing: border-box; /* calcul des dimensions avec les paddings et les bordures */
+    scroll-padding-top: 2rem; 
+    scroll-behavior: smooth; /* effet de défilement fluide */
 }
 
 /*raccourcis color*/
 :root {
     --main-color: #fe5b3d;
     --second-color: #ffac38;
-    --text-color: #444;
+    --text-color: #252525ff;
     --gradient: linear-gradient(#fe5b3d, #ffac38);
 }
 
 /* STYLE scroll bar */
 html::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 0.5rem; /* largeur de la scrollbar */
 }
 html::-webkit-scrollbar-track {
-    background: turquoise;
+    background: turquoise; /* couleur de fond de la scrollbar */
 }
 html::-webkit-scrollbar-thumb {
     background: var(--main-color);
     border-radius: 5rem;
 }
 
-/* Style des titres, section, body et liens */
+/* Style containers, titres, section, body et liens */
+.container {
+    max-width: 100%; /* largeur maximale du container */
+    margin: 0 auto; /* centrage horizontal du container */
+    padding: 0px; 
+}
 section {
-    padding: 50px 100px;
+    padding: 10px 0px; /* marge interne haut et bas des sections */
 }
 header {
-    width: 100%;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-    align-items: center;
-    justify-content: space-between;
-    background: #eeeff1;
-    padding: 15px 50px;
+    width: 100%; /* largeur du header */
+    top: 0; /* positionnement en haut */
+    right: 0; /* positionnement à droite */
+    z-index: 1000; 
+    align-items: center; /* alignement vertical */
+    justify-content: space-between; /* espacement entre les éléments */
+    /* padding: 15px 50px;  */
 }
 body {
     font-family: 'Kanit', sans-serif;
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
+    padding: 0; /* suppression des paddings */
+    margin: 0; /* suppression des marges */
+    overflow-x: hidden; /* suppression du scroll horizontal */
+    color: var(--text-color);
 }
 a {
     text-decoration: none;
@@ -57,7 +62,6 @@ h1 {
     font-family: 'Kanit', sans-serif;
     text-align: center;
     color: var(--text-color);
-    font-size: 3em;
     margin-top: 40px;
     text-shadow: 1px 3px 2px black;
 }
@@ -68,7 +72,7 @@ h1 {
 }
 #header-carousel p {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: bold;
     padding: 0.5rem;
     text-transform: uppercase;
@@ -89,22 +93,32 @@ h1 {
     }
 }
 
+/* PAGE D'ACCUEIL */
 /* Style de la barre de navigation */
 #Logo-nav {
     border-radius: 10px;
 }
 .navbar {
+    margin-top: 0px;
     display: flex;
+    flex-direction: column;
     opacity: 0.9;
-    height: 20%;
     width: 100%;
-    border-bottom: none
+    border-bottom: none;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 /* Style des liens de la barre de navigation */
 .navbar-nav li {
-    margin: 0px 50px; /* marge entre les éléments */
-    
+    margin: 0px 10px; /* marge entre les éléments */
 }
 .navbar-nav li a {
     font-size: 1rem;
@@ -114,6 +128,15 @@ h1 {
 }
 .navbar-nav li a:hover {
     color: #056782; 
+}
+
+#presentation {
+    background-color: #f5f5f59a;
+    margin: 20px;
+    padding: 8px 15px;
+    margin-top: 50px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.75);
+    border-radius: 10px;
 }
 
 /*--------PAGE ACCUEIL-MEMBRE---------*/
@@ -133,23 +156,16 @@ h1 {
     padding: 20px;
     box-shadow: 0 0 5px rgba(0,0,0,0.75);
 }
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
 .container h1 {
     color: blue;
     font-family: 'Kanit', sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
     margin: 20px 0;
 }
 
 /* Style button navbar */
 .navbar-toggler {
-    border: none; /* suppression de la bordure */
-    outline: none; /* suppression du contour */
     padding: 10px; /* marge interne */
     background-color: #000408; /* couleur de fond */
 }
@@ -168,15 +184,15 @@ h1 {
     text-shadow: 1px 2px 2px red;
     display: inline-block;
     position: fixed;
-    bottom: 100px;
-    right: 10px;
+    bottom: 50px;
+    left: auto;
+    right: auto;
     background-color: #FFFAE1;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 600;
     border: solid 1px #000408;
     padding: 10px 20px;
     border-radius: 10px;
-    z-index: 1000;
 }
 
 /*Contenu CARDS*/
@@ -184,7 +200,12 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 10px;
 }
+
 .card {
     width: 300px;
     margin-right: 20px;
@@ -224,14 +245,14 @@ h1 {
 #accueil-image {
     background: url(../images/hypercar3.jpg) no-repeat fixed 50% 50%;
     background-size: cover;
-    height: 800px;
+    height: 1000px;
     padding-top: 60px;
 }
+
 #background-image {
     background: url(../images/hypercar5.jpg) no-repeat fixed 50% 50%;
     background-size: cover;
     height: 1000px;
-    padding-top: 60px;
 }
 #img-inscription {
     background: url(../images/hypercar5.jpg) no-repeat fixed 50% 50%;
@@ -242,7 +263,6 @@ h1 {
 #gas-station {
     background: url(../images/gas-station.jpg) no-repeat fixed 50% 50%;
     background-size: cover;
-    height: 1000px;
     padding-top: 60px;
 }
 
@@ -250,8 +270,8 @@ h1 {
 .breadcrumb {
     background-color: #f5f5f5; /* Couleur bandeau breadcrumb */
     padding: 8px 15px; /* Dimension breadcrumb*/
-    margin-top: 50px; /* Marge au-dessus du breadcrumb */
-    margin-bottom: 20px; /*Marge sous le breadcrumb*/
+    margin-top: 20px; /* Marge au-dessus du breadcrumb */
+    margin-bottom: 10px; /*Marge sous le breadcrumb*/
 }
 .breadcrumb-item + .breadcrumb-item::before {
     content: "->";
@@ -343,7 +363,6 @@ form input[type="submit"] {
     align-items: center;
 }
 #formConnect {
-    margin-top: 10px;
     margin-bottom: 100px;
     margin-left: 100px;
     margin-right: 100px;
@@ -371,20 +390,98 @@ form input[type="submit"] {
     float: right;
 }
 /*Bouton retour vers haut*/
-.back-to-top {
-    display: inline-block;
+.back-to-top-container {
     position: fixed;
     bottom: 20px;
-    right: 20px;
-    text-decoration: none;
+    right: 40px;
+    z-index: 1000;
+    display: none;
+}
+.back-to-top {
+    color: white;
     padding: 10px 20px;
     border-radius: 5px;
 }
 
+/* Montre le bouton lorsque la page est défilée */
+body.scrolling .back-to-top-container {
+    display: block;
+}
+
+#phone-number {
+    z-index: 1000;
+    text-shadow: 1px 2px 2px red;
+    display: inline-block;
+    position: fixed;
+    bottom: 50px;
+    left: auto;
+    right: auto;
+    background-color: #FFFAE1;
+    font-size: 1rem;
+    font-weight: 600;
+    border: solid 1px #000408;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
 /*media queries*/
+@media screen and (max-width: 480px) {
+    /*Contenu CARDS*/
+.card-container {
+    display: flex;
+    flex-direction: column; /* Afficher les cartes en colonne sur petit écran */
+    align-items: center;
+    margin: 0 auto;
+}
+
+.card-animate-left,
+.card-animate-right,
+.card-animate-center {
+    width: 100%; /* Largeur à 100% pour s'adapter à l'écran */
+    margin-bottom: 20px; /* Espace entre les cartes */
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(100px); /* Déplacer les cartes vers le bas */
+    transition: opacity 1s, transform 1s; /* Réduire le temps de transition */
+}
+
+.card-visible {
+    opacity: 1;
+    transform: none;
+}
+}
+    body {
+        font-size: 14px;
+    }
+    .alert {
+        text-align: center;
+    }
+    .btn {
+        margin: 10px 0;
+    }
+    .card {
+        max-width: 100%;
+    } 
+
 @media screen and (max-width: 520px) {
     .card {
         max-width: 100%;
     }
 }
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .card-container {
+        justify-content: center;
+    }
+    .card img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+
 

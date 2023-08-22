@@ -2,7 +2,6 @@
 require_once("lib/session.php");
 require_once("lib/config.php");
 require_once("lib/pdo.php");
-require_once("templates/header.php");
 require_once("lib/user_tools.php");
 require_once("lib/process_connexion.php");
 
@@ -28,12 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <div id="background-image" class="container">
-    <br>
+    <?php require_once("templates/header.php"); ?>
     <!-- LOGIN FORM -->
     <?php require_once __DIR__ . ('/templates/connexion_form.php'); ?>
-
-    <?php
-    require_once __DIR__ . ('/templates/footer.php');
-    ?>
+</div>
+<?php
+require_once __DIR__ . ('/templates/footer.php');
+?>
