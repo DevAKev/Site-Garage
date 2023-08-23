@@ -52,7 +52,6 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/override-bootstrap.css">
     <link rel="stylesheet" href="assets/css/Eval-garage.css">
 </head>
 

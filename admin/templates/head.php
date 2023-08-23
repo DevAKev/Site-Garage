@@ -27,6 +27,5 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
-    <link rel="stylesheet" href="/assets/css/override-bootstrap.css">
     <link rel="stylesheet" href="/assets/css/Eval-garage.css">
 </head>
