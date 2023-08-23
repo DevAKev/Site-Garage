@@ -120,6 +120,13 @@ function getSchedules($pdo)
     return $heure_ouverture;
 }
 
+// function deleteSchedule(PDO $pdo, int $id)
+// {
+//     $query = $pdo->prepare('DELETE FROM schedules WHERE id = :id');
+//     $query->bindParam(':id', $id, PDO::PARAM_INT);
+//     return $query->execute();
+// }
+
 function getFilterCars(PDO $pdo, $marque, $carburant, $minPrice, $maxPrice, $minkilometrage, $maxkilometrage, $minAnnee, $maxAnnee)
 {
     $sql = 'SELECT * FROM vehicules WHERE 1=1';
