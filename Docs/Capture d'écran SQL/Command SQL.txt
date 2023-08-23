@@ -1,0 +1,72 @@
+CREATE DATABASE garage_parrot;
+Query OK, 1 row affected (0.11 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| bdd_cuisinea       |
+| garage_parrot      |
+| information_schema |
+| mysql              |
+| performance_schema |
+| starwars           |
+| sys                |
++--------------------+
+7 rows in set (0.02 sec)
+
+mysql> USE garage_parrot;
+Database changed
+
+CREATE TABLE users (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `password_hash` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `last_name` VARCHAR(255) NOT NULL,
+  `first_name` VARCHAR(255) NOT NULL,
+  `last_connexion` DATETIME,
+  `role` ENUM('employe', 'administrateur') NOT NULL,
+  PRIMARY KEY (`id`)
+);
+Query OK, 0 rows affected, 1 warning (0.08 sec)
+
+mysql> SHOW TABLES;
+INSERT INTO users (password_hash, email, nom, prenom, role) VALUES (:password_hash, :email, :nom, :prenom, :role)
+INSERT INTO users (password_hash, email, nom, prenom, role) VALUES
+(PASSWORD('Vparrot31'), 'Vincent.parrot@gmail.com', 'Parrot', 'Vincent', 'administrateur');
+
+mysql> CREATE TABLE schedules (
+    -> id INT(11) NOT NULL AUTO_INCREMENT,
+    -> jour_semaine VARCHAR(20) NOT NULL,
+    -> heure_ouverture TIME DEFAULT NULL,
+    -> heure_fermeture TIME DEFAULT NULL,
+    -> PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected, 1 warning (0.28 sec)
+
+mysql> SHOW TABLES;
++-------------------------+
+| Tables_in_garage_parrot |
++-------------------------+
+| administrateur          |
+| schedules               |
+| users                   |
+| vehicules               |
++-------------------------+
+4 rows in set (0.01 sec)
+
+INSERT INTO schedules (jour_semaine, heure_ouverture, heure_fermeture) VALUES
+  ('Lundi', '08:30:00', '12:00:00'),
+  ('Lundi', '14:00:00', '18:30:00'),
+  ('Mardi', '08:30:00', '12:00:00'),
+  ('Mardi', '14:00:00', '18:30:00'),
+  ('Mercredi', '08:30:00', '12:00:00'),
+  ('Mercredi', '14:00:00', '18:30:00'),
+  ('Jeudi', '08:30:00', '12:00:00'),
+  ('Jeudi', '14:00:00', '18:30:00'),
+  ('Vendredi', '08:30:00', '12:00:00'),
+  ('Vendredi', '14:00:00', '18:30:00'),
+  ('Samedi', '08:30:00', '14:00:00'),
+  ('Dimanche', NULL, NULL);
+
+
