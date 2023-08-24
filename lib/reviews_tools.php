@@ -101,3 +101,12 @@ function getTotalReviews(PDO $pdo): int
     $result = $query->fetch(PDO::FETCH_ASSOC);
     return $result['total'];
 }
+
+// RECUPERE LE NOMBRE D'AVIS NON VERIFIE POUR AFFICHER LA NOTIFICATION
+function getUnverifiedReviewCount(PDO $pdo)
+{
+    $sql = "SELECT COUNT(*) AS unverified_count FROM customer_reviews WHERE publish = 0";
+    $query = $pdo->query($sql);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    return $result['unverified_count'];
+}
