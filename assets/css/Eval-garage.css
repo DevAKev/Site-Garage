@@ -74,12 +74,6 @@ h2, h3 {
     color: var(--secondary);
 }
 
-.card-img-top {
-    width: 100%;
-    height: 15vw;
-    object-fit: cover;
-}
-
 /* STYLE scroll bar */
 html::-webkit-scrollbar {
     width: 0.5rem; /* largeur de la scrollbar */
@@ -193,6 +187,23 @@ h1 {
     color: #056782; 
 }
 
+/* Style button navbar */
+.navbar-toggler {
+    padding: 10px; /* marge interne */
+    background-color: #000408; /* couleur de fond */
+}
+.navbar-toggler span {
+    color: #FFFAE1; /* couleur du bouton */
+}
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    font-weight: bold;
+}
+.navbar-nav .ml-auto {
+    margin-left: auto;
+}
+
+/*Main index*/
 #titre_presentation {
     font-family: 'Kanit', sans-serif;
     font-weight: bold;
@@ -212,49 +223,6 @@ h1 {
     margin-top: 50px;
     box-shadow: 0 0 5px rgba(0,0,0,0.75);
     border-radius: 10px;
-}
-
-/*--------PAGE ACCUEIL-MEMBRE---------*/
-/* Style de la barre de navigation membre */
-.notification {
-    background-color: red;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 2px 5px;
-    border-radius: 50%;
-    margin-left: 5px;
-}
-#containerMembre {
-    border-radius: 10px;
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.75);
-}
-.container h1 {
-    color: blue;
-    font-family: 'Kanit', sans-serif;
-    font-size: 2rem;
-    text-align: center;
-    margin: 20px 0;
-}
-
-/* Style button navbar */
-.navbar-toggler {
-    padding: 10px; /* marge interne */
-    background-color: #000408; /* couleur de fond */
-}
-.navbar-toggler span {
-    color: #FFFAE1; /* couleur du bouton */
-}
-.navbar-nav .nav-link {
-    font-size: 1rem;
-    font-weight: bold;
-}
-.navbar-nav .ml-auto {
-    margin-left: auto;
 }
 
 /*Contenu CARDS*/
@@ -342,7 +310,7 @@ h1 {
 }
 
 /*------PAGE CARS----------*/
-/* style container véhicule */
+/* style container espace filtres */
 #containerFilter {
     background-color: #f5f5f59a;
     padding: 8px 15px;
@@ -351,7 +319,7 @@ h1 {
     box-shadow: 0 0 5px rgba(0,0,0,0.75);
     border-radius: 10px;
 }
-/* style filtre véhicule */
+/* style espace filtres véhicule */
 #filterCars {
     background-color: #837d70;
     display: flex;
@@ -366,7 +334,7 @@ h1 {
     background-color: #8a0c30;
     color: #f5f5f5;
 }
-/* style filter cards */
+/* style affichage des cards filtres */
 #filterCards {
     background-color: #c6c2b8;
     display: flex;
@@ -376,8 +344,17 @@ h1 {
     box-shadow: 0 0 5px rgba(0,0,0,0.75);
     border-radius: 10px;
 }
-/* style des cards */
-.card img {
+/* style du conteneur des cards PAGE FILTER CARS */
+#containerCards {
+    width: 100%;
+    background-color: #acaaaa26;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.75);
+    border-radius: 10px;
+}
+
+.card-img-top {
     width: 300px;
     height: 200px;
     object-fit: cover;
@@ -485,6 +462,33 @@ body.scrolling .back-to-top-container {
     border-radius: 10px;
 }
 
+/*--------PAGE ACCUEIL-MEMBRE---------*/
+/* Style de la barre de navigation membre */
+.notification {
+    background-color: red;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+#containerMembre {
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.75);
+}
+.container h1 {
+    color: blue;
+    font-family: 'Kanit', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px 0;
+}
+
 /*media queries*/
 @media screen and (max-width: 480px) {
     /*Contenu CARDS*/
@@ -510,19 +514,27 @@ body.scrolling .back-to-top-container {
     opacity: 1;
     transform: none;
 }
+
+/*Adapte l'affichage des cards sur petit écran*/
+#filterCards {
+    margin: 0;
+    margin-bottom: 20px;
+    width: 100%;
 }
-    body {
-        font-size: 14px;
-    }
-    .alert {
-        text-align: center;
-    }
-    .btn {
-        margin: 10px 0;
-    }
-    .card {
-        max-width: 100%;
-    } 
+}
+
+body {
+    font-size: 14px;
+}
+.alert {
+    text-align: center;
+}
+.btn {
+    margin: 10px 0;
+}
+.card {
+    max-width: 100%;
+} 
 
 @media screen and (max-width: 520px) {
     .card {
@@ -542,7 +554,3 @@ body.scrolling .back-to-top-container {
         height: auto;
     }
 }
-
-
-
-
