@@ -12,9 +12,9 @@ Cette application web a était réalisé dans l'objectif de représenter la vitr
 
 L'objectif du point de vue étudiant étant de validés les compétences apprises au sein de la formation débuté mi-février 2023.
 
-Voici les conditions requises:
+Voici les conditions requises:<br>
 Activité – Type 1 : Développer la partie front-end d’une application web ou web
-mobile en intégrant les recommandations de sécurité
+mobile en intégrant les recommandations de sécurité <br>
 ● 1 Maquetter une application
 ● 2 Réaliser une interface utilisateur web statique et adaptable
 ● 3 Développer une interface utilisateur web dynamique
