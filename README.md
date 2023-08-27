@@ -120,7 +120,7 @@ Ce nom de domaine est issu d'une création d'un sous domaine afin de continuer �
 
 ## PRESENTATION DES FONCTIONNALITES ET DIFFERENTS SERVICES
 
-#US1. Se connecter
+# US1. Se connecter
 
 Seul l'administrateur ou les employes peuvent se connecter à l'espace administration via leurs identifiants (Email et MDP).
 Les comptes utilisateur pouvant être générés uniquement par l'administrateur (Vincent Parrot)
@@ -141,7 +141,7 @@ L'employé dispose de son côté d'un espace avec les fonctionnalités suivantes
 # US2. Présenter les services
 Les services de réparation automobile proposés par le garage sont affichés sur la page d'accueil et dans les pages 'Entretien & Mécanique' et 'Carrosserie & Peinture'
 
-#US3. Définir les horaires d’ouverture
+# US3. Définir les horaires d’ouverture
 Les horaires sont affichés dans le footer de toutes les pages du site et l'administrateur a la possiblité de modifier ces informations via son espace.
 
 # US4. Exposer les voitures d'occasion
