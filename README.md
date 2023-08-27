@@ -65,10 +65,8 @@ Si vous n'avez pas encore installé WampServer, suivez ces étapes :
 Téléchargez le programme d'installation de WampServer à partir du site officiel : WampServer.
 Lancez le programme d'installation et suivez les instructions à l'écran pour installer WampServer sur votre système.
 Ensuite vous devez cloner le projet et installer les fichiers dans le repertoire de votre serveur.
-Pou cloner ce dépôt vers votre machine locale :
-
-   ```shell
-   git clone https://github.com/DevAKev/Site-Garage.git
+Pour cloner ce dépôt vers votre machine locale :
+git clone https://github.com/DevAKev/Site-Garage.git
 
 ## Étape 2 : Préparation des fichiers du site web
 Assurez-vous que tous les fichiers du site web (HTML, CSS, JavaScript, etc.) sont présent et créér un nouveau dossier dans le répertoire "www" ou "htdoc" de WampServer, Xampp, Mamp... pour votre site web.
