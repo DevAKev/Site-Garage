@@ -15,18 +15,18 @@ L'objectif du point de vue étudiant étant de validés les compétences apprise
 Voici les conditions requises:<br>
 Activité – Type 1 : Développer la partie front-end d’une application web ou web
 mobile en intégrant les recommandations de sécurité <br>
-● 1 Maquetter une application
-● 2 Réaliser une interface utilisateur web statique et adaptable
-● 3 Développer une interface utilisateur web dynamique
+● 1 Maquetter une application <br>
+● 2 Réaliser une interface utilisateur web statique et adaptable <br>
+● 3 Développer une interface utilisateur web dynamique <br>
 ● 4 Réaliser une interface utilisateur avec une solution de gestion de contenu ou ecommerce
 
 Activité – Type 2 : Développer la partie back-end d’une application web ou web
-mobile en intégrant les recommandations de sécurité
-● 5 Créer une base de données
-● 6 Développer les composants d’accès aux données
-● 7 Développer la partie back-end d’une application web ou web mobile
+mobile en intégrant les recommandations de sécurité <br>
+● 5 Créer une base de données <br>
+● 6 Développer les composants d’accès aux données <br>
+● 7 Développer la partie back-end d’une application web ou web mobile <br>
 ● 8 Élaborer et mettre en œuvre des composants dans une application de gestion de
-contenu ou e-commerce 
+contenu ou e-commerce <br>
 
 ## Technologies utilisées :
 
@@ -66,7 +66,7 @@ Téléchargez le programme d'installation de WampServer à partir du site offici
 Lancez le programme d'installation et suivez les instructions à l'écran pour installer WampServer sur votre système.
 Ensuite vous devez cloner le projet et installer les fichiers dans le repertoire de votre serveur.
 Pour cloner ce dépôt vers votre machine locale :
-git clone https://github.com/DevAKev/Site-Garage.git
+````shell git clone https://github.com/DevAKev/Site-Garage.git ````
 
 ## Étape 2 : Préparation des fichiers du site web
 Assurez-vous que tous les fichiers du site web (HTML, CSS, JavaScript, etc.) sont présent et créér un nouveau dossier dans le répertoire "www" ou "htdoc" de WampServer, Xampp, Mamp... pour votre site web.
@@ -78,16 +78,16 @@ Vérifiez que les services Apache et MySQL sont en cours d'exécution. Vous verr
 ## Étape 4 : Configuration de l'accès à la base de données pour communiquer avec le backend, suivez ces étapes :
 Vous pouvez importer directement le fichier garage_parrot.sql dans votre PhpMyAdmin
 
-Dans le dossier lib, selectionnez le fichier config.php et changez les éléments suivants : 
+Dans le dossier lib, selectionnez le fichier config.php et changez les éléments suivants : <br>
 
-● Modifiez 'DB_NAME' par le nom de votre base de donnée à la place de 'garage_parrot' (si besoin)
-● Modifiez 'DB_USER' par votre nom d'utilisateur à la place de 'nomutilisateur'
-● Modifiez 'DB_PASSWORD' par votre mot de passe si vous en avez un à la place de 'motdepasse'
+● Modifiez 'DB_NAME' par le nom de votre base de donnée à la place de 'garage_parrot' <br>
+● Modifiez 'DB_USER' par votre nom d'utilisateur à la place de 'nomutilisateur' <br>
+● Modifiez 'DB_PASSWORD' par votre mot de passe si vous en avez un à la place de 'motdepasse' <br>
 
-// CONFIGURATION DE LA BASE DE DONNEES
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'garage_parrot');
-define('DB_USER', 'nomutilisateur');
+// CONFIGURATION DE LA BASE DE DONNEES <br>
+define('DB_HOST', 'localhost'); <br>
+define('DB_NAME', 'garage_parrot'); <br>
+define('DB_USER', 'nomutilisateur'); <br>
 define('DB_PASSWORD', 'motdepasse');
 
 PAR MESURE DE SECURITE LES INFORMATIONS DE CONNEXION A LA BASE DE DONNEE SERONT ENVOYEES UNIQUEMENT AU FORMATEUR QUI CORRIGE L'EVALUATION.
@@ -104,12 +104,12 @@ BRAVO, vous avez terminé l'installation ! Vous devriez maintenant pouvoir visua
 Pour acceder a l'espace d'administration, selectionnez l'icone de connexion à droite dans la navbar et insérez les identifiants : 
 * Pour tester les modes **administrateurs** et **employés**, des comptes *'exemples'* ont été créés et insérés dans la base de donnée :
 
-Email : vanessa@gmail.com
-Mot de passe : Vanessa77000
+Email : vanessa@gmail.com <br>
+Mot de passe : PAR SECURITE, VEUILLEZ ME CONTACTER A L'ADRESSE SUPPORT (kevynpro7700@gmail.com) <br>
 Role : Employée
 
-Email : vincent.parrot@gmail.com
-Mot de passe : PAR SECURITE, VEUILLEZ ME CONTACTER A L'ADRESSE SUPPORT (kevynpro7700@gmail.com)
+Email : vincent.parrot@gmail.com <br>
+Mot de passe : PAR SECURITE, VEUILLEZ ME CONTACTER A L'ADRESSE SUPPORT (kevynpro7700@gmail.com) <br>
 Role : Administrateur
 
 ## APPLICATION SUR INTERNET
@@ -122,20 +122,20 @@ Ce nom de domaine est issu d'une création d'un sous domaine afin de continuer �
 
 # US1. Se connecter
 
-Seul l'administrateur ou les employes peuvent se connecter à l'espace administration via leurs identifiants (Email et MDP).
-Les comptes utilisateur pouvant être générés uniquement par l'administrateur (Vincent Parrot)
-Il dispose d'un dashboard avec la possibilité de : 
-● Gérer les services ( Ajout, modification, suppression de services)
-● Gérer les annonces (Ajout, modification, suppression de véhicules) 
-● Gérer les avis (Ajout, modification, suppression des avis)
-● Messagerie (Lecture, modification du status de reception, suppression des messages clients)
-● Gérer les horaires ( Modification et suppression des horaires du garage)
+Seul l'administrateur ou les employes peuvent se connecter à l'espace administration via leurs identifiants (Email et MDP). <br>
+Les comptes utilisateur pouvant être générés uniquement par l'administrateur (Vincent Parrot) <br>
+Il dispose d'un dashboard avec la possibilité de : <br>
+● Gérer les services ( Ajout, modification, suppression de services) <br>
+● Gérer les annonces (Ajout, modification, suppression de véhicules) <br>
+● Gérer les avis (Ajout, modification, suppression des avis) <br>
+● Messagerie (Lecture, modification du status de reception, suppression des messages clients) <br>
+● Gérer les horaires ( Modification et suppression des horaires du garage) <br>
 ● Gérer les comptes ( Ajout, modification, suppression des utilisateurs)
 
-L'employé dispose de son côté d'un espace avec les fonctionnalités suivantes : 
-● Gérer les services ( Ajout, modification, suppression de services)
-● Gérer les annonces (Ajout, modification, suppression de véhicules) 
-● Gérer les avis (Ajout, modification, suppression des avis)
+L'employé dispose de son côté d'un espace avec les fonctionnalités suivantes : <br>
+● Gérer les services ( Ajout, modification, suppression de services) <br>
+● Gérer les annonces (Ajout, modification, suppression de véhicules) <br>
+● Gérer les avis (Ajout, modification, suppression des avis) <br>
 ● Messagerie (Lecture, modification du status de reception, suppression des messages clients)
 
 # US2. Présenter les services
@@ -146,13 +146,13 @@ Les horaires sont affichés dans le footer de toutes les pages du site et l'admi
 
 # US4. Exposer les voitures d'occasion
 Le site web présente les voitures d'occasion disponibles à la vente avec des photos, des descriptions détaillées et des informations techniques.
-Chaque voiture affiche son prix, une image mise en avant, l'année de mise en circulation et le kilométrage.
+Chaque voiture affiche son prix, une image mise en avant ainsi qu'une galerie, l'année de mise en circulation et le kilométrage.
 
 # US5. Filtrer la liste des véhicules d’occasion
 Un système de filtrage qui permet aux visiteurs de rechercher des véhicules en fonction de la marque, du type de carburant, d'une fourchette de prix, d'un nombre de kilomètres parcourus ou d'une année de mise en circulation.
 
 # US6. Permettre de contacter l'atelier
-Les visiteurs peuvent contacter le garage par téléphone (présent sur toutes les pages en bas à gauche) ou en utilisant le formulaire de contact en ligne. Le sujet du formulaire est automatiquement ajusté en fonction du titre de l'annonce.
+Les visiteurs peuvent contacter le garage par téléphone (présent sur toutes les pages en bas à gauche) ou en utilisant le formulaire de contact en ligne. Le sujet du formulaire est automatiquement ajusté en fonction de la marque et de l'ID du véhicule en cliquant sur le boutton contact de l'annonce.
 
 # US7. Recueillir les témoignages des clients
 Les visiteurs peuvent laisser des témoignages composés d'un nom, d'un commentaire et d'une note.
