@@ -10,7 +10,7 @@
 
 Cette application web a était réalisé dans l'objectif de représenter la vitrine d'un garage de réparations mécanique, carrosserie et revente de véhicules d'occasions en exposant la qualité des services proposés par cette entreprise.
 
-L'objectif du point de vue étudiant étant de validés les compétences apprises au sein de la formation débuté mi-février 2023.
+L'objectif du point de vue étudiant étant de valider les compétences apprises au sein de la formation débuté mi-février 2023.
 
 Voici les conditions requises:<br>
 Activité – Type 1 : Développer la partie front-end d’une application web ou web
