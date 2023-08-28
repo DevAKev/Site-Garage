@@ -118,6 +118,10 @@ https://garageparrot.les-amis-de-la-montagne.go.yj.fr/
 
 Ce nom de domaine est issu d'une création d'un sous domaine afin de continuer à utiliser WorldLite, la version gratuite pour l'hebergement via Planethoster, le but étant d'éviter de devoir louer un domaine en tant qu'étudiant encore en formation.
 
+# Trello
+Lien vers logiciel de gestion de projet Trello : 
+https://trello.com/b/8XhoeUz1/conduite-de-projet
+
 ## PRESENTATION DES FONCTIONNALITES ET DIFFERENTS SERVICES
 
 # US1. Se connecter
