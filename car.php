@@ -65,16 +65,16 @@ if ($vehicule) {
                     ?>
                 </div>
             </div>
-            <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+            <div class="col-lg-4 overflow-hidden shadow-lg">
                 <a data-fancybox="gallery" href="<?= getCarImage($vehicule['image']); ?>">
-                    <img src="<?= getCarImage($vehicule['image']); ?>" class="rounded-lg-3" alt="<?= $vehicule['marque']; ?>" width="400">
+                    <img src="<?= getCarImage($vehicule['image']); ?>" class="rounded-lg-3" alt="<?= $vehicule['marque']; ?>" width="100%">
                 </a>
 
                 <!-- AFFICHER LES PHOTOS DE LA GALERIE -->
                 <?php
                 $galerie_images = explode(',', $vehicule['galerie_images']);
                 foreach ($galerie_images as $image) {
-                    echo '<a data-fancybox="gallery" href="' . _GALERY_IMG_PATH_ . $image . '"><img class="rounded-lg-3" src="' . _GALERY_IMG_PATH_ . $image . '" alt="" width="450"></a>';
+                    echo '<a data-fancybox="gallery" href="' . _GALERY_IMG_PATH_ . $image . '"><img class="rounded-lg-3" src="' . _GALERY_IMG_PATH_ . $image . '" alt="" width="100%"></a>';
                 }
                 ?>
             </div>
