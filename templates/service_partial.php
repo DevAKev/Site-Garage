@@ -1,7 +1,6 @@
 <?php
 require_once('lib/service_tools.php');
 $services = getServices($pdo);
-
 ?>
 <div class="container">
     <div class="d-flex flex-row justify-content-start align-items-center">
