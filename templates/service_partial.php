@@ -3,12 +3,12 @@ require_once('lib/service_tools.php');
 $services = getServices($pdo);
 
 ?>
-<div class="container-fluid">
+<div class="container">
     <div class="d-flex flex-row justify-content-start align-items-center">
         <div class="card-container">
-            <div class="row">
+            <div class="row mt-4">
                 <?php foreach ($services as $service) { ?>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-4 p-3">
                         <article>
                             <div class="card card-animate-<?= $service["mouvement"] ? htmlentities($service["mouvement"]) : '' ?>">
                                 <a href="<?= $service["lien_page"] ?>">

@@ -1,6 +1,5 @@
-    <div class="container-fluid">
-        <h2>Avis des utilisateurs :</h2>
-        <div class="col-md-4 mb-4">
+        <h2 class="p-2">Avis des utilisateurs :</h2>
+        <div class="col-md-4 p-2">
             <div class="card card-animate-center">
                 <div class="card-body">
                     <h5 class="card-title">Ajouter un avis</h5>
@@ -14,10 +13,10 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-4">
             <?php foreach ($reviews as $key => $review) : ?>
                 <?php if ($review['publish'] == 1) : ?>
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 p-3">
                         <div class="card card-animate-center">
                             <div class="card-body">
                                 <h5 class="card-title">Avis de : <?php echo $review['name']; ?></h5>
@@ -36,6 +35,5 @@
                 <?php endif; ?>
             <?php endforeach; ?>
         </div>
-    </div>
-    </div>
-    </div>
+        </div>
+        </div>
