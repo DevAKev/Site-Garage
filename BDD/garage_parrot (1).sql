@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 27 août 2023 à 14:20
+-- Généré le : ven. 01 sep. 2023 à 14:22
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.2.0
 
@@ -190,10 +190,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `password_hash`, `email`, `nom`, `prenom`, `last_connexion`, `role`) VALUES
-(33, '$2y$10$R63haC4H725xwrsG29/yBegNbaqlG1khvUroQvCZ6coeCOjt2hp.6', 'Vanessa@gmail.com', 'VANESSA-TATA', 'Vanessa', '2023-08-13 11:48:46', 'employe'),
+(33, '$2y$10$R63haC4H725xwrsG29/yBegNbaqlG1khvUroQvCZ6coeCOjt2hp.6', 'Vanessa@gmail.com', 'VANESSA-TATA', 'Vanessa', '2023-08-27 14:34:59', 'employe'),
 (34, '$2y$10$gaQETdr.t2SKU64QJebu5O3wsTJtiSm6yNcwu7NyMG0r6nLPwd4qm', 'Dupont@gmail.com', 'Dupont', 'Jean-paul', '2023-08-13 11:49:04', 'employe'),
 (6, '$2y$10$ehLLFFVdou88Az08VSxSUuvQfm65hacxuvPbulO1oc0uXfjN81NHO', 'John.doe@gmail.com', 'Doe', 'John', '2023-08-16 19:25:01', 'employe'),
-(5, '$2y$10$zsDq7RmdxowlyBIzSyQ7He7R78HXdRfXbI1HSt8UHlrZFktxZmtX6', 'Vincent.parrot@gmail.com', 'Parrot', 'Vincent', '2023-08-24 22:35:06', 'administrateur'),
+(5, '$2y$10$zsDq7RmdxowlyBIzSyQ7He7R78HXdRfXbI1HSt8UHlrZFktxZmtX6', 'Vincent.parrot@gmail.com', 'Parrot', 'Vincent', '2023-08-27 14:53:00', 'administrateur'),
 (14, '$2y$10$Pvya10R4xb5nI6hEWeAqAOCHHpvvfVJxB5cjPeOtY.cVIhfSdJfLa', 'jose@test.com', 'PINTO', 'JOSE', '2023-08-25 15:43:34', 'employe'),
 (32, '$2y$10$yKT99cTVNeiO7jOm/KyW.ehfeHOx4TPQhwy3PIdefjcGlzlSJPPLK', 'TestI@test.com', 'TestI', 'TestI-TestI', '2023-08-13 11:48:23', 'employe'),
 (45, '$2y$10$OCc7k73G4/LQ0zht0UYO8uZykoRXh0/n/A/a/jef1LizSGK9VTNZi', 'Sarah@gmail.com', 'Sanchez', 'Sarah', '2023-08-15 19:04:59', 'employe');
