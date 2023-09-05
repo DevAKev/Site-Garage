@@ -1,5 +1,5 @@
 </main>
-<div id="phone-number"><strong>01 23 45 67 89</strong></div>
+<div id="phone-number"><a href="tel:+33123456789">01 23 45 67 89</a></div>
 <!-- FOOTER START -->
 
 <div class="container">
