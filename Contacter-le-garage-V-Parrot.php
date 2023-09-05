@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
     <?php } ?>
     <div class="row">
-        <div class="col-md-8 mx-auto">
+        <div class="col-md-8 mx-auto p-4">
             <?php require_once 'templates/contact_form.php'; ?>
         </div>
     </div>
