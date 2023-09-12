@@ -12,7 +12,7 @@
             </div>
         <?php } ?>
         <form action="" method="post" enctype="multipart/form-data" class="row" id="formConnect">
-            <h1> CONNEXION </h1>
+            <h1 class="fw-bold p-2"> CONNEXION </h1>
             <div class="col-md-6">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" name="email" id="email">

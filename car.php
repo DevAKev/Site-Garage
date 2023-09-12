@@ -20,33 +20,33 @@ if ($vehicule) {
     <div class="container my-5">
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
             <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-                <h1 class="display-4 fw-bold lh-1"><?= ($vehicule['marque']); ?></h1>
-                <h2 class="display-4 fw-bold lh-1"><?= ($vehicule['modele']); ?></h2>
-                <h3 class="display-4 lh-1"><?= number_format($vehicule['prix'], 0, ' ', ' '); ?> €</h3>
+                <h1 class="display-4 fw-bold lh-1 mb-4"><?= ($vehicule['marque']); ?></h1>
+                <h2 class="fw-bold lh-1"><?= ($vehicule['modele']); ?></h2>
+                <h3><?= number_format($vehicule['prix'], 0, ' ', ' '); ?> €</h3>
                 <div class="d-flex justify-content-around">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Marque</li>
-                        <li class="list-group-item">Modèle</li>
-                        <li class="list-group-item">Kilométrage</li>
-                        <li class="list-group-item">Année de mise en circulation</li>
-                        <li class="list-group-item">Carburant</li>
+                        <li class="list-group-item fw-bold p-2">Marque</li>
+                        <li class="list-group-item fw-bold p-2">Modèle</li>
+                        <li class="list-group-item fw-bold p-2">Kilométrage</li>
+                        <li class="list-group-item fw-bold p-2">Année de mise en circulation</li>
+                        <li class="list-group-item fw-bold p-2">Carburant</li>
                     </ul>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><?= $vehicule['marque']; ?></li>
-                        <li class="list-group-item"><?= $vehicule['modele']; ?></li>
-                        <li class="list-group-item"><?= number_format($vehicule['kilometrage'], 0, ' ', ' '); ?> km</li>
-                        <li class="list-group-item"><?= $vehicule['annee_mise_en_circulation']; ?></li>
-                        <li class="list-group-item"><?= $vehicule['carburant']; ?></li>
+                        <li class="list-group-item p-2"><?= $vehicule['marque']; ?></li>
+                        <li class="list-group-item p-2"><?= $vehicule['modele']; ?></li>
+                        <li class="list-group-item p-2"><?= number_format($vehicule['kilometrage'], 0, ' ', ' '); ?> km</li>
+                        <li class="list-group-item p-2"><?= $vehicule['annee_mise_en_circulation']; ?></li>
+                        <li class="list-group-item p-2"><?= $vehicule['carburant']; ?></li>
                     </ul>
                 </div>
                 <br>
-                <h4>Caracteristiques du véhicule : </h4>
+                <h4 class="fw-bold">Caracteristiques du véhicule : </h4>
                 <ul class="list-group">
                     <?php foreach ($caracts as $key => $caract) { ?>
                         <li class="list-group-item"><?= $caract; ?></li>
                     <?php } ?>
                     <br>
-                    <h4>Liste des options : </h4>
+                    <h4 class="fw-bold">Liste des options : </h4>
                     <?php foreach ($equipements as $key => $equipement) { ?>
                         <li class="list-group-item"><?= $equipement; ?></li>
                     <?php } ?>

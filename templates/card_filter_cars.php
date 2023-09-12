@@ -12,8 +12,8 @@
                 <div class="card-body">
                     <p class="card-text">
                     <ul class="list-group">
-                        <li class="list-group-item"><?= $CarSlider['prix']; ?> €</li>
-                        <li class="list-group-item"><?= $CarSlider['kilometrage']; ?> km</li>
+                        <li class="list-group-item"><?= number_format($CarSlider['prix'], 0, ' ', ' '); ?> €</li>
+                        <li class="list-group-item"><?= number_format($CarSlider['kilometrage'], 0, ' ', ' '); ?> km</li>
                         <li class="list-group-item"><?= $CarSlider['carburant']; ?></li>
                         <li class="list-group-item"><?= $CarSlider['annee_mise_en_circulation']; ?></li>
                     </ul>

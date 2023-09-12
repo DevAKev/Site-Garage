@@ -113,7 +113,7 @@ body {
 }
 a {
     text-decoration: none;
-    color: black
+    color: var(--text-color);
 }
 h1 {
     font-family: 'Kanit', sans-serif;
@@ -304,7 +304,7 @@ h1 {
     margin-bottom: 10px; /*Marge sous le breadcrumb*/
 }
 .breadcrumb-item + .breadcrumb-item::before {
-    content: "->";
+    content: ">";
     padding: 0 5px;
     color: #000408;
 }
@@ -482,7 +482,7 @@ body.scrolling .back-to-top-container {
     box-shadow: 0 0 5px rgba(0,0,0,0.75);
 }
 .container h1 {
-    color: blue;
+    color: var(--dark);
     font-family: 'Kanit', sans-serif;
     font-size: 2rem;
     text-align: center;
