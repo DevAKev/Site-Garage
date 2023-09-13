@@ -553,4 +553,24 @@ body {
         width: 100%;
         height: auto;
     }
+
+    #Logo-nav {
+        /* taille du logo */
+        width: 90px;
+        height: 50px; 
+    }
+
+    #phone-number {
+        /*numéro de téléphone */
+        font-size: 0.8rem;
+        padding: 5px 10px; 
+        border-radius: 5px; 
+    }
+
+    .back-to-top {
+        /* bouton "back-to-top" */
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
 }
