@@ -447,6 +447,7 @@ body.scrolling .back-to-top-container {
     display: inline-block;
     position: fixed;
     bottom: 50px;
+    margin-left: 5px;
     left: auto;
     right: auto;
     background-color: #FFFAE1;
@@ -550,24 +551,18 @@ body {
     }
 
     #Logo-nav {
-        /* taille du logo */
         width: 90px;
         height: 50px; 
     }
 
     #phone-number {
-        /*numéro de téléphone */
         font-size: 0.8rem;
         padding: 5px 10px; 
         border-radius: 5px; 
     }
 
     .back-to-top {
-        /* bouton "back-to-top" */
         width: 50px;
         height: 50px;
-        font-size: 0.8rem;
-        padding: 5px 10px;
-        border-radius: 5px;
     }
 }
