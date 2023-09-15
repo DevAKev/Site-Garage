@@ -18,9 +18,9 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     <!--Referencement description-->
     <title><?= $mainMenu[$currentPage]["head_title"] ?></title>
     <meta name="description" content="<?= $mainMenu[$currentPage]["meta_description"] ?>">
-    <link rel="canonical" href="#">
+    <link rel="canonical" href="https://garageparrot.les-amis-de-la-montagne.go.yj.fr/">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Garage V. Parrot, votre spécialiste de la réparation 
+    <meta property="og:title" content="Garage Vincent Parrot, votre spécialiste de la réparation 
     automobile à Toulouse (31)">
     <meta property="og:description" content="Bienvenue sur le site du Garage V.Parrot, Réparateur 
     Agrée Toutes marques&nbsp;Depuis 2021, le Garage V.Parrot vous accueille dans son atelier avec 
@@ -63,7 +63,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     <script src="assets/JS/filter_cars.js"></script>
 </head>
 
-<body class="container">
+<body class="container-fluid">
     <!--Bandeau CAROUSEL au dessus de la Nav-->
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
