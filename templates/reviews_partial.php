@@ -1,4 +1,4 @@
-        <h2 class="p-2">Avis des utilisateurs :</h2>
+        <h2 class="text-center fw-bold p-2">Avis des utilisateurs :</h2>
         <div class="col-md-4 p-2">
             <div class="card card-animate-center">
                 <div class="card-body">
