@@ -15,9 +15,15 @@ $services = getServices($pdo);
 
 <!-- MAIN START -->
 <?php include('templates/presentation.php') ?>
-<div id="accueil-image">
-    <!-- AFFICHAGE DES AVIS UTILISATEURS SUR LA PAGE D'ACCUEIL -->
-    <?php include('templates/reviews_partial.php') ?>
+<div class="container">
+    <div class="row">
+        <div class="col-12 p-0">
+            <div id="accueil-image" class="container-fluid">
+                <!-- AFFICHAGE DES AVIS UTILISATEURS SUR LA PAGE D'ACCUEIL -->
+                <?php include('templates/reviews_partial.php') ?>
+            </div>
+        </div>
+    </div>
 </div>
 <br>
 <br>

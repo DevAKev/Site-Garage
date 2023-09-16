@@ -27,10 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<div id="background-image" class="container">
-    <?php require_once("templates/header.php"); ?>
-    <!-- LOGIN FORM -->
-    <?php require_once __DIR__ . ('/templates/connexion_form.php'); ?>
+<div class="container">
+    <div class="row">
+        <div class="col-12 p-0">
+            <div id="background-image" class="container-fluid">
+                <?php require_once("templates/header.php"); ?>
+                <!-- LOGIN FORM -->
+                <?php require_once __DIR__ . ('/templates/connexion_form.php'); ?>
+            </div>
+        </div>
+    </div>
 </div>
 <?php
 require_once __DIR__ . ('/templates/footer.php');
