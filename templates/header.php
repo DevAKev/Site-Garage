@@ -65,11 +65,17 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
 
 <body class="container-fluid">
     <!--Bandeau CAROUSEL au dessus de la Nav-->
-    <div id="header-carousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <p class="text-center text-white mb-0 ">En cas de sinistre, vous êtes libre de
-                    choisir votre réparateur !</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-0">
+                <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <p class="text-center text-white mb-0 ">En cas de sinistre, vous êtes
+                                libre de choisir votre réparateur !</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
