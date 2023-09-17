@@ -47,7 +47,7 @@
                     </li>
                 </ul>
 
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ms-auto">
                     <?php if (isset($_SESSION['user'])) { ?>
                         <li class="nav-item">
                             <a href="#" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#confirmModal">Déconnexion</a>
