@@ -141,7 +141,7 @@ Les comptes utilisateur pouvant être générés uniquement par l'administrateur
 Il dispose d'un dashboard avec la possibilité de : <br>
 ● Gérer les services ( Ajout, modification, suppression de services) <br>
 ● Gérer les annonces (Ajout, modification, suppression de véhicules) * POUR MODIFIER UNE ANNONCE, L'ADMINISTRATEUR, APRES IDENTIFICATION, DOIT SE RENDRE DIRECTEMENT SUR LA PAGE DU VEHICULE A MODIFIER * <br>
-● Gérer les avis (Ajout, modification, suppression des avis) <br>
+● Gérer les avis (Ajout, modification, suppression des avis) * LES AVIS DES UTILISATEURS PEUVENT APPARAITRE SUR LA PAGE D'ACCUEIL UNIQUEMENT APRES MODERATION PAR UN ADMINISTRATEUR * <br>
 ● Messagerie (Lecture, modification du statut de réception, suppression des messages clients) <br>
 ● Gérer les horaires ( Modification et suppression des horaires du garage) <br>
 ● Gérer les comptes ( Ajout, modification, suppression des utilisateurs)
