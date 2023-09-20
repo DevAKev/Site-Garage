@@ -140,7 +140,7 @@ Seul l'administrateur ou les employés peuvent se connecter à l'espace administ
 Les comptes utilisateur pouvant être générés uniquement par l'administrateur (Vincent Parrot) <br>
 Il dispose d'un dashboard avec la possibilité de : <br>
 ● Gérer les services ( Ajout, modification, suppression de services) <br>
-● Gérer les annonces (Ajout, modification, suppression de véhicules) <br>
+● Gérer les annonces (Ajout, modification, suppression de véhicules) * POUR MODIFIER UNE ANNONCE, L'ADMINISTRATEUR, APRES IDENTIFICATION, DOIT SE RENDRE DIRECTEMENT SUR LA PAGE DU VEHICULE A MODIFIER * <br>
 ● Gérer les avis (Ajout, modification, suppression des avis) <br>
 ● Messagerie (Lecture, modification du statut de réception, suppression des messages clients) <br>
 ● Gérer les horaires ( Modification et suppression des horaires du garage) <br>
