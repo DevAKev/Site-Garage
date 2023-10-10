@@ -215,3 +215,68 @@ function getImportCar(PDO $pdo, int $id = null, int $limit = null)
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 }
+//Trier les annonces par année de mise en circulation
+function trierAnnoncesParAnneeMiseEnCirculationDesc(PDO $pdo)
+{
+    $sql = 'SELECT * FROM vehicules ORDER BY annee_mise_en_circulation DESC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function trierAnnoncesParAnneeMiseEnCirculationAsc(PDO $pdo)
+{
+    $sql = 'SELECT * FROM vehicules ORDER BY annee_mise_en_circulation ASC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Trier les annonces par ID plus récent
+function trierAnnoncesParDateRecente(PDO $pdo)
+{
+    $sql = 'SELECT * FROM vehicules ORDER BY id DESC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+// Trier les annonces par ID plus ancien
+function trierAnnoncesParDateAncienne(PDO $pdo)
+{
+    $sql = 'SELECT * FROM vehicules ORDER BY id ASC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+// Trier les annonces par prix croissant
+function trierAnnoncesParPrixCroissant(PDO $pdo)
+{
+    $sql = 'SELECT * FROM vehicules ORDER BY prix ASC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+// Trier les annonces par prix décroissant
+function trierAnnoncesParPrixDecroissant(PDO $pdo)
+{
+    $sql = 'SELECT * FROM vehicules ORDER BY prix DESC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+// Trier les annonces par kilométrage croissant
+function trierAnnoncesParKilometrageCroissant(PDO $pdo)
+{
+    $sql = 'SELECT * FROM vehicules ORDER BY kilometrage ASC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+// Trier les annonces par kilométrage décroissant
+function trierAnnoncesParKilometrageDecroissant(PDO $pdo)
+{
+    $sql = 'SELECT * FROM vehicules ORDER BY kilometrage DESC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

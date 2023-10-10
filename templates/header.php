@@ -5,7 +5,7 @@ require_once('lib/pdo.php');
 require_once('lib/car_tools.php');
 require_once __DIR__ . '/../lib/nav_menu.php';
 
-$currentPage = basename($_SERVER['SCRIPT_NAME']);
+$currentPage = htmlentities(basename($_SERVER['SCRIPT_NAME']));
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     <link rel="icon" type="image/svg+xml" href="assets/images/garage_FILL1_wght700_GRAD0_opsz48.png">
 
     <!-- jQUERY LIBRARY -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/jquery-ui.css">
     <script src="../assets/JS/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js" integrity="sha512-0bEtK0USNd96MnO4XhH8jhv3nyRF0eK87pJke6pkYf3cM0uDIhNJy9ltuzqgypoIFXw3JSuiy04tVk4AjpZdZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -4,39 +4,74 @@ require_once('lib/pdo.php');
 require_once('templates/header.php');
 require_once('lib/car_tools.php');
 
-$cars = getCars($pdo);
-$CarSliders = getImportCar($pdo);
-// RECUPERER LES MARQUES ET CARBURANTS DEPUIS LA BDD
-$marqueQuery = $pdo->query('SELECT DISTINCT marque FROM vehicules');
-$marques = $marqueQuery->fetchAll(PDO::FETCH_COLUMN);
+// Récupérer le critère de tri depuis la demande AJAX
+try {
+  $tri = $_GET['tri'] ?? null;
+  $marque = $_GET['marque'] ?? null;
+  $carburant = $_GET['carburant'] ?? null;
+  $minPrice = $_GET['minPrice'] ?? null;
+  $maxPrice = $_GET['maxPrice'] ?? null;
+  $minkilometrage = $_GET['minkilometrage'] ?? null;
+  $maxkilometrage = $_GET['maxkilometrage'] ?? null;
+  $minAnnee = $_GET['minAnnee'] ?? null;
+  $maxAnnee = $_GET['maxAnnee'] ?? null;
+  $CarSliders = [];
+  // EFFECTUER LE TRI SELON LES CRITERES
+  if ($tri === "recentes") {
+    $CarSliders = trierAnnoncesParDateRecente($pdo);
+  } elseif ($tri === "anciennes") {
+    $CarSliders = trierAnnoncesParDateAncienne($pdo);
+  } elseif ($tri === "prix-croissant") {
+    $CarSliders = trierAnnoncesParPrixCroissant($pdo);
+  } elseif ($tri === "prix-decroissant") {
+    $CarSliders = trierAnnoncesParPrixDecroissant($pdo);
+  } elseif ($tri === "kilometrage-croissant") {
+    $CarSliders = trierAnnoncesParKilometrageCroissant($pdo);
+  } elseif ($tri === "kilometrage-decroissant") {
+    $CarSliders = trierAnnoncesParKilometrageDecroissant($pdo);
+  } elseif ($tri === "annee-mise-en-circulation-asc") {
+    $CarSliders = trierAnnoncesParAnneeMiseEnCirculationAsc($pdo);
+  } elseif ($tri === "annee-mise-en-circulation-desc") {
+    $CarSliders = trierAnnoncesParAnneeMiseEnCirculationDesc($pdo);
+  } else {
+    // $cars = getCars($pdo);
+    $CarSliders = getCars($pdo);
+  }
 
-$carburantQuery = $pdo->query('SELECT DISTINCT carburant FROM vehicules');
-$carburants = $carburantQuery->fetchAll(PDO::FETCH_COLUMN);
+  // RECUPERER LES MARQUES ET CARBURANTS DEPUIS LA BDD
+  $marqueQuery = $pdo->query('SELECT DISTINCT marque FROM vehicules');
+  $marques = $marqueQuery->fetchAll(PDO::FETCH_COLUMN);
 
-$marque = $_GET['marque'] ?? null;
-$carburant = $_GET['carburant'] ?? null;
-$minPrice = isset($_GET['minPrice']) ? $_GET['minPrice'] : '';
-$maxPrice = isset($_GET['maxPrice']) ? $_GET['maxPrice'] : '';
-$minkilometrage = isset($_GET['minkilometrage']) ? $_GET['minkilometrage'] : '';
-$maxkilometrage = isset($_GET['maxkilometrage']) ? $_GET['maxkilometrage'] : '';
-$minAnnee = isset($_GET['minAnnee']) ? $_GET['minAnnee'] : '';
-$maxAnnee = isset($_GET['maxAnnee']) ? $_GET['maxAnnee'] : '';
-$reset = isset($_GET['reset']);
+  $carburantQuery = $pdo->query('SELECT DISTINCT carburant FROM vehicules');
+  $carburants = $carburantQuery->fetchAll(PDO::FETCH_COLUMN);
 
-// REINITIALISER LES FILTRES
-if ($reset) {
-  $marque = null;
-  $carburant = null;
-  $minPrice = '';
-  $maxPrice = '';
-  $minkilometrage = '';
-  $maxkilometrage = '';
-  $minAnnee = '';
-  $maxAnnee = '';
-}
-// FONCTIONS DE FILTRAGE
-if ($marque || $carburant || ($minPrice !== '' && $maxPrice !== '') || ($minkilometrage !== '' && $maxkilometrage !== '') || ($minAnnee !== '' && $maxAnnee !== '')) {
-  $CarSliders = getFilterCars($pdo, $marque, $carburant, $minPrice, $maxPrice, $minkilometrage, $maxkilometrage, $minAnnee, $maxAnnee);
+  $marque = $_GET['marque'] ?? null;
+  $carburant = $_GET['carburant'] ?? null;
+  $minPrice = isset($_GET['minPrice']) ? $_GET['minPrice'] : '';
+  $maxPrice = isset($_GET['maxPrice']) ? $_GET['maxPrice'] : '';
+  $minkilometrage = isset($_GET['minkilometrage']) ? $_GET['minkilometrage'] : '';
+  $maxkilometrage = isset($_GET['maxkilometrage']) ? $_GET['maxkilometrage'] : '';
+  $minAnnee = isset($_GET['minAnnee']) ? $_GET['minAnnee'] : '';
+  $maxAnnee = isset($_GET['maxAnnee']) ? $_GET['maxAnnee'] : '';
+  $reset = isset($_GET['reset']);
+  // REINITIALISER LES FILTRES
+  if ($reset) {
+    $marque = null;
+    $carburant = null;
+    $minPrice = '';
+    $maxPrice = '';
+    $minkilometrage = '';
+    $maxkilometrage = '';
+    $minAnnee = '';
+    $maxAnnee = '';
+  }
+  // FONCTIONS DE FILTRAGE
+  if ($marque || $carburant || ($minPrice !== '' && $maxPrice !== '') || ($minkilometrage !== '' && $maxkilometrage !== '') || ($minAnnee !== '' && $maxAnnee !== '')) {
+    $CarSliders = getFilterCars($pdo, $marque, $carburant, $minPrice, $maxPrice, $minkilometrage, $maxkilometrage, $minAnnee, $maxAnnee);
+  }
+} catch (Exception $e) {
+  http_response_code(500);
+  echo "Erreur serveur : " . $e->getMessage();
 }
 ?>
 
@@ -59,10 +94,27 @@ if ($marque || $carburant || ($minPrice !== '' && $maxPrice !== '') || ($minkilo
     ?>
   </div>
 
-  <!-- AFFICHAGE DES VEHICULES -->
-  <?php
-  include_once('templates/card_filter_cars.php');
-  ?>
+  <!-- FONCTION SORT BY -->
+  <form id="triForm">
+    <label for="sortBy">Trier par :</label>
+    <select id="sortBy" name="sortBy">
+      <option value="recentes" <?= $tri === "recentes" ? "selected" : "" ?>>Plus récentes (Date de Publication)</option>
+      <option value="anciennes" <?= $tri === "anciennes" ? "selected" : "" ?>>Plus anciennes (Date de Publication)</option>
+      <option value="prix-croissant" <?= $tri === "prix-croissant" ? "selected" : "" ?>>Prix croissant</option>
+      <option value="prix-decroissant" <?= $tri === "prix-decroissant" ? "selected" : "" ?>>Prix décroissant</option>
+      <option value="kilometrage-croissant" <?= $tri === "kilometrage-croissant" ? "selected" : "" ?>>Kilométrage croissant</option>
+      <option value="kilometrage-decroissant" <?= $tri === "kilometrage-decroissant" ? "selected" : "" ?>>Kilométrage décroissant</option>
+      <option value="annee-mise-en-circulation-asc" <?= $tri === "annee-mise-en-circulation-asc" ? "selected" : "" ?>>Année de mise en circulation (Croissant)</option>
+      <option value="annee-mise-en-circulation-desc" <?= $tri === "annee-mise-en-circulation-desc" ? "selected" : "" ?>>Année de mise en circulation (Décroissant)</option>
+    </select>
+  </form>
+</div>
+<!-- Div pour afficher les résultats triés -->
+<div class="grid-container" id="gridContainer"></div>
+<!-- AFFICHAGE DES VEHICULES -->
+<?php
+include_once('templates/card_filter_cars.php');
+?>
 </div>
 <!-- MAIN END -->
 
@@ -79,6 +131,8 @@ if ($marque || $carburant || ($minPrice !== '' && $maxPrice !== '') || ($minkilo
   </div>
 </div>
 <!-- FOOTER START -->
+<script src="assets/JS/tri_cars.js"></script>
+
 <?php
 require_once('templates/footer.php');
 // FOOTER END

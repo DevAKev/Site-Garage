@@ -36,7 +36,7 @@ $(document).ready(function () {
     min: 0,
     max: 250000,
     values: [0, 250000],
-    step: 1000,
+    step: 10000, // Modif du pas d'incrémentation du slider
     create: function () {
       let minkilometrage = sliderkilometrage.slider("values", 0);
       let maxkilometrage = sliderkilometrage.slider("values", 1);
