@@ -11,6 +11,7 @@ $car = [
     'caracteristiques' => '',
     'equipements_options' => '',
 ];
+
 // RECUPERER LES DONNEES DU FORMULAIRE AU CLICK "ENREGISTRER"
 if (isset($_POST['saveCar'])) {
     //SI UN FICHIER A ETE ENVOYE
@@ -66,14 +67,14 @@ if (isset($_POST['saveCar'])) {
         $errors[] = 'Les caractéristiques sont obligatoires !';
     }
 
-    $marque = $_POST['marque'];
-    $modele = $_POST['modele'];
-    $prix = $_POST['prix'];
-    $annee_mise_en_circulation = $_POST['annee_mise_en_circulation'];
-    $kilometrage = $_POST['kilometrage'];
-    $caracteristiques = $_POST['caracteristiques'];
-    $equipements_options = $_POST['equipements_options'];
-    $carburant = $_POST['carburant'];
+    $marque = htmlspecialchars($_POST['marque'], ENT_QUOTES, 'UTF-8');
+    $modele = htmlspecialchars($_POST['modele'], ENT_QUOTES, 'UTF-8');
+    $prix = intval($_POST['prix']);
+    $annee_mise_en_circulation = intval($_POST['annee_mise_en_circulation']);
+    $kilometrage = intval($_POST['kilometrage']);
+    $caracteristiques = htmlspecialchars($_POST['caracteristiques'], ENT_QUOTES, 'UTF-8');
+    $equipements_options = htmlspecialchars($_POST['equipements_options'], ENT_QUOTES, 'UTF-8');
+    $carburant = htmlspecialchars($_POST['carburant'], ENT_QUOTES, 'UTF-8');
     // GERER LE TELECHARGEMENT DES IMAGES DE LA GALERIE
     $galerie_images = [];
     if (isset($_FILES['galerie_images']) && is_array($_FILES['galerie_images']['name']) && count($_FILES['galerie_images']['name']) > 0) {

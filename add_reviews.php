@@ -15,8 +15,8 @@ $review = [
 
 // VERIFIER SI LE FORMULAIRE A ETE ENVOYE
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = $_POST["name"];
-    $commentaire = $_POST["commentaire"];
+    $name = htmlspecialchars($_POST["name"]);
+    $commentaire = htmlspecialchars($_POST["commentaire"]);
     $note = intval($_POST["note"]);
 
     if (empty($name)) {
