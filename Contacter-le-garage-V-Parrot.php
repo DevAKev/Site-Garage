@@ -9,14 +9,14 @@ $errors = [];
 
 // VERIFIER SI LE FORMULAIRE A ETE ENVOYE
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nom = htmlspecialchars($_POST['nom']);
-    $prenom = htmlspecialchars($_POST['prenom']);
-    $email = htmlspecialchars($_POST['email']);
-    $phone_number = htmlspecialchars($_POST['phone_number']);
-    $message_text = htmlspecialchars($_POST['message']);
+    $nom = htmlspecialchars($_POST['nom'], ENT_QUOTES, 'UTF-8');
+    $prenom = htmlspecialchars($_POST['prenom'], ENT_QUOTES, 'UTF-8');
+    $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+    $phone_number = htmlspecialchars($_POST['phone_number'], ENT_QUOTES, 'UTF-8');
+    $message_text = htmlspecialchars($_POST['message'], ENT_QUOTES, 'UTF-8');
     $date = date('Y-m-d H:i:s'); // Date actuelle
     $status = 'non lu'; // Statut initial
-    $objet = htmlspecialchars($_POST['subject']);
+    $objet = htmlspecialchars($_POST['subject'], ENT_QUOTES, 'UTF-8');
 
     // VERIFIER VALIDITE DU NOM
     if (empty($_POST['nom'])) {

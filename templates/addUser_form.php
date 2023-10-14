@@ -3,15 +3,15 @@
     <form method="POST" enctype="multipart/form-data" novalidate>
         <div class="mb-3">
             <label for="prenom" class="form-label">Prénom *</label>
-            <input type="text" class="form-control" name="prenom" id="prenom" value="<?= htmlspecialchars($user['prenom']); ?>" required>
+            <input type="text" class="form-control" name="prenom" id="prenom" value="<?= htmlspecialchars($user['prenom'], ENT_QUOTES, 'UTF-8'); ?>" required>
         </div>
         <div class="mb-3">
             <label for="nom" class="form-label">Nom *</label>
-            <input type="text" class="form-control" name="nom" id="nom" value="<?= htmlspecialchars($user['nom']); ?>" required>
+            <input type="text" class="form-control" name="nom" id="nom" value="<?= htmlspecialchars($user['nom'], ENT_QUOTES, 'UTF-8'); ?>" required>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">E-mail *</label>
-            <input type="email" class="form-control" name="email" id="email" value="<?= htmlspecialchars($user['email']); ?>" required>
+            <input type="email" class="form-control" name="email" id="email" value="<?= htmlspecialchars($user['email'], ENT_QUOTES, 'UTF-8'); ?>" required>
         </div>
 
         <?php if ($action === 'modify') { ?>
