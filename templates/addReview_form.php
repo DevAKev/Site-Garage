@@ -8,7 +8,7 @@
     <select id="note" name="note" required>
         <option value="" disabled selected>Choisissez une note</option>
         <?php for ($i = 1; $i <= 5; $i++) : ?>
-            <option value="<?php echo $i; ?>">
+            <option value="<?= htmlspecialchars($i, ENT_QUOTES, 'UTF-8'); ?>">
                 <?php echo str_repeat('★', $i) . str_repeat('☆', 5 - $i); ?>
             </option>
         <?php endfor; ?>
@@ -16,12 +16,12 @@
     <input type="submit" value="Envoyer">
 
     <?php foreach ($messages as $message) { ?>
-        <div class="alert alert-success"><?= $message ?>
+        <div class="alert alert-success"><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?>
         </div>
     <?php } ?>
 
     <?php foreach ($errors as $error) { ?>
-        <div class="alert alert-danger"><?= $error ?>
+        <div class="alert alert-danger"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?>
         </div>
     <?php } ?>
 </form>

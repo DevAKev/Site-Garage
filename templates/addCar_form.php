@@ -2,11 +2,11 @@
 <form method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="marque" class="form-label">Marque : *</label>
-        <input type="text" name="marque" id="marque" class="form-control" value="<?= htmlentities($car['marque']); ?>">
+        <input type="text" name="marque" id="marque" class="form-control" value="<?= htmlspecialchars($car['marque'], ENT_QUOTES, 'UTF-8'); ?>">
     </div>
     <div class="mb-3">
         <label for="modele" class="form-label">Modèle : *</label>
-        <input type="text" name="modele" id="modele" class="form-control" value="<?= htmlentities($car['modele']); ?>">
+        <input type="text" name="modele" id="modele" class="form-control" value="<?= htmlspecialchars($car['modele'], ENT_QUOTES, 'UTF-8'); ?>">
     </div>
     <div class="mb-3">
         <label for="prix" class="form-label">Prix : *</label>
@@ -22,11 +22,11 @@
     </div>
     <div class="mb-3">
         <label for="caracteristiques" class="form-label">Caracteristiques : *</label>
-        <textarea name="caracteristiques" id="caracteristiques" cols="30" rows="5" class="form-control"><?= htmlentities($car['caracteristiques']); ?></textarea>
+        <textarea name="caracteristiques" id="caracteristiques" cols="30" rows="5" class="form-control"><?= htmlspecialchars($car['caracteristiques'], ENT_QUOTES, 'UTF-8'); ?></textarea>
     </div>
     <div class="mb-3">
         <label for="equipements_options" class="form-label">Options du véhicule : </label>
-        <textarea name="equipements_options" id="equipements_options" cols="10" rows="5" class="form-control"><?= htmlentities($car['equipements_options']); ?></textarea>
+        <textarea name="equipements_options" id="equipements_options" cols="10" rows="5" class="form-control"><?= htmlspecialchars($car['equipements_options'], ENT_QUOTES, 'UTF-8'); ?></textarea>
     </div>
     <div class="mb-3">
         <label for="carburant" class="form-label">Carburant : </label>

@@ -3,12 +3,12 @@
     <div class="container d-flex gap-2 flex-column min-vh-100 justify-content-center align-items-center">
         <?php foreach ($messages as $message) { ?>
             <div class="alert alert-success" role="alert">
-                <?= $message; ?>
+                <?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?>
             </div>
         <?php } ?>
         <?php foreach ($errors as $error) { ?>
             <div class="alert alert-danger" role="alert">
-                <?= $error; ?>
+                <?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?>
             </div>
         <?php } ?>
         <form action="" method="post" enctype="multipart/form-data" class="row" id="formConnect">
