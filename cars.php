@@ -6,15 +6,15 @@ require_once('lib/car_tools.php');
 
 // Récupérer le critère de tri depuis la demande AJAX
 try {
-  $tri = $_GET['tri'] ?? null;
-  $marque = $_GET['marque'] ?? null;
-  $carburant = $_GET['carburant'] ?? null;
-  $minPrice = $_GET['minPrice'] ?? null;
-  $maxPrice = $_GET['maxPrice'] ?? null;
-  $minkilometrage = $_GET['minkilometrage'] ?? null;
-  $maxkilometrage = $_GET['maxkilometrage'] ?? null;
-  $minAnnee = $_GET['minAnnee'] ?? null;
-  $maxAnnee = $_GET['maxAnnee'] ?? null;
+  $tri = isset($_GET['tri']) ? htmlspecialchars($_GET['tri'], ENT_QUOTES, 'UTF-8') : null;
+  $marque = isset($_GET['marque']) ? htmlspecialchars($_GET['marque'], ENT_QUOTES, 'UTF-8') : null;
+  $carburant = isset($_GET['carburant']) ? htmlspecialchars($_GET['carburant'], ENT_QUOTES, 'UTF-8') : null;
+  $minPrice = isset($_GET['minPrice']) ? htmlspecialchars($_GET['minPrice'], ENT_QUOTES, 'UTF-8') : null;
+  $maxPrice = isset($_GET['maxPrice']) ? htmlspecialchars($_GET['maxPrice'], ENT_QUOTES, 'UTF-8') : null;
+  $minkilometrage = isset($_GET['minkilometrage']) ? htmlspecialchars($_GET['minkilometrage'], ENT_QUOTES, 'UTF-8') : null;
+  $maxkilometrage = isset($_GET['maxkilometrage']) ? htmlspecialchars($_GET['maxkilometrage'], ENT_QUOTES, 'UTF-8') : null;
+  $minAnnee = isset($_GET['minAnnee']) ? htmlspecialchars($_GET['minAnnee'], ENT_QUOTES, 'UTF-8') : null;
+  $maxAnnee = isset($_GET['maxAnnee']) ? htmlspecialchars($_GET['maxAnnee'], ENT_QUOTES, 'UTF-8') : null;
   $CarSliders = [];
   // EFFECTUER LE TRI SELON LES CRITERES
   if ($tri === "recentes") {
@@ -45,14 +45,14 @@ try {
   $carburantQuery = $pdo->query('SELECT DISTINCT carburant FROM vehicules');
   $carburants = $carburantQuery->fetchAll(PDO::FETCH_COLUMN);
 
-  $marque = $_GET['marque'] ?? null;
-  $carburant = $_GET['carburant'] ?? null;
-  $minPrice = isset($_GET['minPrice']) ? $_GET['minPrice'] : '';
-  $maxPrice = isset($_GET['maxPrice']) ? $_GET['maxPrice'] : '';
-  $minkilometrage = isset($_GET['minkilometrage']) ? $_GET['minkilometrage'] : '';
-  $maxkilometrage = isset($_GET['maxkilometrage']) ? $_GET['maxkilometrage'] : '';
-  $minAnnee = isset($_GET['minAnnee']) ? $_GET['minAnnee'] : '';
-  $maxAnnee = isset($_GET['maxAnnee']) ? $_GET['maxAnnee'] : '';
+  $marque = isset($_GET['marque']) ? htmlspecialchars($_GET['marque'], ENT_QUOTES, 'UTF-8') : null;
+  $carburant = isset($_GET['carburant']) ? htmlspecialchars($_GET['carburant'], ENT_QUOTES, 'UTF-8') : null;
+  $minPrice = isset($_GET['minPrice']) ? htmlspecialchars($_GET['minPrice'], ENT_QUOTES, 'UTF-8') : '';
+  $maxPrice = isset($_GET['maxPrice']) ? htmlspecialchars($_GET['maxPrice'], ENT_QUOTES, 'UTF-8') : '';
+  $minkilometrage = isset($_GET['minkilometrage']) ? htmlspecialchars($_GET['minkilometrage'], ENT_QUOTES, 'UTF-8') : '';
+  $maxkilometrage = isset($_GET['maxkilometrage']) ? htmlspecialchars($_GET['maxkilometrage'], ENT_QUOTES, 'UTF-8') : '';
+  $minAnnee = isset($_GET['minAnnee']) ? htmlspecialchars($_GET['minAnnee'], ENT_QUOTES, 'UTF-8') : '';
+  $maxAnnee = isset($_GET['maxAnnee']) ? htmlspecialchars($_GET['maxAnnee'], ENT_QUOTES, 'UTF-8') : '';
   $reset = isset($_GET['reset']);
   // REINITIALISER LES FILTRES
   if ($reset) {
@@ -71,7 +71,7 @@ try {
   }
 } catch (Exception $e) {
   http_response_code(500);
-  echo "Erreur serveur : " . $e->getMessage();
+  echo "Erreur serveur : " . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8');
 }
 ?>
 
