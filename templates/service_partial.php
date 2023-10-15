@@ -9,14 +9,14 @@ $services = getServices($pdo);
                 <?php foreach ($services as $service) { ?>
                     <div class="col-md-4 mt-4 p-3">
                         <article>
-                            <div class="card card-animate-<?= $service["mouvement"] ? htmlspecialchars($service["mouvement"]) : '' ?>">
+                            <div class="card card-animate-<?= htmlspecialchars($service["mouvement"], ENT_QUOTES, 'UTF-8') ? htmlspecialchars($service["mouvement"], ENT_QUOTES, 'UTF-8') : '' ?>">
                                 <a href="<?= htmlspecialchars($service["lien_page"]) ?>">
-                                    <img src="<?= htmlspecialchars(getServiceImage($service["image"])) ?>" class="card-img-top rounded-3" alt="<?= htmlspecialchars($service["titre"]) ?>">
+                                    <img src="<?= htmlspecialchars(getServiceImage($service["image"]), ENT_QUOTES, 'UTF-8') ?>" class="card-img-top rounded-3" alt="<?= htmlspecialchars($service["titre"], ENT_QUOTES, 'UTF-8') ?>">
                                 </a>
                                 <div class="card-body">
-                                    <h2 class="card-title"><?= htmlspecialchars($service["titre"]) ?></h2>
-                                    <p class="card-text"><?= htmlspecialchars($service["description"]) ?></p>
-                                    <a href="<?= htmlspecialchars($service["lien_page"]) ?>" class="btn btn-primary">En savoir +</a>
+                                    <h2 class="card-title"><?= htmlspecialchars($service["titre"], ENT_QUOTES, 'UTF-8') ?></h2>
+                                    <p class="card-text"><?= htmlspecialchars($service["description"], ENT_QUOTES, 'UTF-8') ?></p>
+                                    <a href="<?= htmlspecialchars($service["lien_page"], ENT_QUOTES, 'UTF-8') ?>" class="btn btn-primary">En savoir +</a>
                                     <?php if (isUserLoggedIn()) { ?>
                                         <a href="/admin/templates/services.php" class="btn btn-primary">Modifier le service</a>
                                     <?php } ?>
