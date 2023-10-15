@@ -229,11 +229,18 @@ h1 {
     font-weight: bold;
     color : var(--info);
     background-color: #f5f5f59a;
-    margin: 20px;
+    margin: 200px;
+    font-size: 1rem;
     padding: 8px 15px;
     margin-top: 50px;
     box-shadow: 0 0 5px rgba(0,0,0,0.75);
     border-radius: 10px;
+}
+
+/* Contenu des services cards */
+#reviewsTitle {
+    font-size: 2rem;
+    text-shadow: 1px 3px 2px rgb(11, 11, 11);
 }
 
 /*Contenu CARDS*/
@@ -559,6 +566,9 @@ body {
     .card img {
         width: 100%;
         height: auto;
+    }
+    #presentation {
+        margin: 30px;
     }
 
     #Logo-nav {
