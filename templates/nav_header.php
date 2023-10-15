@@ -18,9 +18,9 @@
                     <?php foreach ($mainMenu as $key => $menuItem) {
                         if (!array_key_exists("exclude", $menuItem)) { ?>
                             <li class="nav-item">
-                                <a href="<?= $key; ?>" class="nav-link <?php if ($key === $currentPage) {
-                                                                            echo 'active';
-                                                                        } ?>"><?= $menuItem["menu_title"]; ?></a>
+                                <a href="<?= htmlspecialchars($key, ENT_QUOTES, 'UTF-8'); ?>" class="nav-link <?php if ($key === $currentPage) {
+                                                                                                                    echo 'active';
+                                                                                                                } ?>"><?= htmlspecialchars($menuItem["menu_title"], ENT_QUOTES, 'UTF-8'); ?></a>
                             </li>
                     <?php }
                     }

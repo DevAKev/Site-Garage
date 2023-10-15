@@ -20,8 +20,8 @@
                     <div class="col-md-4 p-3">
                         <div class="card card-animate-center">
                             <div class="card-body">
-                                <h5 class="card-title">Avis de : <?php echo $review['name']; ?></h5>
-                                <p class="card-text"><?php echo $review['commentaire']; ?></p>
+                                <h5 class="card-title">Avis de : <?= htmlspecialchars($review['name'], ENT_QUOTES, 'UTF-8') ?></h5>
+                                <p class="card-text"><?= htmlspecialchars($review['commentaire'], ENT_QUOTES, 'UTF-8') ?></p>
                                 <!-- AFFICHAGE DES ETOILES EN FONCTION DE LA NOTE -->
                                 <p class="card-text">Note : <?php
                                                             $note = $review['note'];
