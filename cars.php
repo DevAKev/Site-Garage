@@ -16,7 +16,7 @@ try {
   $minAnnee = isset($_GET['minAnnee']) ? htmlspecialchars($_GET['minAnnee'], ENT_QUOTES, 'UTF-8') : null;
   $maxAnnee = isset($_GET['maxAnnee']) ? htmlspecialchars($_GET['maxAnnee'], ENT_QUOTES, 'UTF-8') : null;
   $CarSliders = [];
-  // EFFECTUER LE TRI SELON LES CRITERES
+
   if ($tri === "recentes") {
     $CarSliders = trierAnnoncesParDateRecente($pdo);
   } elseif ($tri === "anciennes") {
@@ -34,10 +34,8 @@ try {
   } elseif ($tri === "annee-mise-en-circulation-desc") {
     $CarSliders = trierAnnoncesParAnneeMiseEnCirculationDesc($pdo);
   } else {
-    // $cars = getCars($pdo);
     $CarSliders = getCars($pdo);
   }
-
   // RECUPERER LES MARQUES ET CARBURANTS DEPUIS LA BDD
   $marqueQuery = $pdo->query('SELECT DISTINCT marque FROM vehicules');
   $marques = $marqueQuery->fetchAll(PDO::FETCH_COLUMN);
@@ -89,32 +87,20 @@ try {
 <!-- FILTRES DES VEHICULES -->
 <div class="row justify-content-center" id="containerFilter">
   <div class="col-12 col-md-8 p-4" id="filterCars">
-    <?php
-    include_once('templates/filterCar_form.php');
-    ?>
+    <?php include_once('templates/filterCar_form.php'); ?>
   </div>
 
   <!-- FONCTION SORT BY -->
-  <form id="triForm">
-    <label for="sortBy">Trier par :</label>
-    <select id="sortBy" name="sortBy">
-      <option value="recentes" <?= $tri === "recentes" ? "selected" : "" ?>>Plus récentes (Date de Publication)</option>
-      <option value="anciennes" <?= $tri === "anciennes" ? "selected" : "" ?>>Plus anciennes (Date de Publication)</option>
-      <option value="prix-croissant" <?= $tri === "prix-croissant" ? "selected" : "" ?>>Prix croissant</option>
-      <option value="prix-decroissant" <?= $tri === "prix-decroissant" ? "selected" : "" ?>>Prix décroissant</option>
-      <option value="kilometrage-croissant" <?= $tri === "kilometrage-croissant" ? "selected" : "" ?>>Kilométrage croissant</option>
-      <option value="kilometrage-decroissant" <?= $tri === "kilometrage-decroissant" ? "selected" : "" ?>>Kilométrage décroissant</option>
-      <option value="annee-mise-en-circulation-asc" <?= $tri === "annee-mise-en-circulation-asc" ? "selected" : "" ?>>Année de mise en circulation (Croissant)</option>
-      <option value="annee-mise-en-circulation-desc" <?= $tri === "annee-mise-en-circulation-desc" ? "selected" : "" ?>>Année de mise en circulation (Décroissant)</option>
-    </select>
-  </form>
+  <?php include_once('templates/triCar_form.php'); ?>
 </div>
-<!-- Div pour afficher les résultats triés -->
-<div class="grid-container" id="gridContainer"></div>
-<!-- AFFICHAGE DES VEHICULES -->
-<?php
-include_once('templates/card_filter_cars.php');
-?>
+<div class="row justify-content-center">
+  <!-- Div pour afficher les résultats triés -->
+  <div class="grid-container" id="gridContainer"></div>
+  <?php
+  include_once('templates/card_filter_cars.php');
+  ?>
+</div>
+
 </div>
 <!-- MAIN END -->
 
@@ -132,6 +118,7 @@ include_once('templates/card_filter_cars.php');
 </div>
 <!-- FOOTER START -->
 <script src="assets/JS/tri_cars.js"></script>
+<script src="assets/JS/filter_cars.js"></script>
 
 <?php
 require_once('templates/footer.php');

@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function () {
   // SELECTIONNER LES ELEMENTS DU SLIDER PAR ID
   let sliderPrice = $("#price-slider");
 
@@ -28,7 +28,7 @@ $(document).ready(function () {
   });
 });
 
-$(document).ready(function () {
+$(function () {
   let sliderkilometrage = $("#kilometrage-slider");
 
   sliderkilometrage.slider({
@@ -54,7 +54,7 @@ $(document).ready(function () {
   });
 });
 
-$(document).ready(function () {
+$(function () {
   let sliderAnnee = $("#annee-slider");
 
   sliderAnnee.slider({
@@ -77,11 +77,11 @@ $(document).ready(function () {
 });
 
 // START SCRIPT CARDS VEHICULES
-$(document).ready(function () {
+$(function () {
   // FORM HIDDEN AU CHARGEMENT DE LA PAGE
   $("#card_body_form").hide();
   // AU CLICK SUR UN LIEN DE LA NAVBAR DE LA CARTE
-  $(".card-nav-link").click(function (event) {
+  $("#card_navbar").on("click", ".card-nav-link", function (event) {
     event.preventDefault();
 
     // EMPCHE LA PROPAGATION DE L'EVENEMENT

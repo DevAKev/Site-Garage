@@ -1,10 +1,4 @@
 $("#sortBy").on("input propertychange", () => {
-  //   let minPrice = $("#minPrice").val();
-  //   let maxPrice = $("#maxPrice").val();
-  //   let minkilometrage = $("#minkilometrage").val();
-  //   let maxkilometrage = $("#maxkilometrage").val();
-  //   let minAnnee = $("#minAnnee").val();
-  //   let maxAnnee = $("#maxAnnee").val();
   let sortBy = $("#sortBy").val();
 
   const url = "filterTri.php?sortBy=" + sortBy;
@@ -22,7 +16,7 @@ $("#sortBy").on("input propertychange", () => {
           ? `uploads/cars/${dataItem.image}`
           : "assets/images/default_car_image.jpg";
         let html = `
-        <div class="col-8" id="containerCards">
+        <div class="col-12 col-md-6 col-lg-4 p-3" id="containerCards">
         <div class="row justify-content-around">
         <div class="card" id="filterCards">
         <div class="card-header bg-transparent d-flex justify-content-between">
@@ -54,5 +48,3 @@ $("#sortBy").on("input propertychange", () => {
       console.log(e);
     });
 });
-{
-}

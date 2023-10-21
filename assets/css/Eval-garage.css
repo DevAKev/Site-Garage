@@ -324,6 +324,15 @@ h1 {
 
 /*------PAGE CARS----------*/
 /* style container espace filtres */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    /* Colonnes automatiques de 300px minimum, s'adaptant à l'écran */
+    grid-gap: 20px; /* Espace entre les cartes */
+    justify-content: center; /* Centre les cartes horizontalement */
+    align-items: stretch; /* Les cartes s'étirent pour remplir la hauteur de la grille */
+    padding: 20px; 
+}
 #containerFilter {
     background-color: #f5f5f59a;
     padding: 8px 15px;

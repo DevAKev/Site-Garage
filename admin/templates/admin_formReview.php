@@ -1,11 +1,11 @@
     <form action="" method="POST">
         <div class="mb-3">
             <label for="name" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="name" name="name" value="<?= $review['name']; ?>" required>
+            <input type="text" class="form-control" id="name" name="name" value="<?= htmlspecialchars($review['name'], ENT_QUOTES, 'utf-8'); ?>" required>
         </div>
         <div class="mb-3">
             <label for="commentaire" class="form-label">Commentaire</label>
-            <textarea class="form-control" id="commentaire" name="commentaire" required><?= $review['commentaire']; ?></textarea>
+            <textarea class="form-control" id="commentaire" name="commentaire" value="<?= htmlspecialchars($review['commentaire'], ENT_QUOTES, 'utf-8'); ?>" required></textarea>
         </div>
         <div class="mb-3">
             <label for="note">Note (entre 1 et 5) :</label>

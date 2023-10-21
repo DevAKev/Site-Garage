@@ -33,12 +33,12 @@ $pagetitre = "Gérer les avis";
 <h1 class="display-5 fw-bold text-body-emphasis">Gérer les avis</h1>
 <?php foreach ($messages as $message) { ?>
     <div class="alert alert-success" role="alert">
-        <?= $message; ?>
+        <?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?>
     </div>
 <?php } ?>
 <?php foreach ($errors as $error) { ?>
     <div class="alert alert-danger" role="alert">
-        <?= $error; ?>
+        <?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?>
     </div>
 <?php } ?>
 
@@ -65,23 +65,23 @@ $pagetitre = "Gérer les avis";
         // AFFICHAGE DES AVIS DANS LE TABLEAU
         foreach ($reviews as $review) : ?>
             <tr>
-                <th scope="row"><?= $review["id"]; ?></th>
-                <td><?= $review["name"] ?></td>
-                <td><?= $review["commentaire"] ?></td>
-                <td><?= $review["note"] ?></td>
+                <th scope="row"><?= htmlspecialchars($review["id"], ENT_QUOTES, 'UTF-8'); ?></th>
+                <td><?= htmlspecialchars($review["name"], ENT_QUOTES, 'UTF-8'); ?></td>
+                <td><?= htmlspecialchars($review["commentaire"], ENT_QUOTES, 'UTF-8'); ?></td>
+                <td><?= htmlspecialchars($review["note"], ENT_QUOTES, 'UTF-8'); ?></td>
                 <!-- STATUT DE PUBLICATION -->
                 <td><?= $review["publish"] == 1 ? "Publié" : "Non publié"; ?></td>
                 <td class="text-center">
                     <form action="" method="POST">
-                        <input type="hidden" name="reviewId" value="<?= $review["id"]; ?>">
+                        <input type="hidden" name="reviewId" value="<?= htmlspecialchars($review["id"], ENT_QUOTES, 'UTF-8'); ?>">
                         <input type="hidden" name="publish" value="<?= $review["publish"] == 1 ? 0 : 1; ?>">
                         <!-- BUTTON POUR MODIFIER LE STATUT DE PUBLICATION -->
                         <button type="submit" class="btn btn-primary">Publier/Retirer</button>
                     </form>
                 </td>
                 <td class="text-center">
-                    <a href="review.php?id=<?= $review["id"] ?>" class="btn btn-primary">Modifier</a>
-                    <a href="review_delete.php?id=<?= $review["id"] ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr(e) de vouloir supprimer l\'avis ?')">Supprimer</a>
+                    <a href="review.php?id=<?= htmlspecialchars($review["id"], ENT_QUOTES, 'UTF-8'); ?>" class="btn btn-primary">Modifier</a>
+                    <a href="review_delete.php?id=<?= htmlspecialchars($review["id"], ENT_QUOTES, 'UTF-8'); ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr(e) de vouloir supprimer l\'avis ?')">Supprimer</a>
                 </td>
             </tr>
         <?php endforeach; ?>

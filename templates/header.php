@@ -60,7 +60,7 @@ $currentPage = htmlspecialchars(basename($_SERVER['SCRIPT_NAME']), ENT_QUOTES, '
 
     <!-- JS -->
     <script src="assets/JS/script_backToTop.js"></script>
-    <script src="assets/JS/filter_cars.js"></script>
+    <!-- <script src="assets/JS/filter_cars.js"></script> -->
 </head>
 
 <body class="container-fluid">
