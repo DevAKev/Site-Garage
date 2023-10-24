@@ -1,16 +1,17 @@
-<form action="" method="GET" class="form-control p-4">
-    <select name="marque" class="form-select mb-3">
-        <option value="" selected>Marques</option>
+<form id="filterForm" method="GET" class="form-control p-4">
+    <select id="marque" name="marque" class="form-select mb-3">
+        <option value="" <?= empty($marque) ? 'selected' : '' ?>>Marques</option>
         <?php foreach ($marques as $marqueOption) { ?>
             <option value="<?= $marqueOption ?>" <?= $marque === $marqueOption ? 'selected' : '' ?>><?= $marqueOption ?></option>
         <?php } ?>
     </select>
     <select name="carburant" id="fuel-type" class="form-select mb-3">
-        <option value="" selected>Carburant</option>
+        <option value="" <?= empty($carburant) ? 'selected' : '' ?>>Carburant</option>
         <?php foreach ($carburants as $carburantOption) { ?>
             <option value="<?= $carburantOption ?>" <?= $carburant === $carburantOption ? 'selected' : '' ?>><?= $carburantOption ?></option>
         <?php } ?>
     </select>
+
     <label for="price">Prix :</label>
     <div id="price-slider" class="mb-3"></div>
     <input type="hidden" id="minPrice" name="minPrice" value="<?= $minPrice ?>">
@@ -33,5 +34,5 @@
     <hr class="divider">
     <br>
     <button type="submit" class="btn btn-warning m-2" name="reset" value="true">Réinitialiser</button>
-    <button type="submit" class="btn btn-primary m-2">Filtrer</button>
+    <!-- <button type="submit" class="btn btn-primary m-2">Filtrer</button> -->
 </form>
