@@ -1,6 +1,7 @@
-<form id="triForm">
-    <label for="sortBy">Trier par :</label>
-    <select id="sortBy" name="sortBy">
+<form id="triForm" class="d-flex align-items-center mb-4">
+    <label for="sortBy"></label>
+    <select id="sortBy" name="sortBy" class="form-select ml-2">
+        <option value="default" <?= $tri === "default" ? "selected" : "" ?>>Trier les véhicules</option>
         <option value="recentes" <?= $tri === "recentes" ? "selected" : "" ?>>Plus récentes (Date de Publication)</option>
         <option value="anciennes" <?= $tri === "anciennes" ? "selected" : "" ?>>Plus anciennes (Date de Publication)</option>
         <option value="prix-croissant" <?= $tri === "prix-croissant" ? "selected" : "" ?>>Prix croissant</option>

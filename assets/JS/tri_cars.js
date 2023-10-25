@@ -21,16 +21,21 @@ $(function filterResults() {
       })
       .then((data) => {
         // console.log(data);
+        // EFFACE LE CONTENU DE LA DIV AVANT DE L'AFFICHER
         $(".grid-container").html("");
-        for (let dataItem of data) {
-          // console.log(dataItem.image);
-          getCarImage = dataItem.image;
-          let imageUrl = dataItem.image
-            ? `uploads/cars/${dataItem.image}`
-            : "assets/images/default_car_image.jpg";
-          let html = `
-        <div class="col-12 col-md-6 col-lg-4 p-3" id="containerCards">
-        <div class="row justify-content-around">
+        // SI AUCUN RESULTAT
+        if (data.length === 0) {
+          $(".grid-container").html(
+            '<div id="noResults" class="alert alert-warning text-center">Ouuupsss... Aucun résultat, veuillez réinitialiser votre recherche.</div>'
+          );
+        } else {
+          for (let dataItem of data) {
+            // console.log(dataItem.image);
+            getCarImage = dataItem.image;
+            let imageUrl = dataItem.image
+              ? `uploads/cars/${dataItem.image}`
+              : "assets/images/default_car_image.jpg";
+            let html = `
         <div class="card" id="filterCards">
         <div class="card-header bg-transparent d-flex justify-content-between">
         <h6 class="card-title">${dataItem.marque}</h6>
@@ -54,7 +59,8 @@ $(function filterResults() {
                 </div>
                 </div>
       `;
-          $(".grid-container").append(html);
+            $(".grid-container").append(html);
+          }
         }
       })
       .catch((e) => {

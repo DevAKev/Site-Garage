@@ -74,7 +74,7 @@ try {
 ?>
 
 <!-- FIL D'ARIANE -->
-<nav aria-label="breadcrumb" class="mt-5 pt-5">
+<nav aria-label="breadcrumb">
   <div class="container">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
@@ -91,15 +91,14 @@ try {
   </div>
 
   <!-- FONCTION SORT BY -->
-  <?php include_once('templates/triCar_form.php'); ?>
-</div>
-<div class="row justify-content-center">
-  <!-- Div pour afficher les résultats triés -->
-  <div class="grid-container" id="gridContainer"></div>
+  <div class="row justify-content-center">
+    <!-- Div pour afficher les résultats triés -->
+    <div class="grid-container" id="gridContainer"></div>
+  </div>
   <?php
   include_once('templates/card_filter_cars.php');
   ?>
-</div>
+
 
 </div>
 <!-- MAIN END -->

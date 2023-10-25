@@ -6,9 +6,9 @@ $(function () {
   sliderPrice.slider({
     range: true, // ACTIVER LA SELECTION D'UNE PLAGE DE VALEURS
     min: 0, // VAL MIN
-    max: 500000, // VAL MAX
-    values: [0, 500000],
-    step: 1000, // PAS D'INCREMENTATION DU SLIDER
+    max: 250000, // VAL MAX
+    values: [0, 250000],
+    step: 5000, // PAS D'INCREMENTATION DU SLIDER
     create: function () {
       // AFFICHAGE DES VAL INITIALES DU RANGE DANS LA DIV
       let minPrice = sliderPrice.slider("values", 0);
@@ -77,34 +77,34 @@ $(function () {
 });
 
 // START SCRIPT CARDS VEHICULES
-$(function () {
-  // FORM HIDDEN AU CHARGEMENT DE LA PAGE
-  $("#card_body_form").hide();
-  // AU CLICK SUR UN LIEN DE LA NAVBAR DE LA CARTE
-  $("#card_navbar").on("click", ".card-nav-link", function (event) {
-    event.preventDefault();
+// $(function () {
+//   // FORM HIDDEN AU CHARGEMENT DE LA PAGE
+//   $("#card_body_form").hide();
+//   // AU CLICK SUR UN LIEN DE LA NAVBAR DE LA CARTE
+//   $("#card_navbar").on("click", ".card-nav-link", function (event) {
+//     event.preventDefault();
 
-    // EMPCHE LA PROPAGATION DE L'EVENEMENT
-    event.stopPropagation();
+//     // EMPCHE LA PROPAGATION DE L'EVENEMENT
+//     event.stopPropagation();
 
-    // RECUPERATION DE L'ID DU LIEN HREF
-    let target = $(this).attr("href");
+//     // RECUPERATION DE L'ID DU LIEN HREF
+//     let target = $(this).attr("href");
 
-    // AFFICHAGE DU CONTENU CORRESPONDANT ET HIDDEN DES AUTRES
-    if (target === "#card_body_form") {
-      $("#card_body_info").hide();
-      $("#card_body_form").show();
+//     // AFFICHAGE DU CONTENU CORRESPONDANT ET HIDDEN DES AUTRES
+//     if (target === "#card_body_form") {
+//       $("#card_body_info").hide();
+//       $("#card_body_form").show();
 
-      // CLASS ACTIVE SUR LE LIEN DU FORMULAIRE
-      $(".card-nav-link").removeClass("active");
-      $(this).addClass("active");
-    } else {
-      $("#card_body_info").show();
-      $("#card_body_form").hide();
-      // CLASS ACTIVE SUR LE LIEN DES INFOS DU VEHICULE
-      $(".card-nav-link").removeClass("active");
-      $('[href="#card_body_info"]').addClass("active");
-    }
-  });
-});
+//       // CLASS ACTIVE SUR LE LIEN DU FORMULAIRE
+//       $(".card-nav-link").removeClass("active");
+//       $(this).addClass("active");
+//     } else {
+//       $("#card_body_info").show();
+//       $("#card_body_form").hide();
+//       // CLASS ACTIVE SUR LE LIEN DES INFOS DU VEHICULE
+//       $(".card-nav-link").removeClass("active");
+//       $('[href="#card_body_info"]').addClass("active");
+//     }
+//   });
+// });
 // END SCRIPT

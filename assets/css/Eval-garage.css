@@ -314,21 +314,80 @@ h1 {
     background-color: #f5f5f5; /* Couleur bandeau breadcrumb */
     padding: 8px 15px; /* Dimension breadcrumb*/
     margin-top: 20px; /* Marge au-dessus du breadcrumb */
-    margin-bottom: 10px; /*Marge sous le breadcrumb*/
+
 }
 .breadcrumb-item + .breadcrumb-item::before {
     content: ">";
-    padding: 0 5px;
     color: #000408;
 }
 
 /*------PAGE CARS----------*/
+/* Style formulaire de filtrage & button */
+#filterForm {
+    display: grid;
+    flex-direction: column;
+    align-items: center;
+}
+/* Style input et selct */
+#filterForm select,
+#filterForm input {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #0c26a8;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* Style des sliders */
+#price-slider, #kilometrage-slider, #annee-slider {
+    background: #4CAF50;}
+
+/* Style des valeurs de slider */
+#price-values, #kilometrage-values, #annee-values {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    color: #0c26a8;
+    margin-top: 5px;
+}
+/* style des boutons filtre véhicule */
+#filterCars button:hover {
+    background-color: #8a0c30;
+    color: #f5f5f5;
+}
+#filterForm button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #FFC107;
+    color: black;
+    cursor: grab;
+    transition: background-color 0.6s ease;
+}
+
+/* Message d'alerte pas de résultat*/
+#noResults {
+    width: 80vw;
+    align-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f51919;
+    margin: 20px auto;
+}
+/* Style liste de tri */
+#sortBy {
+    display: grid;
+    width: 50vw;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+}
 /* style container espace filtres */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
     /* Colonnes automatiques de 300px minimum, s'adaptant à l'écran */
-    grid-gap: 20px; /* Espace entre les cartes */
+    grid-gap: 50px; /* Espace entre les cartes */
     justify-content: center; /* Centre les cartes horizontalement */
     align-items: stretch; /* Les cartes s'étirent pour remplir la hauteur de la grille */
     padding: 20px; 
@@ -352,11 +411,7 @@ h1 {
     box-shadow: 0 0 5px rgba(0,0,0,0.75);
     border-radius: 10px;
 }
-/* style des boutons filtre véhicule */
-#filterCars button:hover {
-    background-color: #8a0c30;
-    color: #f5f5f5;
-}
+
 /* style affichage des cards filtres */
 #filterCards {
     background-color: #c6c2b8;
@@ -559,10 +614,15 @@ body {
     max-width: 100%;
 } 
 
-@media screen and (max-width: 520px) {
-    .card {
-        max-width: 100%;
-    }
+/* style container espace filtres */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    /* Colonnes automatiques de 300px minimum, s'adaptant à l'écran */
+    grid-gap: 20px; /* Espace entre les cartes */
+    justify-content: center; /* Centre les cartes horizontalement */
+    align-items: stretch; /* Les cartes s'étirent pour remplir la hauteur de la grille */
+    padding: 20px; 
 }
 
 @media screen and (max-width: 768px) {
@@ -598,4 +658,20 @@ body {
     #accueil-image {
         height: 1100px;
     }
+}
+
+@media screen and (min-width: 1200px) {
+    #sortBy {
+        width: 30vw;
+    }
+
+/* style container espace filtres */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    grid-gap: 40px; 
+    justify-content: center;
+    align-items: stretch;
+    padding: 20px; 
+}
 }
