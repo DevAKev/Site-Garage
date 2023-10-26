@@ -35,6 +35,15 @@ $(function filterResults() {
             let imageUrl = dataItem.image
               ? `uploads/cars/${dataItem.image}`
               : "assets/images/default_car_image.jpg";
+            const prixFormate = new Intl.NumberFormat("fr-FR", {
+              style: "currency",
+              currency: "EUR",
+              maximumFractionDigits: 0,
+            }).format(dataItem.prix);
+            const kilometrageFormate = new Intl.NumberFormat("fr-FR", {
+              style: "decimal",
+              maximumFractionDigits: 0,
+            }).format(dataItem.kilometrage);
             let html = `
         <div class="card" id="filterCards">
         <div class="card-header bg-transparent d-flex justify-content-between">
@@ -47,8 +56,8 @@ $(function filterResults() {
                 <div class="card-body">
                 <p class="card-text">
                 <ul class="list-group">
-                <li class="list-group-item">${dataItem.prix} €</li>
-                <li class="list-group-item">${dataItem.kilometrage} km</li>
+                <li class="list-group-item">${prixFormate}</li>
+                <li class="list-group-item">${kilometrageFormate} km</li>
                 <li class="list-group-item">${dataItem.carburant}</li>
                 <li class="list-group-item">${dataItem.annee_mise_en_circulation}</li>
                 </ul>
