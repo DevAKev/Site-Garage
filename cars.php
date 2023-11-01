@@ -95,11 +95,6 @@ try {
     <!-- Div pour afficher les résultats triés -->
     <div class="grid-container" id="gridContainer"></div>
   </div>
-  <?php
-  include_once('templates/card_filter_cars.php');
-  ?>
-
-
 </div>
 <!-- MAIN END -->
 
