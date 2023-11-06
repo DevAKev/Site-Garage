@@ -29,12 +29,12 @@
     </div>
     <div class="mb-3">
         <label for="caracteristiques" class="form-label">Caractéristiques : *</label>
-        <textarea name="caracteristiques" id="caracteristiques" class="form-control"><?= htmlspecialchars($car['caracteristiques'], ENT_QUOTES, 'UTF-8') ?></textarea>
+        <textarea name="caracteristiques" id="caracteristiques" cols="30" rows="5" class="form-control"><?= htmlspecialchars($car['caracteristiques'], ENT_QUOTES, 'UTF-8') ?></textarea>
         <span id="caracteristiques-counter">0/500</span>
     </div>
     <div class="mb-3">
         <label for="equipements_options" class="form-label">Equipements et options : *</label>
-        <textarea name="equipements_options" id="equipements_options" class="form-control"><?= htmlspecialchars($car['equipements_options'], ENT_QUOTES, 'UTF-8') ?></textarea>
+        <textarea name="equipements_options" id="equipements_options" cols="10" rows="5" class="form-control"><?= htmlspecialchars($car['equipements_options'], ENT_QUOTES, 'UTF-8') ?></textarea>
         <span id="equipements_optionsCounter">0/500</span>
     </div>
     <div class="mb-3">

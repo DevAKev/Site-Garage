@@ -8,12 +8,27 @@ $messages = [];
 $car = [
     'marque' => '',
     'modele' => '',
+    'prix' => '',
+    'annee_mise_en_circulation' => '',
+    'kilometrage' => '',
     'caracteristiques' => '',
     'equipements_options' => '',
 ];
 
 // RECUPERER LES DONNEES DU FORMULAIRE AU CLICK "ENREGISTRER"
-if (isset($_POST['saveCar'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['saveCar'])) {
+    $marque = htmlspecialchars($_POST['marque'], ENT_QUOTES, 'UTF-8');
+    $modele = htmlspecialchars($_POST['modele'], ENT_QUOTES, 'UTF-8');
+    $prix = intval($_POST['prix']);
+    $annee_mise_en_circulation = intval($_POST['annee_mise_en_circulation']);
+    $kilometrage = intval($_POST['kilometrage']);
+    $caracteristiques = htmlspecialchars($_POST['caracteristiques'], ENT_QUOTES, 'UTF-8');
+    $equipements_options = htmlspecialchars($_POST['equipements_options'], ENT_QUOTES, 'UTF-8');
+    $carburant = htmlspecialchars($_POST['carburant'], ENT_QUOTES, 'UTF-8');
+
+    // VALIDATION DES CHAMPS
+    require_once __DIR__ . ('/lib/validateFieldsCarForm.php');
+
     //SI UN FICHIER A ETE ENVOYE
     if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name'] != '') {
         // VERIFIER SI LE FICHIER EST CHARGE
@@ -35,46 +50,6 @@ if (isset($_POST['saveCar'])) {
         $image = '';
     }
 
-    // INFORMATIONS OBLIGATOIRES POUR VALIDER LE FORMULAIRE
-    if (isset($_POST['marque']) && !empty($_POST['marque'])) {
-        $marque = $_POST['marque'];
-    } else {
-        $errors[] = 'La marque est obligatoire !';
-    }
-    if (isset($_POST['modele']) && !empty($_POST['modele'])) {
-        $modele = $_POST['modele'];
-    } else {
-        $errors[] = 'Le modèle est obligatoire !';
-    }
-    if (isset($_POST['prix']) && !empty($_POST['prix'])) {
-        $prix = $_POST['prix'];
-    } else {
-        $errors[] = 'Le prix est obligatoire !';
-    }
-    if (isset($_POST['annee_mise_en_circulation']) && !empty($_POST['annee_mise_en_circulation'])) {
-        $annee_mise_en_circulation = $_POST['annee_mise_en_circulation'];
-    } else {
-        $errors[] = 'L\'année de mise en circulation est obligatoire !';
-    }
-    if (isset($_POST['kilometrage']) && !empty($_POST['kilometrage'])) {
-        $kilometrage = $_POST['kilometrage'];
-    } else {
-        $errors[] = 'Le kilométrage est obligatoire !';
-    }
-    if (isset($_POST['caracteristiques']) && !empty($_POST['caracteristiques'])) {
-        $caracteristiques = $_POST['caracteristiques'];
-    } else {
-        $errors[] = 'Les caractéristiques sont obligatoires !';
-    }
-
-    $marque = htmlspecialchars($_POST['marque'], ENT_QUOTES, 'UTF-8');
-    $modele = htmlspecialchars($_POST['modele'], ENT_QUOTES, 'UTF-8');
-    $prix = intval($_POST['prix']);
-    $annee_mise_en_circulation = intval($_POST['annee_mise_en_circulation']);
-    $kilometrage = intval($_POST['kilometrage']);
-    $caracteristiques = htmlspecialchars($_POST['caracteristiques'], ENT_QUOTES, 'UTF-8');
-    $equipements_options = htmlspecialchars($_POST['equipements_options'], ENT_QUOTES, 'UTF-8');
-    $carburant = htmlspecialchars($_POST['carburant'], ENT_QUOTES, 'UTF-8');
     // GERER LE TELECHARGEMENT DES IMAGES DE LA GALERIE
     $galerie_images = [];
     if (isset($_FILES['galerie_images']) && is_array($_FILES['galerie_images']['name']) && count($_FILES['galerie_images']['name']) > 0) {
@@ -106,11 +81,10 @@ if (isset($_POST['saveCar'])) {
         }
     }
 
-
     $galerie_imagesString = implode(',', $galerie_images);
 
     if (!$errors) {
-        $res = saveCar($pdo, $_POST['marque'], $_POST['modele'], $_POST['prix'], $image, $_POST['annee_mise_en_circulation'], $_POST['kilometrage'], $galerie_imagesString, $_POST['caracteristiques'], $_POST['equipements_options'], $_POST['carburant']);
+        $res = saveCar($pdo, $marque, $modele, $prix, $image, $annee_mise_en_circulation, $kilometrage, $galerie_imagesString, $caracteristiques, $equipements_options, $carburant);
         // MESSAGE DE CONFIRMATION ET D'ERREUR
         if ($res) {
             $messages[] = 'Votre annonce a bien été enregistrée !';
@@ -126,15 +100,19 @@ if (isset($_POST['saveCar'])) {
 
     // N'EFFACE PAS LE CONTENU DES CHAMPS DU FORMULAIRE
     $car = [
-        'marque' => $_POST['marque'],
-        'modele' => $_POST['modele'],
-        'caracteristiques' => $_POST['caracteristiques'],
-        'equipements_options' => $_POST['equipements_options'],
+        'marque' => $marque,
+        'modele' => $modele,
+        'caracteristiques' => $caracteristiques,
+        'equipements_options' => $equipements_options,
+        'prix' => $prix,
+        'annee_mise_en_circulation' => $annee_mise_en_circulation,
+        'kilometrage' => $kilometrage,
     ];
 }
 ?>
+
 <br>
-<h2><a href="cars.php">Voir les annonces</a></h2>
+<h2><a href="cars.php">Liste des annonces et modification</a></h2>
 <h1 class="display-5 fw-bold text-body-emphasis">Ajouter une annonce</h1>
 
 <?php foreach ($messages as $message) { ?>
@@ -147,14 +125,16 @@ if (isset($_POST['saveCar'])) {
     </div>
 <?php } ?>
 
+<!-- FORM START -->
 <?php
 require_once('templates/addCar_form.php');
 ?>
+
+<!-- IMPORT SCRIPTS  -->
+<script src="assets/JS/text_counterCarForm.js"></script>
 
 <!-- FOOTER START -->
 <?php
 require_once('admin/templates/footer.php');
 // FOOTER END
-//  IMPORT SCRIPTS 
-
 ?>

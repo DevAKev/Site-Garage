@@ -21,8 +21,6 @@ if (empty($modele)) {
     $errors[] = "Le modèle ne doit pas dépasser 50 caractères.";
 } elseif (strlen($modele) < 2) {
     $errors[] = "Le modèle doit contenir au moins 2 caractères.";
-} elseif (!preg_match("/^[A-Za-zÀ-ÖØ-öø-ÿ\s\-]+$/", $modele)) {
-    $errors[] = "Le modèle ne peut contenir que des lettres, des espaces, des tirets et des caractères accentués.";
 } elseif (preg_match("/[-]{2,}|[ ]{2,}|^[ -]|[ -]$/", $modele)) {
     $errors[] = "Le modèle ne peut pas contenir plus de 2 tirets ou espaces consécutifs, commencer ou finir par un tiret ou un espace.";
 } elseif (!preg_match("/^[A-Za-z0-9\s\-]{2,50}$/", $modele)) {

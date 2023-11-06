@@ -1,4 +1,3 @@
-<!-- FORM START -->
 <form method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="marque" class="form-label">Marque : *</label>
@@ -10,23 +9,25 @@
     </div>
     <div class="mb-3">
         <label for="prix" class="form-label">Prix : *</label>
-        <input type="number" name="prix" id="prix"> €
+        <input type="number" name="prix" id="prix" value="<?= htmlspecialchars($car['prix'], ENT_QUOTES, 'UTF-8'); ?>"> €
     </div>
     <div class="mb-3">
         <label for="annee_mise_en_circulation">Année : *</label>
-        <input type="number" name="annee_mise_en_circulation" id="annee_mise_en_circulation">
+        <input type="number" name="annee_mise_en_circulation" id="annee_mise_en_circulation" value="<?= htmlspecialchars($car['annee_mise_en_circulation'], ENT_QUOTES, 'UTF-8'); ?>">
     </div>
     <div class="mb-3">
         <label for="kilometrage">Kilométrage : *</label>
-        <input type="number" name="kilometrage" id="kilometrage">
+        <input type="number" name="kilometrage" id="kilometrage" value="<?= htmlspecialchars($car['kilometrage'], ENT_QUOTES, 'UTF-8'); ?>">
     </div>
     <div class="mb-3">
         <label for="caracteristiques" class="form-label">Caracteristiques : *</label>
         <textarea name="caracteristiques" id="caracteristiques" cols="30" rows="5" class="form-control"><?= htmlspecialchars($car['caracteristiques'], ENT_QUOTES, 'UTF-8'); ?></textarea>
+        <span id="caracteristiques-counter">0/500</span>
     </div>
     <div class="mb-3">
         <label for="equipements_options" class="form-label">Options du véhicule : </label>
         <textarea name="equipements_options" id="equipements_options" cols="10" rows="5" class="form-control"><?= htmlspecialchars($car['equipements_options'], ENT_QUOTES, 'UTF-8'); ?></textarea>
+        <span id="equipements_optionsCounter">0/500</span>
     </div>
     <div class="mb-3">
         <label for="carburant" class="form-label">Carburant : </label>
