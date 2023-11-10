@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
-/* Réinitialisation des marges, des paddings et de la border-box */
+/* RESET CSS */
 *{ 
-    margin: 0; /* suppression des marges */
-    padding: 0; /* suppression des paddings */
-    box-sizing: border-box; /* calcul des dimensions avec les paddings et les bordures */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     scroll-padding-top: 2rem; 
-    scroll-behavior: smooth; /* effet de défilement fluide */
+    scroll-behavior: smooth;
 }
 :root {
     --main-color: #fe5b3d;
@@ -76,39 +76,38 @@ h2, h3 {
 
 /* STYLE scroll bar */
 html::-webkit-scrollbar {
-    width: 0.5rem; /* largeur de la scrollbar */
+    width: 0.5rem;
 }
 html::-webkit-scrollbar-track {
-    background: turquoise; /* couleur de fond de la scrollbar */
+    background: turquoise;
 }
 html::-webkit-scrollbar-thumb {
     background: var(--main-color);
     border-radius: 5rem;
 }
 
-/* Style containers, titres, section, body et liens */
+/* Style containers, titles, section, body & links */
 .container {
-    max-width: 100%; /* largeur maximale du container */
-    margin: 0 auto; /* centrage horizontal du container */
+    max-width: 100%;
+    margin: 0 auto;
     padding: 0px; 
 }
 section {
-    padding: 10px 0px; /* marge interne haut et bas des sections */
+    padding: 10px 0px;
 }
 header {
-    width: 100%; /* largeur du header */
-    top: 0; /* positionnement en haut */
-    right: 0; /* positionnement à droite */
+    width: 100%;
+    top: 0; 
+    right: 0; 
     z-index: 1000; 
-    align-items: center; /* alignement vertical */
-    justify-content: space-between; /* espacement entre les éléments */
-    /* padding: 15px 50px;  */
+    align-items: center; 
+    justify-content: space-between; 
 }
 body {
     font-family: 'Kanit', sans-serif;
-    padding: 0; /* suppression des paddings */
-    margin: 0; /* suppression des marges */
-    overflow-x: hidden; /* suppression du scroll horizontal */
+    padding: 0;
+    margin: 0; 
+    overflow-x: hidden; /* Delete horizontal scroll */
     color: var(--text-color);
 }
 footer {
@@ -134,7 +133,7 @@ h1 {
     text-shadow: 1px 3px 2px black;
 }
 
-/*Style carousel bandeau de défilement*/
+/*Style carousel top animation */
 #header-carousel {
     background-color: #021121;
 }
@@ -161,8 +160,8 @@ h1 {
     }
 }
 
-/* PAGE D'ACCUEIL */
-/* Style de la barre de navigation */
+/* HOME PAGE */
+/* Style navbar */
 #Logo-nav {
     border-radius: 10px;
 }
@@ -184,9 +183,9 @@ h1 {
     z-index: 1000;
 }
 
-/* Style des liens de la barre de navigation */
+/* Style navbar links */
 .navbar-nav li {
-    margin: 0px 10px; /* marge entre les éléments */
+    margin: 0px 10px; 
 }
 .navbar-nav li a {
     font-size: 1rem;
@@ -200,11 +199,11 @@ h1 {
 
 /* Style button navbar */
 .navbar-toggler {
-    padding: 10px; /* marge interne */
-    background-color: #000408; /* couleur de fond */
+    padding: 10px;
+    background-color: #000408;
 }
 .navbar-toggler span {
-    color: #FFFAE1; /* couleur du bouton */
+    color: #FFFAE1;
 }
 .navbar-nav .nav-link {
     font-size: 1rem;
@@ -225,6 +224,7 @@ h1 {
     text-shadow: 1px 3px 2px rgb(220, 214, 214);
 }
 
+/* Presentation text */
 #presentation {
     font-weight: bold;
     color : var(--info);
@@ -237,13 +237,13 @@ h1 {
     border-radius: 10px;
 }
 
-/* Contenu des services cards */
+/* Review cards */
 #reviewsTitle {
     font-size: 2rem;
     text-shadow: 1px 3px 2px rgb(11, 11, 11);
 }
 
-/*Contenu CARDS*/
+/* Home Cards */
 .card-container {
     display: flex;
     flex-direction: row;
@@ -269,6 +269,7 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0,0,0,0.75);
 }
+/* Movment & animation home cards */
 .card-animate-left {
     opacity: 1;
     transform: translateX(-400px);
@@ -290,19 +291,20 @@ h1 {
 }
 
 /*IMAGES & lOGOS*/
+/* Review image background*/
 #accueil-image {
     background: url(../images/hypercar3.jpg) no-repeat fixed 50% 50%;
     background-size: cover;
     height: 800px;
     padding-top: 60px;
 }
-
+/* Login image backgruond */
 #background-image {
     background: url(../images/hypercar5.jpg) no-repeat fixed 50% 50%;
     background-size: cover;
     height: 1000px;
 }
-
+/* Presentation image background */
 #gas-station {
     background: url(../images/gas-station.jpg) no-repeat fixed 50% 50%;
     background-size: cover;
@@ -311,9 +313,9 @@ h1 {
 
 /*Breadcrumb*/
 .breadcrumb {
-    background-color: #f5f5f5; /* Couleur bandeau breadcrumb */
-    padding: 8px 15px; /* Dimension breadcrumb*/
-    margin-top: 20px; /* Marge au-dessus du breadcrumb */
+    background-color: #f5f5f5; 
+    padding: 8px 15px;
+    margin-top: 20px;
 
 }
 .breadcrumb-item + .breadcrumb-item::before {
@@ -321,14 +323,14 @@ h1 {
     color: #000408;
 }
 
-/*------PAGE CARS----------*/
-/* Style formulaire de filtrage & button */
+/*------ PAGE CARS ----------*/
+/* Style form filters & button */
 #filterForm {
     display: grid;
     flex-direction: column;
     align-items: center;
 }
-/* Style input et selct */
+/* Style input & select */
 #filterForm select,
 #filterForm input {
     margin-bottom: 10px;
@@ -338,11 +340,11 @@ h1 {
     box-sizing: border-box;
 }
 
-/* Style des sliders */
+/* Style sliders */
 #price-slider, #kilometrage-slider, #annee-slider {
     background: #4CAF50;}
 
-/* Style des valeurs de slider */
+/* Style slider value */
 #price-values, #kilometrage-values, #annee-values {
     display: flex;
     justify-content: center;
@@ -350,7 +352,7 @@ h1 {
     color: #0c26a8;
     margin-top: 5px;
 }
-/* style des boutons filtre véhicule */
+/* style button filter cars */
 #filterCars button:hover {
     background-color: #8a0c30;
     color: #f5f5f5;
@@ -364,7 +366,7 @@ h1 {
     transition: background-color 0.6s ease;
 }
 
-/* Message d'alerte pas de résultat*/
+/* Message alert no results in filters */
 #noResults {
     width: 80vw;
     align-content: center;
@@ -374,7 +376,7 @@ h1 {
     color: #f51919;
     margin: 20px auto;
 }
-/* Style liste de tri */
+/* Style sort by list*/
 #sortBy {
     display: grid;
     width: 50vw;
@@ -382,14 +384,14 @@ h1 {
     align-items: center;
     margin: 0 auto 20px;
 }
-/* style container espace filtres */
+/* style container space filters */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-    /* Colonnes automatiques de 300px minimum, s'adaptant à l'écran */
-    grid-gap: 50px; /* Espace entre les cartes */
-    justify-content: center; /* Centre les cartes horizontalement */
-    align-items: stretch; /* Les cartes s'étirent pour remplir la hauteur de la grille */
+    /* Auto column 300px min */
+    grid-gap: 50px; /* Space between cards */
+    justify-content: center;
+    align-items: stretch; /* Stretch cards */
     padding: 20px; 
 }
 #containerFilter {
@@ -400,7 +402,7 @@ h1 {
     box-shadow: 0 0 5px rgba(0,0,0,0.75);
     border-radius: 10px;
 }
-/* style espace filtres véhicule */
+/* style space filters cars */
 #filterCars {
     width: 700px;
     background-color: #837d70;
@@ -422,7 +424,7 @@ h1 {
     box-shadow: 0 0 5px rgba(0,0,0,0.75);
     border-radius: 10px;
 }
-/* style du conteneur des cards PAGE FILTER CARS */
+/* style container cards PAGE FILTER CARS */
 #containerCards {
     width: 100%;
     background-color: #acaaaa26;
@@ -431,7 +433,7 @@ h1 {
     box-shadow: 0 0 5px rgba(0,0,0,0.75);
     border-radius: 10px;
 }
-
+/* style cards PAGE FILTER CARS */
 .card-img-top {
     width: 300px;
     height: 200px;
@@ -448,8 +450,9 @@ h1 {
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
 }
-/* ---- PAGE CONTACTER-LE-GARAGE ------ */
-/* styles formulaire de contact */
+
+/* ---- PAGE CONTACT ---- */
+/* style contact form */
 form label {
     font-weight: bold;
 }
@@ -471,7 +474,7 @@ form input[type="submit"] {
     padding: 0.5rem 1rem;
 }
 
-/* Style formulaire connexion-inscription */
+/* Style form login */
 #formulaire {
     background-color: #837d70;
     display: flex;
@@ -479,6 +482,7 @@ form input[type="submit"] {
     align-items: center;
 }
 #formConnect {
+    width: 40vw;
     margin-bottom: 100px;
     margin-left: 100px;
     margin-right: 100px;
@@ -488,8 +492,11 @@ form input[type="submit"] {
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
-/*------STYLE DES BUTTONS------*/
-/*button deconnexion*/
+#formConnect input {
+    border-color: #0c26a8;
+}
+
+/* Button deconnexion */
 #deconnexion {
     text-transform: uppercase;
     background: none;
@@ -501,11 +508,11 @@ form input[type="submit"] {
 #deconnexion:hover {
     color: #f51919;
 }
-/*Bouton Connexion */
+/* Button connexion */
 #ConnectSubmit {
     float: right;
 }
-/*Bouton retour vers haut*/
+/*Button back to top*/
 .back-to-top-container {
     position: fixed;
     bottom: 20px;
@@ -519,11 +526,12 @@ form input[type="submit"] {
     border-radius: 5px;
 }
 
-/* Montre le bouton lorsque la page est défilée */
+/* Show back to top button when scrolling */
 body.scrolling .back-to-top-container {
     display: block;
 }
 
+/* Style phone number */
 #phone-number {
     z-index: 1000;
     display: inline-block;
@@ -540,8 +548,9 @@ body.scrolling .back-to-top-container {
     border-radius: 10px;
 }
 
-/*--------PAGE ACCUEIL-MEMBRE---------*/
-/* Style de la barre de navigation membre */
+/*-------- SPACE ADMIN ---------*/
+/* Home page espace admin */
+/* Style navbar admin */
 .notification {
     background-color: red;
     color: white;
@@ -567,12 +576,36 @@ body.scrolling .back-to-top-container {
     margin: 20px 0;
 }
 
-/*media queries*/
+/* Style add car form & edit car form */
+#addCarForm {
+    background-color: #837d70;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+#editCarForm {
+    background-color: #837d70;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+/*-------- MEDIA QUERIES ---------*/
 @media screen and (max-width: 480px) {
-    /*Contenu CARDS*/
+    /*CARDS*/
 .card-container {
     display: flex;
-    flex-direction: column; /* Afficher les cartes en colonne sur petit écran */
+    flex-direction: column; /* cards column responsive */
     align-items: center;
     margin: 0 auto;
 }
@@ -580,12 +613,12 @@ body.scrolling .back-to-top-container {
 .card-animate-left,
 .card-animate-right,
 .card-animate-center {
-    width: 100%; /* Largeur à 100% pour s'adapter à l'écran */
-    margin-bottom: 20px; /* Espace entre les cartes */
+    width: 100%;
+    margin-bottom: 20px; /* Space between cards */
     margin-top: 20px;
     opacity: 0;
-    transform: translateY(100px); /* Déplacer les cartes vers le bas */
-    transition: opacity 1s, transform 1s; /* Réduire le temps de transition */
+    transform: translateY(100px); /* Move cards */
+    transition: opacity 1s, transform 1s; /* Transition duration */
 }
 
 .card-visible {
@@ -593,12 +626,11 @@ body.scrolling .back-to-top-container {
     transform: none;
 }
 
-/*Adapte l'affichage des cards sur petit écran*/
+/*View cards on filter page with small screen*/
 #filterCards {
     margin: 0;
     margin-bottom: 20px;
     width: 100%;
-}
 }
 
 body {
@@ -614,15 +646,16 @@ body {
     max-width: 100%;
 } 
 
-/* style container espace filtres */
+/* style container space filter */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(99vw, 1fr)); 
-    /* Colonnes automatiques de 99% de view width qui s'adapte à l'écran */
+    /* Auto Column 99% of view width */
     grid-gap: 20px;
     justify-content: center;
     align-items: stretch; 
     padding: 20px; 
+}
 }
 
 @media screen and (max-width: 768px) {
@@ -658,21 +691,38 @@ body {
     #accueil-image {
         height: 1100px;
     }
+
+    /* Style form login */
+#formConnect {
+    width: 90vw;
 }
 
-/* @media screen and (min-width: 481px) and (max-width: 1199px) {
-    .grid-container {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-gap: 10px;
-    }
-} */
+/* Style add car form & edit car form */
+#addCarForm, #editCarForm {
+    margin: 10px; /* Add margin */
+    padding: 20px; /* Add space */
+    width: 90%; /* Form width 90% */
+    box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Add shadow */
+    border-radius: 10px; /* Add rounded corners */
+}
+
+/* Style input & select */
+#addCarForm,#editCarForm input[type="text"],
+#addCarForm,#editCarForm input[type="number"],
+#addCarForm,#editCarForm input[type="submit"],
+#addCarForm,#editCarForm select,
+#addCarForm,#editCarForm textarea {
+    width: 100%; /* Fields width 100% */
+    margin-bottom: 10px; /* Space between fields */
+}
+}
 
 @media screen and (min-width: 1200px) {
     #sortBy {
         width: 30vw;
     }
 
-/* style container espace filtres */
+/* style container space filters */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 

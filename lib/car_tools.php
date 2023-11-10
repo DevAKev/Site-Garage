@@ -1,5 +1,5 @@
 <?php
-// FONCTION RECUPERATION DES VEHICULES EN FONTION DE LEUR ID
+// FUNCTION FETCH ALL CARS BASED ON ID 
 function getCarById(PDO $pdo, int $id): array
 {
     $query = $pdo->prepare('SELECT * FROM vehicules WHERE id=:id');
@@ -9,7 +9,7 @@ function getCarById(PDO $pdo, int $id): array
     return $result;
 }
 
-// AFFICHE IMAGE BDD OU IMAGE PAR DEFAUT SI PAS D'IMAGE
+// SHOWS DATABASE IMAGE OR DEFAULT IMAGE
 function getCarImage(string $image)
 {
     if ($image === null || $image === '') {
@@ -18,8 +18,7 @@ function getCarImage(string $image)
         return 'uploads/cars/' . $image;
     }
 }
-
-// RECUPERE LES ANNONCES EN LES AFFICHANT ALEATOIREMENT SUR LA PAGE D'ACCUEIL
+// FETCH ALL CARS FROM DATABASE & SHOWS RANDOMLY ON HOME PAGE(ALEATOIRE AFFICHANT AUSSI ID RECENTS)
 function getCars(PDO $pdo, int $limit = null)
 {
     $sql = 'SELECT * FROM vehicules ORDER BY RAND() DESC';
@@ -34,7 +33,7 @@ function getCars(PDO $pdo, int $limit = null)
     return $query->fetchAll();
 }
 
-// RECUPERE LES DONNEES DU FORMULAIRE D'AJOUT DE VEHICULE
+// FETCH FORM DATA OF ADD CAR FORM
 function saveCar(PDO $pdo, string $marque, string $modele, float $prix, string $image, int $annee_mise_en_circulation, int $kilometrage, string $galerie_images, string $caracteristiques, string $equipements_options, string $carburant)
 {
     $sql = "INSERT INTO `vehicules` (`id`, `marque`, `modele`, `prix`, `image`, `annee_mise_en_circulation`, `kilometrage`, `galerie_images`, `caracteristiques`, `equipements_options`, `carburant`) VALUES (NULL, :marque, :modele, :prix, :image, :annee_mise_en_circulation, :kilometrage, :galerie_images, :caracteristiques, :equipements_options, :carburant)";
@@ -79,7 +78,7 @@ function slugify($text, string $divider = '-')
     return $text;
 }
 
-// FONCTION MAJ DES ANNONCES
+// FUNCTION UPDATE CAR
 function updateCar(PDO $pdo, int $id, array $data)
 {
     $query = $pdo->prepare('UPDATE vehicules SET marque = :marque, modele = :modele, prix = :prix, annee_mise_en_circulation = :annee, kilometrage = :kilometrage, carburant = :carburant, caracteristiques = :caracteristiques, equipements_options = :equipements WHERE id = :id');
@@ -95,7 +94,44 @@ function updateCar(PDO $pdo, int $id, array $data)
     return $query->execute();
 }
 
-// FONCTION DE SUPPRESSION D'ANNONCE
+// function addCarImageToGalery(PDO $pdo, int $carId, array $newImages)
+// {
+//     // Récupération des noms des images actuelles dans la galerie
+//     $query = $pdo->prepare('SELECT galerie_images FROM vehicules WHERE id = :id');
+//     $query->bindParam(':id', $carId, PDO::PARAM_INT);
+//     $query->execute();
+//     $result = $query->fetch(PDO::FETCH_ASSOC);
+
+//     $galerieImages = [];
+//     if ($result && !empty($result['galerie_images'])) {
+//         $galerieImages = explode(',', $result['galerie_images']);
+//     }
+
+//     // Traitement des nouvelles images
+//     foreach ($newImages['tmp_name'] as $key => $tmpName) {
+//         // Vérification si le fichier est une image
+//         $checkImage = getimagesize($tmpName);
+//         if ($checkImage !== false) {
+//             $galerieImage = uniqid() . '_' . slugify($newImages['name'][$key]);
+//             move_uploaded_file($tmpName, _GALERY_IMG_PATH_ . $galerieImage);
+//             $galerieImages[] = $galerieImage;
+//         } else {
+//             // Gérer l'erreur si le fichier n'est pas une image
+//             return false;
+//         }
+//     }
+
+//     // Mettre à jour la base de données avec les noms des images de la galerie
+//     $galerieImagesString = implode(',', $galerieImages);
+//     $updateGaleryImagesQuery = $pdo->prepare('UPDATE vehicules SET galerie_images = :galerie_images WHERE id = :id');
+//     $updateGaleryImagesQuery->bindParam(':galerie_images', $galerieImagesString, PDO::PARAM_STR);
+//     $updateGaleryImagesQuery->bindParam(':id', $carId, PDO::PARAM_INT);
+//     $updateGaleryImagesQuery->execute();
+
+//     return true;
+// }
+
+// FUNCTION DELETE CAR
 function deleteCar(PDO $pdo, int $id)
 {
     $query = $pdo->prepare('DELETE FROM vehicules WHERE id = :id');
@@ -103,7 +139,63 @@ function deleteCar(PDO $pdo, int $id)
     return $query->execute();
 }
 
-// RECUPERE LES HORAIRES DE LA BASE DE DONNEES
+// FUNCTION DELETE MAIN IMAGE
+function deleteCarImage(PDO $pdo, int $id)
+{
+    // RECUPERER LE NOM DU FICHIER IMAGE A SUPPRIMER DEPUIS LA BDD
+    $query = $pdo->prepare('SELECT image FROM vehicules WHERE id = :id');
+    $query->bindParam(':id', $id, PDO::PARAM_INT);
+    $query->execute();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    // SI RESULTAT ET IMAGE NON VIDE
+    if ($result && !empty($result['image'])) {
+        // SUPPRESSION PHYSIQUE DU FICHIER IMAGE DU SERVEUR
+        $filePath = _CARS_IMG_PATH_ . $result['image'];
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+        // MAJ DE LA BDD ET NULL SI PAS D'IMAGE
+        $updateQuery = $pdo->prepare('UPDATE vehicules SET image = NULL WHERE id = :id');
+        $updateQuery->bindParam(':id', $id, PDO::PARAM_INT);
+        $updateQuery->execute();
+        // REUSSITE DE LA SUPPRESSION
+        return true;
+    }
+    // ECHEC DE LA SUPPRESSION
+    return false;
+}
+
+// FUNCTION DELETE GALLERY IMAGE
+function deleteCarImageGalery(PDO $pdo, int $carId)
+{
+    // RECUPERATION DES NOMS DES IMAGES DE LA GALERIE DANS LA BASE DE DONNEES
+    $query = $pdo->prepare('SELECT galerie_images FROM vehicules WHERE id = :id');
+    $query->bindParam(':id', $carId, PDO::PARAM_INT);
+    $query->execute();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    if ($result && !empty($result['galerie_images'])) {
+        // SUPPRIMER LES FICHIERS PHYSIQUEMENT DU SERVEUR
+        $galerieImages = isset($result['galerie_images']) ? explode(',', $result['galerie_images']) : [];
+        foreach ($galerieImages as $image) {
+            $filePath = _GALERY_IMG_PATH_ . $image;
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
+
+        // MAJ NULL (pas d'image)
+        $updateQuery = $pdo->prepare('UPDATE vehicules SET galerie_images = NULL WHERE id = :id');
+        $updateQuery->bindParam(':id', $carId, PDO::PARAM_INT);
+        $updateQuery->execute();
+        // SUPPRESSION REUSSIE
+        return true;
+    }
+    // AUCUNE IMAGE A SUPPRIMER OU SUPPRESSION ECHOUEE
+    return false;
+}
+
+// FETCH SCHEDULES FROM DATABASE
 function getSchedules($pdo)
 {
     $query = $pdo->prepare('SELECT * FROM schedules');
@@ -127,10 +219,12 @@ function getSchedules($pdo)
 //     return $query->execute();
 // }
 
+// FUNCTION FETCH CAR INFORMATIONS BASED ON FILTERS CRITERIAS 
 function getFilterCars(PDO $pdo, $marque, $carburant, $minPrice, $maxPrice, $minkilometrage, $maxkilometrage, $minAnnee, $maxAnnee)
 {
+    // REQUEST SQL TO FETCH CARS
     $sql = 'SELECT * FROM vehicules WHERE 1=1';
-
+    // ADD FILTER CONDITIONS TO THE REQUEST
     if ($marque) {
         $sql .= ' AND marque = :marque';
     }
@@ -149,9 +243,9 @@ function getFilterCars(PDO $pdo, $marque, $carburant, $minPrice, $maxPrice, $min
     if ($minAnnee !== '' && $maxAnnee !== '') {
         $sql .= ' AND annee_mise_en_circulation BETWEEN :minAnnee AND :maxAnnee';
     }
-
+    // PREPARING THE REQUEST
     $query = $pdo->prepare($sql);
-
+    // LINKING PARAMETERS TO THE REQUEST PLACEHOLDERS
     if ($marque) {
         $query->bindParam(':marque', $marque, PDO::PARAM_STR);
     }
@@ -174,14 +268,16 @@ function getFilterCars(PDO $pdo, $marque, $carburant, $minPrice, $maxPrice, $min
         $query->bindParam(':minAnnee', $minAnnee, PDO::PARAM_INT);
         $query->bindParam(':maxAnnee', $maxAnnee, PDO::PARAM_INT);
     }
-
+    // EXECUTE THE REQUEST
     $query->execute();
-
+    // FETCH THE RESULTS IN AN ASSOCIATIVE ARRAY
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// FETCH INFORMATIONS FROM CARS IMPORTED FROM DB
 function getImportCar(PDO $pdo, int $id = null, int $limit = null)
 {
+    // USE COALESCE TO REPLACE NULL VALUES BY DEFAULT IMAGE
     $sql = 'SELECT *, COALESCE(image, :defaultImage) AS image FROM vehicules';
 
     if ($id) {
@@ -215,7 +311,8 @@ function getImportCar(PDO $pdo, int $id = null, int $limit = null)
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 }
-//Trier les annonces par année de mise en circulation
+
+// SORT BY YEAR DESC
 function trierAnnoncesParAnneeMiseEnCirculationDesc(PDO $pdo)
 {
     $sql = 'SELECT * FROM vehicules ORDER BY annee_mise_en_circulation DESC';
@@ -223,7 +320,7 @@ function trierAnnoncesParAnneeMiseEnCirculationDesc(PDO $pdo)
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
+// SORT BY YEAR ASC
 function trierAnnoncesParAnneeMiseEnCirculationAsc(PDO $pdo)
 {
     $sql = 'SELECT * FROM vehicules ORDER BY annee_mise_en_circulation ASC';
@@ -232,7 +329,7 @@ function trierAnnoncesParAnneeMiseEnCirculationAsc(PDO $pdo)
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-// Trier les annonces par ID plus récent
+// SORT BY RECENT ID
 function trierAnnoncesParDateRecente(PDO $pdo)
 {
     $sql = 'SELECT * FROM vehicules ORDER BY id DESC';
@@ -240,7 +337,7 @@ function trierAnnoncesParDateRecente(PDO $pdo)
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-// Trier les annonces par ID plus ancien
+// SORT BY OLDER ID
 function trierAnnoncesParDateAncienne(PDO $pdo)
 {
     $sql = 'SELECT * FROM vehicules ORDER BY id ASC';
@@ -248,7 +345,7 @@ function trierAnnoncesParDateAncienne(PDO $pdo)
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-// Trier les annonces par prix croissant
+// SORT BY PRICE ASC
 function trierAnnoncesParPrixCroissant(PDO $pdo)
 {
     $sql = 'SELECT * FROM vehicules ORDER BY prix ASC';
@@ -256,7 +353,7 @@ function trierAnnoncesParPrixCroissant(PDO $pdo)
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-// Trier les annonces par prix décroissant
+// SORT BY PRICE DESC
 function trierAnnoncesParPrixDecroissant(PDO $pdo)
 {
     $sql = 'SELECT * FROM vehicules ORDER BY prix DESC';
@@ -264,7 +361,7 @@ function trierAnnoncesParPrixDecroissant(PDO $pdo)
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-// Trier les annonces par kilométrage croissant
+// SORT BY ASC MILEAGE
 function trierAnnoncesParKilometrageCroissant(PDO $pdo)
 {
     $sql = 'SELECT * FROM vehicules ORDER BY kilometrage ASC';
@@ -272,7 +369,7 @@ function trierAnnoncesParKilometrageCroissant(PDO $pdo)
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-// Trier les annonces par kilométrage décroissant
+// SORT BY DESC MILEAGE
 function trierAnnoncesParKilometrageDecroissant(PDO $pdo)
 {
     $sql = 'SELECT * FROM vehicules ORDER BY kilometrage DESC';
