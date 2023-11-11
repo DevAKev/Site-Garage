@@ -195,29 +195,6 @@ function deleteCarImageGalery(PDO $pdo, int $carId)
     return false;
 }
 
-// FETCH SCHEDULES FROM DATABASE
-function getSchedules($pdo)
-{
-    $query = $pdo->prepare('SELECT * FROM schedules');
-    $query->execute();
-    $heure_ouverture = array();
-    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-        $jour_semaine = $row['jour_semaine'];
-        unset($row['jour_semaine']);
-        if (!isset($heure_ouverture[$jour_semaine])) {
-            $heure_ouverture[$jour_semaine] = array();
-        }
-        $heure_ouverture[$jour_semaine][] = $row;
-    }
-    return $heure_ouverture;
-}
-
-// function deleteSchedule(PDO $pdo, int $id)
-// {
-//     $query = $pdo->prepare('DELETE FROM schedules WHERE id = :id');
-//     $query->bindParam(':id', $id, PDO::PARAM_INT);
-//     return $query->execute();
-// }
 
 // FUNCTION FETCH CAR INFORMATIONS BASED ON FILTERS CRITERIAS 
 function getFilterCars(PDO $pdo, $marque, $carburant, $minPrice, $maxPrice, $minkilometrage, $maxkilometrage, $minAnnee, $maxAnnee)

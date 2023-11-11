@@ -6,12 +6,12 @@
     <footer class="d-flex flex-wrap justify-content-around align-items-center py-3 my-4 border-top text-center">
         <hr>
         <div class="col-md-4">
-            <h3>Nos horaires</h3>
-            <p>Nous sommes fermé de 12:00 à 14:00 (Sauf le Samedi)</p>
+            <!-- DISPLAY SCHEDULES -->
             <?php
-            include('templates/schedules.php')
+            include_once('templates/schedules.php')
             ?>
         </div>
+        <!-- CONTACT -->
         <div class="col-md-4">
             <h3><a href="Contacter-le-garage-V-Parrot.php">Contact</a></h3>
             <ul class="list-unstyled">
@@ -27,6 +27,8 @@
             <p><strong>0,14g</strong> de CO2</p>
         </div>
 </div>
+
+<!-- SOCIAL NETWORKS -->
 <div class="row">
     <div class="col-md-12">
         <div class="socials p-2 text-center">
@@ -39,7 +41,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-
+                <!-- COPYRIGHT -->
                 <p class="text-center">Copyright © 2023
                     <a href="index.php">Garage-V-Parrot.com</a> - Tous droits réservés.
                 </p>

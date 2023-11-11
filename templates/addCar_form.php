@@ -27,7 +27,7 @@
     </div>
     <div class="mb-3">
         <label for="equipements_options" class="form-label">Options du véhicule : </label>
-        <textarea name="equipements_options" id="equipements_options" cols="10" rows="5" class="form-control"><?= htmlspecialchars($car['equipements_options'], ENT_QUOTES, 'UTF-8'); ?></textarea>
+        <textarea name="equipements_options" id="equipements_options" cols="30" rows="5" class="form-control"><?= htmlspecialchars($car['equipements_options'], ENT_QUOTES, 'UTF-8'); ?></textarea>
         <!-- CHARACTER COUNTER LIMITED TO 500 -->
         <span id="equipements_optionsCounter">0/500</span>
     </div>

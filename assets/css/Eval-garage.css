@@ -577,27 +577,26 @@ body.scrolling .back-to-top-container {
 }
 
 /* Style add car form & edit car form */
-#addCarForm {
+#addCarForm, #editCarForm {
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
     background-color: #837d70;
     justify-content: center;
     align-items: center;
-    margin-bottom: 100px;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin: 100px auto; 
     padding: 50px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
-#editCarForm {
-    background-color: #837d70;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 100px;
-    margin-left: 100px;
-    margin-right: 100px;
-    padding: 50px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+
+#addCarForm input[type="text"], #editCarForm input[type="text"], .form-control, .form-select {
+    border-color: #0c26a8;
+}
+
+/* Style schedules form */
+#schedulesForm table tr, th, td{
+    border-color: #0c26a8;
 }
 
 /*-------- MEDIA QUERIES ---------*/

@@ -1,4 +1,4 @@
-<h1>Modifier l'annonce</h1>
+<h1 class="fw-bold text-body-emphasis">Modifier l'annonce</h1>
 <?php foreach ($messages as $message) { ?>
     <div class="alert alert-success"><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></div>
 <?php } ?>
@@ -34,7 +34,7 @@
     </div>
     <div class="mb-3">
         <label for="equipements_options" class="form-label">Equipements et options : *</label>
-        <textarea name="equipements_options" id="equipements_options" cols="10" rows="5" class="form-control"><?= htmlspecialchars($car['equipements_options'], ENT_QUOTES, 'UTF-8') ?></textarea>
+        <textarea name="equipements_options" id="equipements_options" cols="30" rows="5" class="form-control"><?= htmlspecialchars($car['equipements_options'], ENT_QUOTES, 'UTF-8') ?></textarea>
         <!-- CHARACTER COUNTER LIMITED TO 500 -->
         <span id="equipements_optionsCounter">0/500</span>
     </div>

@@ -48,44 +48,46 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="row">
         <div class="col-12">
         </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Prénom</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Téléphone</th>
-                    <th scope="col">Message</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Statut</th>
-                    <th scope="col">Objet</th>
-                    <th class="text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($contacts as $contact) : ?>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td><?= $contact['id'] ?></td>
-                        <td><?= $contact['nom'] ?></td>
-                        <td><?= $contact['prenom'] ?></td>
-                        <td><?= $contact['email'] ?></td>
-                        <td><?= $contact['phone_number'] ?></td>
-                        <td><?= $contact['message'] ?></td>
-                        <td><?= $contact['date'] ?></td>
-                        <td><?= $contact['status'] ?></td>
-                        <td><?= $contact['objet'] ?></td>
-                        <td>
-                            <div class="action">
-                                <a href="message.php?id=<?= $contact['id'] ?>" class="btn btn-primary">Lire</a>
-                                <a href="repondre_message.php?id=<?= $contact['id'] ?>" class="btn btn-primary">Répondre</a>
-                                <a href="message_delete.php?id=<?= $contact['id'] ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?')">Supprimer</a>
-                            </div>
-                        </td>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Téléphone</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Statut</th>
+                        <th scope="col">Objet</th>
+                        <th class="text-center">Actions</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($contacts as $contact) : ?>
+                        <tr>
+                            <td><?= $contact['id'] ?></td>
+                            <td><?= $contact['nom'] ?></td>
+                            <td><?= $contact['prenom'] ?></td>
+                            <td><?= $contact['email'] ?></td>
+                            <td><?= $contact['phone_number'] ?></td>
+                            <td><?= $contact['message'] ?></td>
+                            <td><?= $contact['date'] ?></td>
+                            <td><?= $contact['status'] ?></td>
+                            <td><?= $contact['objet'] ?></td>
+                            <td>
+                                <div class="action">
+                                    <a href="message.php?id=<?= $contact['id'] ?>" class="btn btn-primary">Lire</a>
+                                    <a href="repondre_message.php?id=<?= $contact['id'] ?>" class="btn btn-primary">Répondre</a>
+                                    <a href="message_delete.php?id=<?= $contact['id'] ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?')">Supprimer</a>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
 
         <?php
         require_once __DIR__ . ("/footer.php");

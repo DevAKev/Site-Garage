@@ -6,11 +6,11 @@ require_once __DIR__ . ('/../../lib/car_tools.php');
 require_once __DIR__ . ('/../../lib/contact_tools.php');
 require_once __DIR__ . ('/../../lib/reviews_tools.php');
 
-// RECUPERER LE NOM DE LA PAGE ACTUELLE
+// FETCH CURRENTPAGE 
 $currentPage = htmlspecialchars(basename($_SERVER['SCRIPT_NAME']), ENT_QUOTES, 'UTF-8');
-// RECUPERER LE NOMBRE DE MESSAGES NON LUS
+// FETCH COUNT OF UNREAD MESSAGES
 $unreadCount = getUnreadMessageCount($pdo);
-// RECUPERER LE NOMBRE D'AVIS NON VERIFIE
+// FETCH COUNT OF NOT CHECK REVIEWS
 $unverifiedCount = getUnverifiedReviewCount($pdo);
 
 ?>
@@ -61,7 +61,7 @@ $unverifiedCount = getUnverifiedReviewCount($pdo);
                             <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z" />
                         </svg>
                         Gérer les avis
-                        <!-- NOTIFICATION AVIS NON VERIFIE -->
+                        <!-- NOTIFICATION FOR NOT CHECK OF REVIEWS -->
                         <?php $unverifiedCount = getUnverifiedReviewCount($pdo); ?>
                         <?php if ($unverifiedCount > 0) { ?>
                             <span class="notification badge bg-danger"><?= $unverifiedCount ?></span>
@@ -75,17 +75,18 @@ $unverifiedCount = getUnverifiedReviewCount($pdo);
                             <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z" />
                         </svg>
                         Messagerie
-                        <!-- NOTIFICATION MESSAGES NON LUS -->
+                        <!-- NOTIFICATION FOR UNREAD MESSAGE -->
                         <?php $unreadCount = getUnreadMessageCount($pdo); ?>
                         <?php if ($unreadCount > 0) { ?>
                             <span class="notification badge bg-danger"><?= $unreadCount ?></span>
                         <?php } ?>
                     </a>
                 </li>
+                <!-- ACCESS ONLY FOR THE ADMIN -->
                 <?php if (adminAccesOnly()) {
                 ?>
                     <li>
-                        <a href="/admin_schedules.php" class="nav-link text-white" style="font-size: 1rem;">
+                        <a href="/admin/templates/admin_schedules.php" class="nav-link text-white" style="font-size: 1rem;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-clock me-4" viewBox="0 0 16 16">
                                 <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
                                 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />

@@ -5,6 +5,7 @@ require_once __DIR__ . ('/admin/templates/header.php');
 
 $errors = [];
 $messages = [];
+// DEFAULT VALUES FOR THE CAR FORM
 $car = [
     'marque' => '',
     'modele' => '',
@@ -15,8 +16,9 @@ $car = [
     'equipements_options' => '',
 ];
 
-// RECUPERER LES DONNEES DU FORMULAIRE AU CLICK "ENREGISTRER"
+// FETCH FORM DATA WHEN 'saveCar' BUTTON IS CLICKED
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['saveCar'])) {
+    // CLEAN & FETCH FORM DATA
     $marque = htmlspecialchars($_POST['marque'], ENT_QUOTES, 'UTF-8');
     $modele = htmlspecialchars($_POST['modele'], ENT_QUOTES, 'UTF-8');
     $prix = intval($_POST['prix']);
@@ -26,20 +28,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['saveCar'])) {
     $equipements_options = htmlspecialchars($_POST['equipements_options'], ENT_QUOTES, 'UTF-8');
     $carburant = htmlspecialchars($_POST['carburant'], ENT_QUOTES, 'UTF-8');
 
-    // VALIDATION DES CHAMPS
+    // VALIDATE FORM FIELDS
     require_once __DIR__ . ('/lib/validateFieldsCarForm.php');
 
-    //SI UN FICHIER A ETE ENVOYE
+    // IF UPLOAD MAIN IMAGE
     if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name'] != '') {
-        // VERIFIER SI LE FICHIER EST CHARGE
+        // CHECK IF THE FILE IS UPLOADED
         if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            // GETIMAGESIZE VA RETOURNER FALSE SI LE FICHIER N'EST PAS UNE IMAGE
+            // GETIMAGESIZE RETURN FALSE IF FILE IS NOT AN IMAGE
             $checkImage = getimagesize($_FILES['image']['tmp_name']);
-            // SI LE FICHIER EST UNE IMAGE ON TRAITE L'UPLOAD
+            // IF FILE IS AN IMAGE, PROCESS THE UPLOAD
             if ($checkImage !== false) {
+                // GENERATE A UNIQUE NAME FOR THE MAIN IMAGE
                 $image = uniqid() . '_' . slugify($_FILES['image']['name']);
                 move_uploaded_file($_FILES['image']['tmp_name'], _CARS_IMG_PATH_ . $image);
-                // SINON MESSAGE D'ERREUR
+                // ERRORS MESSAGES
             } else {
                 $errors[] = 'Le fichier doit être une image !';
             }
@@ -50,26 +53,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['saveCar'])) {
         $image = '';
     }
 
-    // GERER LE TELECHARGEMENT DES IMAGES DE LA GALERIE
+    // MANAGE UPLOADED GALLERY IMAGES
     $galerie_images = [];
     if (isset($_FILES['galerie_images']) && is_array($_FILES['galerie_images']['name']) && count($_FILES['galerie_images']['name']) > 0) {
-        // LIMITE IMAGES GALERIE
+        // LIMIT GALLERY IMAGES
         $maxGalleryImages = 3;
-        // VERIFIER NOMBRE TOTAL DE FICHIERS TELECHARGES
+        // CHECK TOTAL COUNT OF GALLERY IMAGES
         if (count($_FILES['galerie_images']['tmp_name']) > $maxGalleryImages) {
             $errors[] = 'Vous ne pouvez télécharger que ' . $maxGalleryImages . ' autres photos.';
         } else {
-            // PARCOURIR TOUS LES FICHIERS TELECHARGES
+            // BROWSE UPLOADED GALLERY IMAGES
             foreach ($_FILES['galerie_images']['tmp_name'] as $index => $tmpName) {
                 if ($_FILES['galerie_images']['error'][$index] === UPLOAD_ERR_OK) {
-                    // VERIFIER SI LE FICHIER EST UNE IMAGE
+                    // CHECK IF THE FILE IS AN IMAGE
                     $checkImage = getimagesize($tmpName);
+                    // IF FILE IS AN IMAGE, PROCESS THE UPLOAD
                     if ($checkImage !== false) {
-                        // GENERER UN NOM UNIQUE POUR L'IMAGE
+                        // GENERATE A UNIQUE NAME FOR THE MAIN IMAGE
                         $imageName = uniqid() . '_' . slugify($_FILES['galerie_images']['name'][$index]);
-                        // DEPLACER LE FICHIER VERS LE REPERTOIRE DE STOCKAGE
+                        // MOVE FILE TO THE GALLERY FOLDER
                         move_uploaded_file($tmpName, _GALERY_IMG_PATH_ . $imageName);
-                        // AJOUTER LE NOM DE L'IMAGE AU TABLEAU GALERIE_IMAGES
+                        // ADD THE IMAGE NAME TO THE ARRAY
                         $galerie_images[] = $imageName;
                     } else {
                         $errors[] = 'Le fichier "' . $_FILES['galerie_images']['name'][$index] . '" doit être une image !';
@@ -80,17 +84,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['saveCar'])) {
             }
         }
     }
-
+    // CONVERT THE ARRAY TO A STRING
     $galerie_imagesString = implode(',', $galerie_images);
-
+    // IF NO ERRORS, SAVE THE CAR
     if (!$errors) {
         $res = saveCar($pdo, $marque, $modele, $prix, $image, $annee_mise_en_circulation, $kilometrage, $galerie_imagesString, $caracteristiques, $equipements_options, $carburant);
-        // MESSAGE DE CONFIRMATION ET D'ERREUR
+        // SUCCESS MESSAGE OR ERROR
         if ($res) {
             $messages[] = 'Votre annonce a bien été enregistrée !';
-            // OBTERNIR L'ID DU NOUVEAU VEHICULE CREE
+            // GET THE ID OF NEW CAR
             $newCarId = $pdo->lastInsertId();
-            // REDIRECTION VERS LA PAGE DE L'ANNONCE NOUVELLEMENT CREEE
+            // GO TO THE CAR PAGE
             echo '<script>window.location.href = "car.php?id=' . $newCarId . '";</script>';
             exit();
         } else {
@@ -98,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['saveCar'])) {
         }
     }
 
-    // N'EFFACE PAS LE CONTENU DES CHAMPS DU FORMULAIRE
+    // DO NOT CLEAR THE FORM FIELDS IF ERRORS
     $car = [
         'marque' => $marque,
         'modele' => $modele,
@@ -111,8 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['saveCar'])) {
 }
 ?>
 
-<br>
-<h2><a href="cars.php">Liste des annonces et modification</a></h2>
+<h2 class="display-5 fw-bold text-body-emphasis"><a href="cars.php">Voir les annonces et modifier</a></h2>
 <h1 class="display-5 fw-bold text-body-emphasis">Ajouter une annonce</h1>
 
 <?php foreach ($messages as $message) { ?>
@@ -125,12 +128,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['saveCar'])) {
     </div>
 <?php } ?>
 
-<!-- FORM START -->
+<!-- ADD CAR FORM START -->
 <?php
 require_once('templates/addCar_form.php');
 ?>
 
-<!-- IMPORT SCRIPTS  -->
+<!-- IMPORT SCRIPTS FOR TEXT COUNT -->
 <script src="assets/JS/text_counterCarForm.js"></script>
 
 <!-- FOOTER START -->

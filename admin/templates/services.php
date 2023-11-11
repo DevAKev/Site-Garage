@@ -38,8 +38,7 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
             <tr>
                 <th scope="row"><?= $service["id"]; ?></th>
                 <td><?= $service["titre"]; ?></td>
-                <td><a href="service.php?id=<?= $service['id'] ?>">Modifier</a>
-                    | <a href="service_delete.php?id=<?= $service['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce service ?')">Supprimer</a></td>
+                <td><a href="service.php?id=<?= $service['id'] ?>" class="btn btn-primary">Modifier</a><a href="service_delete.php?id=<?= $service['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce service ?')" class="btn btn-primary">Supprimer</a></td>
             </tr>
         <?php } ?>
     </tbody>
