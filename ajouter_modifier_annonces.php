@@ -115,8 +115,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['saveCar'])) {
 }
 ?>
 
-<h2 class="display-5 fw-bold text-body-emphasis"><a href="cars.php">Voir les annonces et modifier</a></h2>
 <h1 class="display-5 fw-bold text-body-emphasis">Ajouter une annonce</h1>
+<h2 class="text-body-emphasis"><a href="cars.php">Voir les annonces et modifier</a></h2>
 
 <?php foreach ($messages as $message) { ?>
     <div class="alert alert-success"><?= $message ?>

@@ -129,7 +129,7 @@ h1 {
     font-family: 'Kanit', sans-serif;
     text-align: center;
     color: var(--text-color);
-    margin-top: 40px;
+    margin-top: 20px;
     text-shadow: 1px 3px 2px black;
 }
 
@@ -308,6 +308,12 @@ h1 {
 #gas-station {
     background: url(../images/gas-station.jpg) no-repeat fixed 50% 50%;
     background-size: cover;
+}
+/* Admin home image background */
+#admin-image {
+    background: url(/media/mustang-inscription.jpg) no-repeat fixed 50% 50%;
+    background-size: cover;
+    height: 600px;
 }
 
 /*Breadcrumb*/
@@ -548,7 +554,7 @@ body.scrolling .back-to-top-container {
 
 /*-------- SPACE ADMIN ---------*/
 /* Home page espace admin */
-/* Style navbar admin */
+/* Style notification admin */
 .notification {
     background-color: red;
     color: white;
@@ -559,15 +565,42 @@ body.scrolling .back-to-top-container {
     border-radius: 50%;
     margin-left: 5px;
 }
+
+/* Style header nav link ADMIN */
+#functions-list {
+    margin: 0;
+    padding: 0;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#functions-list li a {
+    align-items: center;
+    display: block;
+    padding: 10px 20px;
+    color: #FFFAE1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#functions-list .nav-link:hover {
+    background-color: #0c26a8;
+    color: #000408;
+    transition: background-color 0.6s ease;
+}
 #containerMembre {
-    border-radius: 10px;
-    max-width: 800px;
     margin: 50px auto;
     padding: 20px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.75);
+    color: var(--light);
 }
-.container h1 {
-    color: var(--dark);
+#containerMembre h1 {
+    color: whitesmoke;
+    background-color: #0c26a8;
+    padding: 10px;
+    border-radius: 10px;
     font-family: 'Kanit', sans-serif;
     font-size: 2rem;
     text-align: center;
@@ -576,20 +609,35 @@ body.scrolling .back-to-top-container {
 
 /* Style add car form & edit car form */
 #addCarForm, #editCarForm {
-    width: 40vw;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    background-color: #837d70;
-    justify-content: center;
-    align-items: center;
-    margin: 100px auto; 
+    flex-wrap: wrap; /* Allows elements to wrap on line */
+    justify-content: center; /* Adjust space between fields */
+    margin: 10px 0;
     padding: 50px;
+    background-color: #f2f2f2;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
 #addCarForm input[type="text"], #editCarForm input[type="text"], #addCarForm .form-control, .form-select, #editCarForm .form-control, .form-select {
+    width: 90%;
+    margin: 20px;
     border-color: #0c26a8;
+    padding: 10px;
+    resize: none;
+    box-sizing: border-box;
+}
+
+#editCarForm input[type="submit"] {
+    width: 20%;
+    margin: 20px;
+    padding: 10px;
+}
+
+#addCarForm input[type="submit"] {
+    margin: 20px 10px;
+    padding: 20px;
 }
 
 /* Style schedules form */
@@ -653,6 +701,13 @@ body {
     align-items: stretch; 
     padding: 20px; 
 }
+
+/* Style header nav link ADMIN */
+#functions-list li a {
+    margin: 20px 50px 0;
+    margin-left: 50px;
+    /* margin-right: 30px; */
+}
 }
 
 @media screen and (max-width: 768px) {
@@ -699,7 +754,7 @@ body {
     margin: 10px; /* Add margin */
     padding: 20px; /* Add space */
     width: 90%; /* Form width 90% */
-    box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Add shadow */
+    box-shadow: 0 0 10px rgba(0,0,0,0.75); /* Add shadow */
     border-radius: 10px; /* Add rounded corners */
 }
 
@@ -713,7 +768,6 @@ body {
     margin-bottom: 10px; /* Space between fields */
 }
 }
-
 @media screen and (min-width: 1200px) {
     #sortBy {
         width: 30vw;
