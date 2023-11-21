@@ -75,29 +75,30 @@ function deleteUser(PDO $pdo, int $userId)
 function login($email, $password, $pdo)
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Preparing the request to prevent SQL injection
         $requete = $pdo->prepare("SELECT * FROM users WHERE email = :email");
         $requete->bindParam(':email', $email, PDO::PARAM_STR);
         $requete->execute();
-
+        // Use fetch(PDO::FETCH_ASSOC) to get associative array
         $user = $requete->fetch(PDO::FETCH_ASSOC);
-
+        // Vérification du mot de passe
         if ($user && password_verify($password, $user['password_hash'])) {
-            // MAJ DE LA DATE DE DERNIERE CONNEXION
+            // MAJ LAST CONNEXION
             $updateQuery = $pdo->prepare("UPDATE users SET last_connexion = :last_connexion WHERE id = :id");
-            $updateQuery->bindParam(':last_connexion', date('Y-m-d H:i:s'));
+            $lastConnexion = date('Y-m-d H:i:s');
+            $updateQuery->bindParam(':last_connexion', $lastConnexion, PDO::PARAM_STR);
             $updateQuery->bindParam(':id', $user['id'], PDO::PARAM_INT);
             $updateQuery->execute();
-
+            // User informations in session
             $_SESSION['user']['id'] = $user['id'];
             $_SESSION['user']['role'] = $user['role'];
             $_SESSION['user']['nom'] = $user['nom'];
             $_SESSION['user']['prenom'] = $user['prenom'];
+            // Regenerate session id to prevent session fixation
+            session_regenerate_id();
             return true;
-        } else {
-            return false;
         }
     }
-
     return false;
 }
 
