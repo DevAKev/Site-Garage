@@ -18,7 +18,7 @@ function getCarImage(string $image)
         return 'uploads/cars/' . $image;
     }
 }
-// FETCH ALL CARS FROM DATABASE & SHOWS RANDOMLY ON HOME PAGE(ALEATOIRE AFFICHANT AUSSI ID RECENTS)
+// FETCH ALL CARS FROM DATABASE & SHOWS RANDOMLY ON HOME PAGE(ALEATOIRE AFFICHANT AUSSI LES ID RECENTS)
 function getCars(PDO $pdo, int $limit = null)
 {
     $sql = 'SELECT * FROM vehicules ORDER BY RAND() DESC';

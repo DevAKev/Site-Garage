@@ -26,29 +26,30 @@
             <p><strong>270ko</strong> de données</p>
             <p><strong>0,14g</strong> de CO2</p>
         </div>
-</div>
-
-<!-- SOCIAL NETWORKS -->
-<div class="row">
-    <div class="col-md-12">
-        <div class="socials p-2 text-center">
-            <h3>Suivez-nous :</h3>
-            <i class="fa-brands fa-facebook fa-bounce"></i>
-            <i class="fa-brands fa-twitter fa-bounce"></i>
-            <i class="fa-brands fa-instagram fa-bounce"></i>
-            <i class="fa-brands fa-youtube fa-bounce"></i>
-            <i class="fa-brands fa-linkedin fa-bounce"></i>
-        </div>
+        <!-- SOCIAL NETWORKS -->
         <div class="row">
             <div class="col-md-12">
-                <!-- COPYRIGHT -->
-                <p class="text-center">Copyright © 2023
-                    <a href="index.php">Garage-V-Parrot.com</a> - Tous droits réservés.
-                </p>
+                <div class="socials p-2 text-center">
+                    <h3>Suivez-nous :</h3>
+                    <i class="fa-brands fa-facebook fa-bounce"></i>
+                    <i class="fa-brands fa-twitter fa-bounce"></i>
+                    <i class="fa-brands fa-instagram fa-bounce"></i>
+                    <i class="fa-brands fa-youtube fa-bounce"></i>
+                    <i class="fa-brands fa-linkedin fa-bounce"></i>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- COPYRIGHT -->
+                        <p class="text-center">Copyright © 2023
+                            <a href="index.php">Garage-V-Parrot.com</a> - Tous droits réservés.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </div>
+
+
 </div>
 </footer>
 <!-- IMPORT SCRIPTS  -->

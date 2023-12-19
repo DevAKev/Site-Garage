@@ -86,12 +86,12 @@ try {
 <!-- MAIN START -->
 <!-- FILTRES DES VEHICULES -->
 <div class="row justify-content-center" id="containerFilter">
-  <div class="col-12 col-md-8 p-4" id="filterCars">
+  <div class="col-12 col-md-4" id="filterCars">
     <?php include_once('templates/filterCar_form.php'); ?>
   </div>
 
   <!-- FONCTION SORT BY -->
-  <div class="row justify-content-center">
+  <div class="col-md-8">
     <!-- Div pour afficher les résultats triés -->
     <div class="grid-container" id="gridContainer"></div>
   </div>

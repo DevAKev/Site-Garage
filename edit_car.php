@@ -114,7 +114,7 @@ if (isset($_POST['deleteCar'])) {
     $result = deleteCar($pdo, $id);
     if ($result) {
         // GO TO THE ADD CAR PAGE
-        echo '<script>window.location.href = "ajouter_modifier_annonces.php";</script>';
+        echo '<script>window.location.href = "/add_car.php";</script>';
         exit();
     } else {
         $errors[] = 'Une erreur est survenue lors de la suppression de l\'annonce.';

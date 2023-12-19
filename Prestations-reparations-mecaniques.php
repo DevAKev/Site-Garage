@@ -17,7 +17,7 @@ require_once('templates/header.php');
     <div class="row">
         <div class="col-md-4">
             <div class="card">
-                <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap">
+                <img class="card-img-top" src="/assets/images/service_meca.jpg" alt="Réparation meca">
                 <div class="card-body">
                     <h5 class="card-title">Réparation mécanique</h5>
                     <p class="card-text"></p>
@@ -26,7 +26,7 @@ require_once('templates/header.php');
         </div>
         <div class="col-md-4">
             <div class="card">
-                <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap">
+                <img class="card-img-top" src="/assets/images/entretien.jpg" alt="Entretien">
                 <div class="card-body">
                     <h5 class="card-title">Entretien de votre véhicule</h5>
                     <p class="card-text"></p>

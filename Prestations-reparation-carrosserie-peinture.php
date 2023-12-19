@@ -17,16 +17,17 @@ require_once('templates/header.php');
     <div class="row">
         <div class="col-md-4">
             <div class="card">
-                <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap">
+                <img class="card-img-top" src="/assets/images/Carrossier.jpg" alt="Carrosserie">
                 <div class="card-body">
                     <h5 class="card-title">Carrosserie</h5>
                     <p class="card-text"></p>
                 </div>
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="card">
-                <img class="card-img-top" src="https://via.placeholder.com/350x200" alt="Card image cap">
+                <img class="card-img-top" src="/assets/images/paintcar.jpg" alt="Peinture">
                 <div class="card-body">
                     <h5 class="card-title">Peinture</h5>
                     <p class="card-text"></p>

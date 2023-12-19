@@ -22,13 +22,13 @@ if ($vehicule) {
             <div class="col-lg-7 p-lg-5 pt-lg-3">
                 <h1 class="display-4 fw-bold lh-1 mb-4"><?= htmlspecialchars($vehicule['marque'] ?? '', ENT_QUOTES, 'UTF-8'); ?></h1>
                 <h2 class="fw-bold lh-1"><?= htmlspecialchars($vehicule['modele'] ?? '', ENT_QUOTES, 'UTF-8'); ?></h2>
-                <h3><?= number_format($vehicule['prix'], 0, ' ', ' '); ?> €</h3>
+                <h3 class="price"><?= number_format($vehicule['prix'], 0, ' ', ' '); ?> €</h3>
                 <div class="d-flex justify-content-around">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item fw-bold p-2">Marque</li>
                         <li class="list-group-item fw-bold p-2">Modèle</li>
                         <li class="list-group-item fw-bold p-2">Kilométrage</li>
-                        <li class="list-group-item fw-bold p-2">Année de mise en circulation</li>
+                        <li class="list-group-item fw-bold p-2">Année</li>
                         <li class="list-group-item fw-bold p-2">Carburant</li>
                     </ul>
                     <ul class="list-group list-group-flush">
@@ -43,12 +43,12 @@ if ($vehicule) {
                 <h4 class="fw-bold">Caracteristiques du véhicule : </h4>
                 <ul class="list-group">
                     <?php foreach ($caracts as $key => $caract) { ?>
-                        <li class="list-group-item"><?= htmlspecialchars($caract, ENT_QUOTES, 'UTF-8'); ?></li>
+                        <li id="caracts" class="list-group-item"><?= htmlspecialchars($caract, ENT_QUOTES, 'UTF-8'); ?></li>
                     <?php } ?>
                     <br>
                     <h4 class="fw-bold">Liste des options : </h4>
                     <?php foreach ($equipements as $key => $equipement) { ?>
-                        <li class="list-group-item"><?= htmlspecialchars($equipement, ENT_QUOTES, 'UTF-8'); ?></li>
+                        <li id="options" class="list-group-item"><?= htmlspecialchars($equipement, ENT_QUOTES, 'UTF-8'); ?></li>
                     <?php } ?>
                 </ul>
                 <br>

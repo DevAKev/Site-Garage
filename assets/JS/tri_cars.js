@@ -17,7 +17,7 @@ $(function filterResults() {
         // SI AUCUN RESULTAT, AFFICHE UN MESSAGE D'ERREUR
         if (data.length === 0) {
           $(".grid-container").html(
-            '<div id="noResults" class="alert alert-warning text-center">Ouuupsss... Aucun résultat, veuillez réinitialiser votre recherche.</div>'
+            '<div id="noResults" class="alert alert-warning text-center">Ouuupsss... Il n\'y a rien à afficher pour le moment, n\'hésitez pas à modifier vos filtres.</div>'
           );
         } else {
           //CONSTRUCTION DU HTML POUR AFFICHER LES VEHICULES DANS LA GRILLE
@@ -35,27 +35,28 @@ $(function filterResults() {
               maximumFractionDigits: 0,
             }).format(dataItem.kilometrage);
             let html = `
-              <div class="card" id="filterCards">
-                <div class="card-header bg-transparent d-flex justify-content-between">
-                  <h6 class="card-title">${dataItem.marque}</h6>
-                  <h6>${dataItem.modele}</h6>
-                </div>
-                <a href="car.php?id=${dataItem.id}">
-                  <img src="${imageUrl}" class="card-img-top" alt="photo ${dataItem.marque}">
-                </a>
-                <div class="card-body">
-                  <p class="card-text">
-                    <ul class="list-group">
-                      <li class="list-group-item">${prixFormate}</li>
-                      <li class="list-group-item">${kilometrageFormate} km</li>
-                      <li class="list-group-item">${dataItem.carburant}</li>
-                      <li class="list-group-item">${dataItem.annee_mise_en_circulation}</li>
-                    </ul>
-                  </p>
-                  <a href="./car.php?id=${dataItem.id}" class="btn btn-primary m-4">Voir ce véhicule</a>
-                </div>
+            <div class="card" id="filterCards">
+              <div class="card-header bg-transparent d-flex justify-content-between">
+                <h6 class="card-title">${dataItem.marque}</h6>
+                <h6>${dataItem.modele}</h6>
               </div>
-            `;
+              <a href="car.php?id=${dataItem.id}">
+                <img src="${imageUrl}" class="card-img-top" alt="photo ${dataItem.marque}">
+              </a>
+              <div class="card-body">
+                <p class="card-text">
+                  <ul class="list-group">
+                    <li id="prix" class="list-group-item"><i class="fa-solid fa-hand-holding-dollar fa-bounce"></i> ${prixFormate}</li>
+                    <li id="kilometrage" class="list-group-item"><i class="fa-solid fa-road fa-flip"></i> ${kilometrageFormate} km</li>
+                    <li class="list-group-item"><i class="fa-solid fa-gas-pump fa-shake"></i> ${dataItem.carburant}</li>
+                    <li class="list-group-item"><i class="fa-solid fa-calendar-check fa-beat"></i> ${dataItem.annee_mise_en_circulation}</li>
+                  </ul>
+                </p>
+                <a href="./car.php?id=${dataItem.id}" class="btn btn-primary">Voir ce véhicule</a>
+              </div>
+            </div>
+          `;
+
             $(".grid-container").append(html);
           }
         }
