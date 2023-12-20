@@ -21,22 +21,22 @@ if ($vehicule) {
         <div class="row pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
             <div class="col-lg-7 p-lg-5 pt-lg-3">
                 <h1 class="display-4 fw-bold lh-1 mb-4"><?= htmlspecialchars($vehicule['marque'] ?? '', ENT_QUOTES, 'UTF-8'); ?></h1>
-                <h2 class="fw-bold lh-1"><?= htmlspecialchars($vehicule['modele'] ?? '', ENT_QUOTES, 'UTF-8'); ?></h2>
+                <h2 id="model-title" class="fw-bold lh-1"><?= htmlspecialchars($vehicule['modele'] ?? '', ENT_QUOTES, 'UTF-8'); ?></h2>
                 <h3 class="price"><?= number_format($vehicule['prix'], 0, ' ', ' '); ?> €</h3>
                 <div class="d-flex justify-content-around">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item fw-bold p-2">Marque</li>
-                        <li class="list-group-item fw-bold p-2">Modèle</li>
-                        <li class="list-group-item fw-bold p-2">Kilométrage</li>
-                        <li class="list-group-item fw-bold p-2">Année</li>
-                        <li class="list-group-item fw-bold p-2">Carburant</li>
+                        <li id="brand" class="list-group-item">Marque</li>
+                        <li id="model" class="list-group-item">Modèle</li>
+                        <li id="mileage" class="list-group-item">Kilométrage</li>
+                        <li id="year" class="list-group-item">Année</li>
+                        <li id="fueltype" class="list-group-item">Carburant</li>
                     </ul>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item p-2"><?= htmlspecialchars($vehicule['marque'] ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
-                        <li class="list-group-item p-2"><?= htmlspecialchars($vehicule['modele'] ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
-                        <li class="list-group-item p-2"><?= number_format($vehicule['kilometrage'], 0, ' ', ' '); ?> km</li>
-                        <li class="list-group-item p-2"><?= htmlspecialchars($vehicule['annee_mise_en_circulation'] ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
-                        <li class="list-group-item p-2"><?= htmlspecialchars($vehicule['carburant'] ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                        <li id="brand-data" class="list-group-item p-2"><?= htmlspecialchars($vehicule['marque'] ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                        <li id="model-data" class="list-group-item p-2"><?= htmlspecialchars($vehicule['modele'] ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                        <li id="mileage-data" class="list-group-item p-2"><?= number_format($vehicule['kilometrage'], 0, ' ', ' '); ?> km</li>
+                        <li id="year-data" class="list-group-item p-2"><?= htmlspecialchars($vehicule['annee_mise_en_circulation'] ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
+                        <li id="fueltype-data" class="list-group-item p-2"><?= htmlspecialchars($vehicule['carburant'] ?? '', ENT_QUOTES, 'UTF-8'); ?></li>
                     </ul>
                 </div>
                 <br>

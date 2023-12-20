@@ -332,7 +332,7 @@ h1 {
     color: #000408;
 }
 
-/*------ PAGE CARS ----------*/
+/*------ PAGE CARS (Page d'affichage des filtres et aperçu des véhicules) ----------*/
 /* Style form filters & button */
 #filterForm {
     display: grid;
@@ -350,17 +350,43 @@ h1 {
 }
 
 /* Style sliders */
-#price-slider, #kilometrage-slider, #annee-slider {
-    background: #4CAF50;}
+#price-slider {
+    background-color: #4CAF50;
+}
+
+#kilometrage-slider {
+    background-color: #2196F3;
+}
+
+#annee-slider {
+    background-color: var(--warning);
+}
 
 /* Style slider value */
 #price-values, #kilometrage-values, #annee-values {
     display: flex;
     justify-content: center;
     font-size: 1rem;
-    color: #0c26a8;
-    margin-top: 5px;
+    margin-top: 10px;
 }
+
+/* Text color slider value */
+#price-values {
+    color: #28a745;
+    font-weight: bold;
+}
+
+#kilometrage-values {
+    color: #007bff;
+    font-weight: bold;
+}
+
+#annee-values {
+    color: var(--warning);
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
 /* style button filter cars */
 #filterCars button:hover {
     background-color: #8a0c30;
@@ -420,7 +446,7 @@ h1 {
     border-radius: 10px;
 }
 
-/* style affichage des cards filtres */
+/* style display cards filters */
 #filterCards {
     background-color: #c6c2b8;
     justify-content: space-between;
@@ -461,11 +487,12 @@ h1 {
 
 /* Description card */
 .list-group-item {
+    border-radius: 50%;
+    border: 5px solid var(--text-color);
     background-color: var(--light);
     width: 150px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     border-color: var(--info);
-    color: var(--info);
     font-size: 1rem;
     text-align: start;
     margin: 5px auto;
@@ -473,11 +500,18 @@ h1 {
 }
 
 .list-group-item i {
-    margin-right: 5px;
+    margin: 0px 50px;
+}
+
+#prix, #kilometrage, #carburant, #annee {
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.75);
 }
 
 /* Style price */
 #prix {
+    box-shadow: 0 0 15px rgba(0,0,0,0.75);
+    border-radius: 50%;
     font-weight: bold;
     color: #28a745;
 }
@@ -487,24 +521,47 @@ h1 {
     color: #007bff;
 }
 
-/* PAGE CAR */
+/* Style fulltype */
+#carburant {
+    color: var(--info);
+}
+
+/* Style year */
+#annee {
+    border-radius: 50%;
+    color: var(--warning);
+}
+
+/* PAGE CAR (Carte de présentation des véhicules) */
+#model-title {
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 1px 3px 2px black;
+}
+
 /* Style price */
 .price {
+    padding-bottom: 15px;
+    margin: 50px 50px 50px;
+    border-bottom: 5px solid var(--text-color);
+    text-align: center;
     font-weight: bold;
     color: #28a745;
     font-size: 1.5rem;
 }
-
-/* Style caracteristiques */
-#caracts {
-    width: 80%;
+#brand, #model, #year, #mileage, #fueltype, #brand-data, #model-data, #year-data, #mileage-data, #fueltype-data {
+    border-radius: 50%;
+    border: 2px solid var(--text-color);
+    text-align: center;
     font-weight: bold;
-    color: #007bff;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
-/* Style options */
-#options {
+/* Style caracteristiques & options */
+#caracts, #options {
+    text-align: start;
+    border-radius: 10px;
     width: 80%;
     font-weight: bold;
     color: #007bff;
@@ -701,7 +758,7 @@ body.scrolling .back-to-top-container {
 }
 
 /*-------- MEDIA QUERIES ---------*/
-/* MOBILE */
+/* Ecran inférieur à 480px (MOBILE) */
 @media screen and (max-width: 480px) {
     /*CARDS*/
 .card-container {
@@ -764,6 +821,7 @@ body {
 }
 }
 
+/* Ecran inférieur à 768px (TABLETTE) */
 @media screen and (max-width: 768px) {
     body {
         font-size: 14px;
