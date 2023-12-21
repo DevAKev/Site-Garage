@@ -17,7 +17,7 @@
                                 </svg>
                             </span>
                         </button>
-                        <div class="collapse navbar-collapse bg-secondary rounded-3 p-2" id="navbarNav">
+                        <div class="collapse navbar-collapse bg-secondary rounded-3 m-2 p-2" id="navbarNav">
                             <ul class="navbar-nav nav nav-pills">
                                 <?php foreach ($mainMenu as $key => $menuItem) {
                                     if (!array_key_exists("exclude", $menuItem)) { ?>

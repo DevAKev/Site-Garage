@@ -1,5 +1,5 @@
 // ÉCOUTEUR D'ÉVÉNEMENT POUR LE DÉFILEMENT DE LA PAGE
-$(window).scroll(function () {
+window.addEventListener("scroll", function () {
   // OBTENIR LA POSITION DE DÉFILEMENT ACTUELLE
   var scrollPos = $(window).scrollTop();
   // OBTENIR LA HAUTEUR DE LA FENÊTRE DU NAVIGATEUR

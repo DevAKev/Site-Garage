@@ -172,7 +172,7 @@ h1 {
 .navbar {
     margin-top: 0px;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     opacity: 0.9;
     width: 100%;
     border-bottom: none;
