@@ -49,12 +49,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
-<body>
-    <div class="container p-4 m-4">
-        <h1 class="display-5 fw-bold text-body-emphasis">Laissez votre avis sur le garage et les prestations :</h1>
-        <?php require_once 'templates/addReview_form.php'; ?>
-    </div>
-    <a href="index.php" class="btn btn-secondary">Retourner sur la page d'accueil</a>
-    <?php
-    require_once('templates/footer.php');
-    ?>
+<div class="container p-4 m-4">
+    <h1 class="display-5 fw-bold text-body-emphasis">Laissez votre avis sur le garage et les prestations :</h1>
+    <?php require_once 'templates/addReview_form.php'; ?>
+</div>
+<a href="index.php" class="btn btn-secondary">Retourner sur la page d'accueil</a>
+<?php
+require_once('templates/footer.php');
+?>

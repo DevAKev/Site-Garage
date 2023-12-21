@@ -15,26 +15,20 @@ include_once __DIR__ . "/../../lib/schedules_conf.php";
 ?>
 <!-- HEADER END -->
 
-<body class="container">
+<!-- MAIN START -->
+<main>
+    <div>
+        <h1 class="display-5 fw-bold text-body-emphasis">Gestion des horaires</h1>
+    </div>
+    <div class="row">
+        <div class="mt-5">
+            <!-- SCHEDULES FORM -->
+            <?php require_once __DIR__ . '/schedules_form.php'; ?>
+</main>
+<!-- MAIN END -->
 
-    <!-- MAIN START -->
-    <main>
-        <div>
-            <h1 class="display-5 fw-bold text-body-emphasis">Gestion des horaires</h1>
-        </div>
-        <div class="row">
-            <div class="mt-5">
-                <!-- SCHEDULES FORM -->
-                <?php require_once __DIR__ . '/schedules_form.php'; ?>
-    </main>
-    <!-- MAIN END -->
-
-    <!-- FOOTER START -->
-    <?php
-    require_once __DIR__ . '/footer.php';
-    ?>
-    <!-- FOOTER END -->
-
-</body>
-
-</html>
+<!-- FOOTER START -->
+<?php
+require_once __DIR__ . '/footer.php';
+?>
+<!-- FOOTER END -->

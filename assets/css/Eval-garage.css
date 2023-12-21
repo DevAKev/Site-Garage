@@ -8,6 +8,7 @@
     scroll-padding-top: 2rem; 
     scroll-behavior: smooth;
 }
+
 :root {
     --main-color: #fe5b3d;
     --second-color: #ffac38;
@@ -26,7 +27,7 @@
     --bs-link-hover-color: var(--secondary);
 }
 
-  .btn-primary {
+.btn-primary {
     --bs-btn-color: var(--text-color);
     --bs-btn-bg: var(--primary);
     --bs-btn-border-color: var(--secondary);
@@ -219,7 +220,8 @@ h1 {
 
 /*Main index*/
 #titre_presentation {
-    font-family: 'Kanit', sans-serif;
+    background-color: #837d70;
+    opacity: 0.8;
     font-weight: bold;
     font-size: 2rem;
     text-align: center;
@@ -241,10 +243,27 @@ h1 {
     border-radius: 10px;
 }
 
-/* Review cards */
+/* Reviews cards */
 #reviewsTitle {
     font-size: 2rem;
     text-shadow: 1px 3px 2px rgb(11, 11, 11);
+}
+
+#note {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 5px;
+}
+
+/* Style stars reviews */
+.filled-star {
+    font-size: 1.4rem;
+    font-weight: bold;
+    fill: rgb(250, 221, 28);
+}
+
+.empty-star {
+    fill: rgb(255, 255, 255);
 }
 
 /* Home Cards */
@@ -473,15 +492,16 @@ h1 {
 }
 
 .card-body {
+    font-size: 1rem;
     display: grid;
     padding: 0.5rem;
+    text-align: center;
 }
 
 .card-title {
     font-size: 1.2rem;
     font-weight: bold;
     text-align: center;
-    margin-right: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
