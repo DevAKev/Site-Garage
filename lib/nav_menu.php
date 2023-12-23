@@ -12,4 +12,5 @@ $mainMenu = [
     'car.php' => ["menu_title" => 'Détails du véhicule', "head_title" => "Détails du véhicule - Garage Vincent Parrot", "meta_description" => "Détails du véhicule.", "exclude" => true],
     'edit_car.php' => ["menu_title" => 'Modifier une annonce', "head_title" => "Modifier une annonce - Garage Vincent Parrot", "meta_description" => "Modifier une annonce.", "exclude" => true],
     'add_reviews.php' => ["menu_title" => 'Laissez votre avis', "head_title" => "Laissez votre avis - Garage Vincent Parrot", "meta_description" => "Laissez votre avis.", "exclude" => true],
+    'legal_notice.php' => ["menu_title" => 'Mentions légales', "head_title" => "Mentions légales - Garage Vincent Parrot", "meta_description" => "Mentions légales.", "exclude" => true],
 ];

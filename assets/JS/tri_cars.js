@@ -46,10 +46,10 @@ $(function filterResults() {
               <div class="card-body">
                 <p class="card-text">
                   <ul class="list-group">
-                    <li id="prix" class="list-group-item"><i class="fa-solid fa-hand-holding-dollar fa-bounce"></i> ${prixFormate}</li>
-                    <li id="kilometrage" class="list-group-item"><i class="fa-solid fa-road fa-flip"></i> ${kilometrageFormate} km</li>
-                    <li id="carburant" class="list-group-item"><i class="fa-solid fa-gas-pump fa-shake"></i> ${dataItem.carburant}</li>
-                    <li id="annee" class="list-group-item"><i class="fa-solid fa-calendar-check fa-beat"></i> ${dataItem.annee_mise_en_circulation}</li>
+                    <li id="prix-desc" class="list-group-item"><i class="fa-solid fa-hand-holding-dollar fa-bounce"></i> ${prixFormate}</li>
+                    <li id="kilometrage-desc" class="list-group-item"><i class="fa-solid fa-road fa-flip"></i> ${kilometrageFormate} km</li>
+                    <li id="carburant-desc" class="list-group-item"><i class="fa-solid fa-gas-pump fa-shake"></i> ${dataItem.carburant}</li>
+                    <li id="annee-desc" class="list-group-item"><i class="fa-solid fa-calendar-check fa-beat"></i> ${dataItem.annee_mise_en_circulation}</li>
                   </ul>
                 </p>
                 <a href="./car.php?id=${dataItem.id}" class="btn btn-primary">Voir ce véhicule</a>

@@ -1,7 +1,7 @@
 <?php
-require_once("lib/config.php");
-require_once("lib/pdo.php");
-require_once("lib/user_tools.php");
+require_once('lib/config.php');
+require_once('lib/pdo.php');
+require_once('lib/user_tools.php');
 // PROCESS CONNEXION
 $errors = [];
 $message = [];

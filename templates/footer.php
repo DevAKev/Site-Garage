@@ -40,8 +40,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!-- COPYRIGHT -->
-                        <p class="text-center">Copyright © 2023
+                        <p class="text-center">Built with <i class="fa-solid fa-shield-heart fa-beat" style="color: #d01628;"></i> by DevAKev © 2023
                             <a href="index.php">Garage-V-Parrot.com</a> - Tous droits réservés.
+                            <br>
+                            <a href="legal_notice.php">Mentions légales</a> |
                         </p>
                     </div>
                 </div>

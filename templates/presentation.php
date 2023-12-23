@@ -3,7 +3,7 @@
         <div class="col-12 col-sm-8 col-lg-6">
         </div>
         <div id="gas-station" class="container">
-            <h1 id="titre_presentation" class="display text-body-emphasis p-2"><span>Garagiste</span> près de Toulouse pour la réparation, l'entretien et l'achat
+            <h1 id="titre_presentation" class="display p-2"><span>Garagiste</span> près de Toulouse pour la réparation, l'entretien et l'achat
                 de véhicules</h1>
             <div id="presentation" class="text">
                 <div class="headline p-2">Votre <strong>Garage V. Parrot,</strong>

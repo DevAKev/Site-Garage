@@ -171,10 +171,10 @@ h1 {
     border-radius: 10px;
 }
 .navbar {
+    background-color: rgba(58, 2, 58, 0.6); /* Fond violet avec transparence */
     margin-top: 0px;
     display: flex;
-    /* flex-direction: column; */
-    opacity: 0.9;
+    flex-direction: column;
     width: 100%;
     border-bottom: none;
     align-items: center;
@@ -190,16 +190,22 @@ h1 {
 
 /* Style navbar links */
 .navbar-nav li {
-    margin: 0px 10px; 
+    margin: 5px 10px;; 
 }
 .navbar-nav li a {
     font-size: 1rem;
-    color: #06012f;
     font-weight: 500; 
     text-transform: uppercase;
+    text-shadow: 1px 1px 1px black;
 }
 .navbar-nav li a:hover {
-    color: #056782; 
+    transition: color 0.6s ease;
+    color:var(--main-color);
+}
+
+/* Style text */
+.nav-link {
+    color: blanchedalmond;
 }
 
 /* Style button navbar */
@@ -220,14 +226,13 @@ h1 {
 
 /*Main index*/
 #titre_presentation {
-    background-color: #837d70;
-    opacity: 0.8;
+    background-color: rgba(58, 2, 58, 0.6);
     font-weight: bold;
     font-size: 2rem;
     text-align: center;
     margin: 20px 0;
-    color: black;
-    text-shadow: 1px 3px 2px rgb(220, 214, 214);
+    color: blanchedalmond;
+    text-transform: uppercase;
 }
 
 /* Presentation text */
@@ -507,29 +512,27 @@ h1 {
 
 /* Description card */
 .list-group-item {
-    border-radius: 50%;
-    border: 5px solid var(--text-color);
     background-color: var(--light);
     width: 150px;
     margin-bottom: 5px;
-    border-color: var(--info);
     font-size: 1rem;
     text-align: start;
     margin: 5px auto;
-    align-items: center;
 }
 
 .list-group-item i {
     margin: 0px 50px;
 }
 
-#prix, #kilometrage, #carburant, #annee {
+#prix-desc, #kilometrage-desc, #carburant-desc, #annee-desc {
+    border-radius: 50%;
+    border: 3px solid var(--text-color);
     text-align: center;
     box-shadow: 0 0 15px rgba(0,0,0,0.75);
 }
 
 /* Style price */
-#prix {
+#prix-desc{
     box-shadow: 0 0 15px rgba(0,0,0,0.75);
     border-radius: 50%;
     font-weight: bold;
@@ -537,17 +540,17 @@ h1 {
 }
 
 /* Style mileage */
-#kilometrage {
+#kilometrage-desc {
     color: #007bff;
 }
 
 /* Style fulltype */
-#carburant {
+#carburant-desc{
     color: var(--info);
 }
 
 /* Style year */
-#annee {
+#annee-desc {
     border-radius: 50%;
     color: var(--warning);
 }

@@ -42,16 +42,8 @@ try {
 
   $carburantQuery = $pdo->query('SELECT DISTINCT carburant FROM vehicules');
   $carburants = $carburantQuery->fetchAll(PDO::FETCH_COLUMN);
-
-  $marque = isset($_GET['marque']) ? htmlspecialchars($_GET['marque'], ENT_QUOTES, 'UTF-8') : null;
-  $carburant = isset($_GET['carburant']) ? htmlspecialchars($_GET['carburant'], ENT_QUOTES, 'UTF-8') : null;
-  $minPrice = isset($_GET['minPrice']) ? htmlspecialchars($_GET['minPrice'], ENT_QUOTES, 'UTF-8') : '';
-  $maxPrice = isset($_GET['maxPrice']) ? htmlspecialchars($_GET['maxPrice'], ENT_QUOTES, 'UTF-8') : '';
-  $minkilometrage = isset($_GET['minkilometrage']) ? htmlspecialchars($_GET['minkilometrage'], ENT_QUOTES, 'UTF-8') : '';
-  $maxkilometrage = isset($_GET['maxkilometrage']) ? htmlspecialchars($_GET['maxkilometrage'], ENT_QUOTES, 'UTF-8') : '';
-  $minAnnee = isset($_GET['minAnnee']) ? htmlspecialchars($_GET['minAnnee'], ENT_QUOTES, 'UTF-8') : '';
-  $maxAnnee = isset($_GET['maxAnnee']) ? htmlspecialchars($_GET['maxAnnee'], ENT_QUOTES, 'UTF-8') : '';
   $reset = isset($_GET['reset']);
+
   // REINITIALISER LES FILTRES
   if ($reset) {
     $marque = null;
@@ -78,7 +70,7 @@ try {
   <div class="container">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="index.php">Accueil</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Nos véhicules d'occasions</li>
+      <li class="breadcrumb-item active" aria-current="page">Nos véhicules d'occasion</li>
     </ol>
   </div>
 </nav>

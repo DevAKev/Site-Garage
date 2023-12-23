@@ -251,44 +251,6 @@ function getFilterCars(PDO $pdo, $marque, $carburant, $minPrice, $maxPrice, $min
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
-// FETCH INFORMATIONS FROM CARS IMPORTED FROM DB
-function getImportCar(PDO $pdo, int $id = null, int $limit = null)
-{
-    // USE COALESCE TO REPLACE NULL VALUES BY DEFAULT IMAGE
-    $sql = 'SELECT *, COALESCE(image, :defaultImage) AS image FROM vehicules';
-
-    if ($id) {
-        $sql .= ' WHERE id = :id';
-    } else {
-        $sql .= ' ORDER BY id DESC';
-    }
-
-    if ($limit) {
-        $sql .= ' LIMIT :limit';
-    }
-
-    $query = $pdo->prepare($sql);
-
-    $defaultImage = './assets/images/default_car_image.jpg';
-    $query->bindParam(':defaultImage', $defaultImage, PDO::PARAM_STR);
-
-    if ($id) {
-        $query->bindParam(':id', $id, PDO::PARAM_INT);
-    }
-
-    if ($limit) {
-        $query->bindParam(':limit', $limit, PDO::PARAM_INT);
-    }
-
-    $query->execute();
-
-    if ($id) {
-        return $query->fetch(PDO::FETCH_ASSOC);
-    } else {
-        return $query->fetchAll(PDO::FETCH_ASSOC);
-    }
-}
-
 // SORT BY YEAR DESC
 function trierAnnoncesParAnneeMiseEnCirculationDesc(PDO $pdo)
 {
