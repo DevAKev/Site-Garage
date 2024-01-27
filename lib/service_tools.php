@@ -2,7 +2,10 @@
 
 function getServices(PDO $pdo, int $limit = null): array
 {
-    $sql = 'SELECT * FROM services ORDER BY RAND() DESC';
+    $sql = 'SELECT services.*, categorie.description as categorie_description
+            FROM services
+            LEFT JOIN categorie ON services.categorie_id = categorie.id
+            ORDER BY RAND() DESC';
     if ($limit) {
         $sql .= ' LIMIT :limit';
     }
